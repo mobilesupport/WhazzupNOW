@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+<!--        <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.5.css"/>-->
+        <title>Home Page</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/AddNewOne.js"></script>
+        <script type="text/javascript" src="js/webRequest.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/AddNewOne.css" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+
+    </head>
+    <body>
+        <div class="app">
+            <div class="header">
+                
+                <button class="appTitle">Add New (Step 1 of 3)</button>
+                <img class="appLogo" src="img/ic_pointion.png" />
+                <button class="btnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
+
+                    
+            </div> 
+            <div >
+                <img class="StepOneImage" src="img/step1.png" />
+                <button onclick="eventImage();" ><img class="EventImage" id="eventimage" src="http://192.168.1.18/MRWebApi/Images/EventCategory/ic_event.png" /></button>
+                <button onclick="saleImage();"><img class="SaleImage" id="saleimage" src="http://192.168.1.18/MRWebApi/Images/EventCategory/ic_sale.png"/></button>
+               
+            </div>
+            <div class="footer">
+                <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
+                <button class="FooterBtnHome" onclick="HomeOnClick();"><img class="HomeImage" src="img/ic_home-web.png" /></button>
+                <button class="FooterBtnNext" onclick="NextOnClick();"><img class="NextImage" src="img/ic_next-web.png" /></button>
+            </div>
+        </div>
+            
+    </body>
+
+</html>

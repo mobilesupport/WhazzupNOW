@@ -1,0 +1,97 @@
+ul{
+    list-style-type: none;
+    padding: 0px 0px 0px 0px;
+}
+
+li:hover{
+    background-color: rgba(255,255,255,0.25);
+}
+
+#slidemenu li{
+    top: 0px;
+    height: 15%;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+
+
+
+/* ------------------------------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------------*/
+/* menu Style*/
+.menubg{
+    position: absolute;
+    top: 6%;
+    width: 40%;
+    height: 32%;
+    z-index: 90;
+/*    padding: 0px 0px 0px 0px;*/
+    margin-left: -50%;
+    opacity: 0.95; 
+    background-color: darkgrey;
+    border: none;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transition: transform 400ms ease;
+    -moz-transition: transform 400ms ease;
+    transition: transform 400ms ease;
+}
+
+
+.itemlabel{
+    line-height: 10vw;
+    background-color: transparent;
+    color: white;
+    font-size: 4vw;
+    font-family: "gothic";
+    margin-left: 5%;
+    text-align: left;
+}
+
+.slideimage{
+    position: absolute;
+    height: auto;
+    width: 15%;
+    right: 10%;
+    top: 10%;
+}
+
+.slideimage2{
+    position: absolute;
+    height: auto;
+    width: 15%;
+    right: 10%;
+    top: 30%;
+}
+
+.slideimage3{
+    position: absolute;
+    height: auto;
+    width: 15%;
+    right: 10%;
+    top: 49%;
+}
+
+.slideimage4{
+    position: absolute;
+    height: auto;
+    width: 15%;
+    right: 10%;
+    top: 67%;
+}
+
+.slideimage5{
+    position: absolute;
+    height: auto;
+    width: 15%;
+    right: 10%;
+    top: 87%;
+}
+/* menu Style end*/
+/* ------------------------------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------------*/
