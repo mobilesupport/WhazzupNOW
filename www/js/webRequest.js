@@ -159,8 +159,8 @@ function postLogin(email, fbId, googleId, loginType, password, registrationId){
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+xhr.responseText);
-
+          //alert("error"+xhr.responseText);
+          alert("Error: Unable to connect to server.");
         }
     })
 }
@@ -217,8 +217,8 @@ function postForgotPwd(email){
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+xhr.responseText);
-
+          //alert("error"+xhr.responseText);
+          alert("Error: Unable to connect to server.");
         }
     })
 }
@@ -245,14 +245,14 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+JSON.stringify(xhr));
+          //alert("error"+JSON.stringify(xhr));
+          alert("Unable to connect to server.");
 
         }
     })
 }
 
 function getCategoryList(category){
-    alert("oo");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/category",
       type: "GET",
@@ -294,7 +294,8 @@ function getCategoryList(category){
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+JSON.stringify(xhr));
+          //alert("error"+JSON.stringify(xhr));
+          alert("Error: Unable to connect to server.");
 
         }
     })

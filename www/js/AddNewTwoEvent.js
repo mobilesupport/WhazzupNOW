@@ -43,7 +43,7 @@ function resetBtnBorder(){
 }
 
 function setBtnBorder(btnnum){
-
+    param2=0;
     $("#button"+btnnum).css({"border-radius": "50%", "border" :"5px solid skyblue" });
     param2=btnnum;
     
