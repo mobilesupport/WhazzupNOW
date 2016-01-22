@@ -57,7 +57,7 @@ html, body{
     position: absolute;
     top: 7%;
     width: auto;
-    height: 5%;
+    height: 3%;
     left: 0px;
     font-family: "gothic";
     font-size: 4vw;
@@ -82,6 +82,7 @@ html, body{
     width: 100%;
 }
 
+/*
 .content{
     width: 100%;
     height: 85%;
@@ -89,12 +90,13 @@ html, body{
 	position:absolute;
 	top:15%;
 }
+*/
 .content{
     width: 100%;
-    height: 78%;
+    height: 82%;
     background-color: white;
 	position:absolute;
-	top:15%;
+	top:11%;
 }
 
 .pageone{

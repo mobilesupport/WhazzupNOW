@@ -252,6 +252,7 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
 }
 
 function getCategoryList(category){
+    alert("oo");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/category",
       type: "GET",
@@ -261,7 +262,7 @@ function getCategoryList(category){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger;     
-
+        alert("yo");
         for(x=0; x<data.length; x++){
            // alert(JSON.stringify(data[x]));
             if(category ==1 && data[x].categoryType=="48EA29FA-DF6D-42EB-9732-1DA26D21364D"){
