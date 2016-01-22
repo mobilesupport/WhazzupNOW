@@ -69,31 +69,10 @@ html, body{
 }
 */
 
-.EventImage {
-    position: absolute;
-    bottom: 10%;
-    left: 15%;
-    width: 30%;
-    height: auto;
-    display: block;
-    outline: none;
-
-}
-
-.SaleImage {
-    position: absolute;
-    bottom: 10%;
-    right: 15%;
-    width: 30%;
-    height: auto;
-    display: block;
-    outline: none;
-
-}
 
 .EventImage {
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     left: 10%;
     height: 20%;
     width: auto;
@@ -104,7 +83,7 @@ html, body{
 
 .SaleImage {
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     right: 10%;
     height: 20%;
     width: auto;

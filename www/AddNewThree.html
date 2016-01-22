@@ -16,6 +16,11 @@
         <script type="text/javascript" src="js/common.js"></script>
         <link rel="stylesheet" type="text/css" href="css/AddNewThree.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <script type="text/javascript">
+            $(document).bind('mobileinit',function(){
+                $.mobile.loadingMessage = false;
+            })
+        </script> 
 
     </head>
     <body>
@@ -28,15 +33,14 @@
                 <button class="btnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
             </div> 
             <div class="middle">
-            <div class="content">
+
             
-            <button onclick="btnCameraOnClick()" class="btnCamera"><img id="smallImage" class="blueCamera" src="img/blue_camera.png" /></button>
-            <input id="eventinput" class="NameTextBox" type="Name" placeholder=" Event Name" maxlength="30"></input>
-            <input id="descriptioninput" class="DescriptionTextBox" type="Name" placeholder=" DESCRIPTION" maxlength="30"></input>
+                <button onclick="btnCameraOnClick()" class="btnCamera"><img id="smallImage" class="blueCamera" src="img/blue_camera.png" /></button>
+                <input id="eventinput" class="NameTextBox" type="Name" placeholder=" Event Name" maxlength="30">
+                <input id="descriptioninput" class="DescriptionTextBox" type="Name" placeholder=" DESCRIPTION" maxlength="30">
             
             
             </div>
-        </div>
             
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>

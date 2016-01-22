@@ -18,6 +18,11 @@
         <link rel="stylesheet" type="text/css" href="css/home.css" />
         <link rel="stylesheet" type="text/css" href="css/slidemenu.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <script type="text/javascript">
+            $(document).bind('mobileinit',function(){
+                $.mobile.loadingMessage = false;
+            })
+        </script> 
 
     </head>
     <body>
@@ -26,9 +31,9 @@
                 
                 <button class="appTitle">WhazzupNOW</button>
                 <img class="appLogo" src="img/ic_pointion.png" />
-                <button class="MenuBtn"><img class="ImageMenu" src="img/hamburger.png"></img>                 </button>       
+                <button class="MenuBtn"><img class="ImageMenu" src="img/hamburger.png">                 </button>       
             </div> 
-        
+            <br>
             <div class="menubg">
                     <ul id="slidemenu">
                     </ul>    

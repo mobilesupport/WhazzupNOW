@@ -53,10 +53,11 @@ html, body{
 }
 
 .middle{
-    top: 6%;
+    top: 9%;
     width: 100%;
-    height: 50%;
-    background-color: transparent;
+    height: 40%;
+    background-color: forestgreen;
+    position: absolute;
 
 }
 
@@ -65,7 +66,7 @@ html, body{
     position: absolute;
     width: 100%;
     height: 40%;
-    top: 6%;
+    top: 9%;
     
 }
 

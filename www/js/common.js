@@ -1,3 +1,23 @@
+//------------------------------------------------------------------------
+//------------------------------------------------------------------------
+//------------------------------------------------------------------------
+//page loading
+
+var loading = {
+    
+    //add loading page when calll
+    startLoading:function(){
+        $(".app").prepend("<div class='loadingPage'><div class='loadingFrame'><img class='loadingIcon' src='img/progress_loading.png'></img></div></div>");
+    },
+    
+    //remove loading page when call
+    endLoading:function(){
+        $(".loadingPage").remove();
+    }
+};
+
+
+
 var db;
 
 var dbmanager = {
