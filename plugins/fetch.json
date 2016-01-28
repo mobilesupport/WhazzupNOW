@@ -35,5 +35,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "registry",
+            "id": "com.phonegap.plugins.pushplugin"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
