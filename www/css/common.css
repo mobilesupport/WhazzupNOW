@@ -107,7 +107,8 @@ html, body{
     top: 10%;
     height: 80%;
     width:auto; 
-    z-index: 99;
+/*  z-index:99;*/
+
     vertical-align: middle;
     outline: none;
 }
@@ -144,7 +145,7 @@ html, body{
     bottom: 10%;
     height: 90%;
     width: 18%;
-    z-index: 99;
+    /*z-index: 99;*/
     background-color: transparent;
     border-color: transparent;
     outline: none;
@@ -157,7 +158,7 @@ html, body{
     bottom: 10%;
     height: 90%;
     width: 18%;
-    z-index: 99;
+    /*z-index: 99;*/
     background-color: transparent;
     border-color: transparent;
     outline: none;
@@ -176,7 +177,7 @@ html, body{
     bottom: 10%;
     height: 90%;
     width: 18%;
-    z-index: 99;
+    /*z-index: 99;*/
     background-color: transparent;
     border-color: transparent;
     outline: none;
@@ -225,4 +226,67 @@ html, body{
     height: 100%;
     width: 100%;
     outline: none;
+}
+
+/*Forgot password   */
+.PwdBg{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 95;
+}
+
+.PwdContent{
+    position: absolute;
+    width: 95%;
+    height: 90%;
+    left: 2.5%;
+    top: 5%;
+    background-color: white;
+    z-index: 96;
+}
+
+.PwdHeader{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: darkorange;
+}
+
+.PwdDetails{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+
+}
+
+.PwdTitle{
+    position: absolute;
+    height: 100%;
+    width: 90%;
+    color: white; 
+    font-size: 5vw;
+    background-color: transparent;
+    font-family: "times new roman";
+    border: none;
+    outline: none;
+}
+
+.PwdCloseBtn{
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    right: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.PwdCloseBtn img{
+    height: 60%;
+    width: auto;
+    background-color: transparent;
 }

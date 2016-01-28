@@ -88,6 +88,86 @@ function clickmenubutton(){
         return false;
     }
 }
+
+function PasswordOnClick(){
+    clickmenubutton();
+    
+    dbmanager.initdb();
+        dbmanager.getProfile(function(returnData){
+        var emailuser=returnData.rows.item(0).USER_EMAIL;
+    $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Change Password</button><button class='PwdCloseBtn' onclick='closePwd();'><img src='img/close.png'/></button></div><div class='PwdDetails'> <button class='text1'>Email Address</button> <input id=Idemail value='"+emailuser+"'class='EmailTextBox'></input><br><button class='text2'>Old Password</button> <input id=oldpassword class='EmailTextBox2'></input><br><button class='text3'>New Password</button> <input id=newpassword class='EmailTextBox3'></input></div><button class='UpdateBtn' onclick='UpdateBtnOnClick();'>Update</button></div></div>");
+           
+         
+    });
+    
+    
+}
+    function UpdateBtnOnClick(){
+    var oldpwd, newpwd, useremail;
+    oldpwd=$("#oldpassword").val();
+    newpwd=$("#newpassword").val();
+    useremail=$("#Idemail").val();
+    
+    if(newpwd==""){
+        alert("Please enter a new password");  
+    }
+    else if(newpwd.length<6){
+        alert("Password must be at least 6.");
+    }
+    else {
+        postChangePwd(oldpwd,newpwd,useremail);}
+
+        
+    }
+
+function closePwd(){
+    $(".PwdBg").remove();
+}
+
+function FeedBackOnClick(){
+    clickmenubutton();
+    $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Feedback</button><button class='PwdCloseBtn' onclick='closePwd();'><img src='img/close.png'/></button></div><div class='PwdDetails'><button class='textsubject'>Subject</button><form class='formclass'></form><button class='feedbacktext'>Your Feedback</button><textarea class='feedbackarea' name='paragraph_text'></textarea><button class='UpdateBtn' onclick='SendBtnOnClick();'>Send</button></div></div>");
+    getFeedbackCategory();
+        
+}
+
+function SendBtnOnClick(){
+    var feedbackStr=$(".feedbackarea").val();
+    if (feedbackStr==""){
+        alert("Please enter details.")
+    }
+    else {
+    var rate_id;
+    dbmanager.initdb();
+    dbmanager.getProfile(function(returnData){
+    var iduser=returnData.rows.item(0).USER_ID;
+    if (document.getElementById('radio_0').checked) {
+        rate_id = document.getElementById('radio_0').value;
+        postFeedbackCreate(rate_id,feedbackStr,iduser);
+    }
+    else if (document.getElementById('radio_1').checked){
+        
+        rate_id = document.getElementById('radio_1').value;
+        postFeedbackCreate(rate_id,feedbackStr,iduser);
+    }
+    else if (document.getElementById('radio_2').checked){
+        rate_id = document.getElementById('radio_2').value;
+        postFeedbackCreate(rate_id,feedbackStr,iduser);
+    }
+    
+    
+ })   
+}
+}
+
+
+function INFOOnClick(){
+    window.location="about.html";
+    
+}
+
+
+
 //----------------------------------------------------------
 //----------------------------------------------------------
 //----------------------------------------------------------

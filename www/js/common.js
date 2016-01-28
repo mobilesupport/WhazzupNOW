@@ -19,7 +19,6 @@ var loading = {
 
 
 var db;
-
 var dbmanager = {
     initdb:function(){
         db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
@@ -29,7 +28,7 @@ var dbmanager = {
         db.transaction(createTableTransaction, this.errorExecuteSQL, this.successExecuteSQL);
         
         function createTableTransaction(t){
-            t.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT)');
+            t.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT,USER_EMAIL TEXT)');
             t.executeSql('create table if not exists FIRSTRUN(RUN TEXT)');
         }
     },

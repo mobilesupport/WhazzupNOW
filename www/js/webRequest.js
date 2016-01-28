@@ -142,6 +142,7 @@ var sha1key="8345627";
 function postLogin(email, fbId, googleId, loginType, password, registrationId){
     var checksumStr=email+ fbId+ googleId+ loginType+ password+ registrationId+sha1key;
     var hashedStr=SHA1(checksumStr);
+    alert(registrationId);
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/login/user",
       type: "POST",  
@@ -152,9 +153,9 @@ function postLogin(email, fbId, googleId, loginType, password, registrationId){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger;        
-//            alert(data.USER_PHOTO);  
+          alert(JSON.stringify(data)); 
           
-        storeProfile(data.USER_ID, data.USER_NAME, data.USER_PWD, data.USER_PHONE, data.USER_PHOTO, data.TOTAL_ACT_CREATED, data.TOTAL_ACT_LIKED, data.TOTAL_ACT_COMMENTED);
+        storeProfile(data.USER_ID, data.USER_NAME, data.USER_PWD, data.USER_PHONE, data.USER_PHOTO, data.TOTAL_ACT_CREATED, data.TOTAL_ACT_LIKED, data.TOTAL_ACT_COMMENTED,data.USER_EMAIL);
 
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -165,10 +166,10 @@ function postLogin(email, fbId, googleId, loginType, password, registrationId){
     })
 }
 
-function storeProfile(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED) {
+function storeProfile(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED,USER_EMAIL) {
     var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
     var profile = {
-    values1 : [USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED]
+    values1 : [USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED,USER_EMAIL]
     };
 
     insertProfile(profile);
@@ -176,10 +177,10 @@ function storeProfile(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTA
     function insertProfile(profile) {
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS PROFILE');
-            tx.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT)');
+            tx.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT,USER_EMAIL)');
             tx.executeSql('DELETE FROM PROFILE');
             tx.executeSql(
-                'INSERT INTO PROFILE(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+                'INSERT INTO PROFILE(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED,USER_EMAIL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
                 profile.values1,
                 successLogin,
                 errorLogin
@@ -194,7 +195,7 @@ function errorLogin(err){
 
 function successLogin(){
     alert('Success Login')
-    window.location="home.html";
+    location.href="home.html";
 }
 
 //forgot password
@@ -252,6 +253,7 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
     })
 }
 
+//create post step 2 of 3
 function getCategoryList(category){
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/category",
@@ -298,4 +300,112 @@ function getCategoryList(category){
 
         }
     })
+}
+
+//about us
+function getInfo(){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/system/aboutus",
+      type: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;     
+        alert(JSON.stringify(data));
+        $(".merchantDiv").append("<p>"+JSON.stringify(data)+"</P>");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          //alert("error"+JSON.stringify(xhr));
+          alert("Error: Unable to connect to server.");
+
+        }
+    })
+}
+
+//change password
+function postChangePwd(oldpwd,newpwd,useremail){
+    var checksumStr=newpwd+oldpwd+useremail+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/login/changepassword",
+      type: "POST",  
+        data:"newPassword="+newpwd+ "&oldPassword="+oldpwd+"&userEmail="+useremail+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;        
+        //alert(JSON.stringify(data));
+        alert("Password changed successfully.");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+         // alert("error"+xhr.responseText);
+          alert("Error: Unable to connect to server.");
+        }
+    })
+    
+}
+
+//Feedback category
+function getFeedbackCategory(){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/feedback/category",
+      type: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;     
+        //alert(JSON.stringify(data));
+          
+          for(x=2; x<data.length; x--){
+              $(".formclass").append("<input id='radio_"+x+"' type='radio' name='"+data[x].categoryType+"' value='"+data[x].categoryId+"'>"+data[x].categoryName+"<br><br></input>");
+              
+              
+             $("#radio_2").prop("checked", true)
+             
+                  
+              }
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+JSON.stringify(xhr));
+          //alert("Error: Unable to connect to server.");
+
+        }
+    })
+}
+
+function postFeedbackCreate(rate_id,feedbackStr,iduser){
+    
+    var checksumStr=rate_id+feedbackStr+iduser+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/feedback/Create",
+      type: "POST",  
+        data:"categoryId="+rate_id+ "&feedbackDetail="+feedbackStr+"&userId="+iduser+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;        
+        //alert(JSON.stringify(data));
+        alert("Success");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })
+    
 }
