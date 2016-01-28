@@ -290,3 +290,9 @@ html, body{
     width: auto;
     background-color: transparent;
 }
+
+#test_btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

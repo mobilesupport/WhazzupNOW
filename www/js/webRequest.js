@@ -312,9 +312,115 @@ function getInfo(){
       },
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
-        debugger;     
-        alert(JSON.stringify(data));
-        $(".merchantDiv").append("<p>"+JSON.stringify(data)+"</P>");
+        debugger; 
+          
+          
+          
+//var collapseDivs, collapseLinks, span;
+//function createDocumentStructure (tagName) {  
+//    if (document.getElementsByTagName) {    
+//        var elements = document.getElementsByTagName(tagName);    
+//        collapseDivs = new Array(elements.length);    
+//        collapseLinks = new Array(elements.length);    
+//        for (var i = 0; i < elements.length; i++) {      
+//            var element = elements[i];      
+//            var siblingContainer;      
+//            if (document.createElement && (siblingContainer = document.createElement('div')) && siblingContainer.style){
+//                var nextSibling = element.nextSibling;        
+//                element.parentNode.insertBefore(siblingContainer, nextSibling); 
+//                
+//                var nextElement = elements[i + 1];        
+//                while (nextSibling != nextElement && nextSibling != null) {          
+//                    var toMove = nextSibling;          
+//                    nextSibling = nextSibling.nextSibling;          
+//                    siblingContainer.appendChild(toMove);        
+//                }
+//                if(i==0){            
+//                    siblingContainer.style.display = '';        
+//                } 
+//                else {
+//                siblingContainer.style.display = 'none';        
+//                    }         
+//                collapseDivs[i] = siblingContainer;                
+//                createCollapseLink(element, siblingContainer, i);      
+//            }      
+//            else 
+//            {        
+//                return;      
+//            }    
+//        }
+//    }
+//}
+//function createCollapseLink (element, siblingContainer, index) {    
+//    if (document.createElement && (span = document.createElement('span'))) 
+//    {  
+//        span.appendChild(document.createTextNode(String.fromCharCode(160)));   
+//        
+//        var link = document.createElement('a');
+//        link.style.textDecoration = 'none';    
+//        link.collapseDiv = siblingContainer;    
+//        link.href = '#';\t\tif(index==0)
+//        {       
+//            link.appendChild(document.createTextNode('(-)'));   
+//        } 
+//        else 
+//        {       
+//        link.appendChild(document.createTextNode('(+)'));  
+//        
+//        }    
+//        link.onclick = collapseExpandLink;    
+//        collapseLinks[index] = link;    
+//        span.appendChild(link);    
+//        element.appendChild(span);  
+//    }
+//}
+//function collapseExpandLink (evt) {  
+//    if (this.collapseDiv.style.display == '') {                 
+//        this.parentNode.parentNode.nextSibling.style.display = 'none';
+//        this.style.textDecoration = 'none';    
+//        this.firstChild.nodeValue = '(+)';  }  
+//    else {    
+//        this.parentNode.parentNode.nextSibling.style.display = '';
+//        this.style.textDecoration = 'none';    
+//        this.firstChild.nodeValue = '(-)';  
+//         }  
+//    if (evt && evt.preventDefault) {    
+//        evt.preventDefault();  
+//    }  
+//        return false;
+//}
+//          
+          
+        //alert(JSON.stringify(data));
+        var faqStr=data.FAQ;
+        faqStr=faqStr.replace("FAQ","");
+//          faqStr=faqStr.replace("<head>","");
+//          faqStr=faqStr.replace("</head>","");
+//          faqStr=faqStr.replace("<body>","");
+//          faqStr=faqStr.replace("</body>","");
+        $(".merchantDiv").append("FAQ<input type='button' id='test_btn' value='-'>  </input>")
+
+        
+        $(".merchantDiv").append("<div id='faq'>"+faqStr+"</div>");
+        $( "#test_btn" ).click(function() {
+//            if($("#test_btn").val=='+'){
+//                alert("+ to -")
+//            $(this).val('-');}
+//            else if($(this).val=='-'){
+//                alert("- to +")
+//            $(this).val('+');}
+            $( "#faq" ).toggle();
+        
+});
+        
+        termStr=data.Terms;
+        termStr=termStr.replace("Terms and Conditions","");
+        $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
+        privacyStr=data.Privacy;
+        privacyStr=privacyStr.replace("Privacy Policy","");
+        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
+          
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;

@@ -119,6 +119,8 @@ html, body{
 
 .merchantDiv{
     position: relative;
+    width: 98%;
+    left: 1%;
     background-color: white;
     outline: none;
 }
