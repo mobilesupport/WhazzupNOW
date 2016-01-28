@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+<!--        <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.5.css"/>-->
+        <title>Home Page</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/signin.js"></script>
+        <script type="text/javascript" src="js/webRequest.js"></script>
+        <script type="text/javascript" src="facebookConnectPlugin.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/signin.css" />
+        <script type="text/javascript">
+            $(document).bind('mobileinit',function(){
+                $.mobile.loadingMessage = false;
+            })
+        </script> 
+        
+
+    </head>
+    <body>
+        <div class="app">
+            <div class="header">
+                <button class="btnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
+                <img class="appLogo" src="img/ic_pointion.png"/>
+                <button class="appTitle">Sign In</button>   
+            </div>
+            <div class="middle">
+                <input id="email" class="EmailTextBox" type="Email" placeholder=" Email" maxlength="50">
+                <img class="EmailImage" src="img/white_email.png" />
+                <img class="PwdImage" src="img/white_lock.png" />
+                <input id="password" class="PwdTextBox" type="Password" placeholder=" Password" maxlength="20">
+                <button class="btnLogin" onclick="LoginOnClick();" >LOGIN</button>
+                <button class="btnForgot" onclick="ForgotOnClick();">Forgot Password?</button>
+            </div>
+            <div class="bottom">
+                <button class="text1" >Or sign in with:</button>
+                <button class="btnFb" onclick="btnFbOnClick();"><img class="FbImage" src="img/facebookicon.png" ></button>
+                <button class="btnGoogle" ><img class="GoogleImage" src="img/googleicon.png" ></button>
+                <button class="text2" >Don't have an account? </button>
+                <button class="btnCreate" onclick="CreateOnClick()">CREATE</button>
+            </div>
+        </div>
+        
+    </body>
+</html>
