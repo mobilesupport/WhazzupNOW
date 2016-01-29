@@ -72,7 +72,7 @@ var app = {
 //                $("#redidtxtareas").val(e.regid);
                 if ( e.regid.length > 0 )     
                 {
-                   rregid=e.regid;
+                  var rregid=e.regid;
                   alert(rregid);
                    var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
                     var regisid = {
