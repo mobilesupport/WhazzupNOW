@@ -79,7 +79,7 @@ function LoginOnClick(){
     else{
         dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
-        registrationId=returnData.rows.item(0).regid;
+        registrationId=returnData.rows.item(0).rregid;
         alert(registrationId);
         alert("i");
         postLogin(email, "", "", "email",pwd, registrationId);

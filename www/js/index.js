@@ -84,7 +84,7 @@ var app = {
                     function insertRegId(regisid) {
                         db.transaction(function(tx) {
                             tx.executeSql('DROP TABLE IF EXISTS regisid');
-                            tx.executeSql('create table if not exists regisid(e.regid)');
+                            tx.executeSql('create table if not exists regisid(rregid)');
                             tx.executeSql('DELETE FROM regisid');
                             tx.executeSql(
                                 'INSERT INTO regisid(rregid) VALUES (?)', 
