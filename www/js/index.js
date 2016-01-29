@@ -72,7 +72,7 @@ var app = {
 //                $("#redidtxtareas").val(e.regid);
                 if ( e.regid.length > 0 )
                 {
-                    alert("This is your regid"+e.regid);
+                   // alert("This is your regid"+e.regid);
                     //store to db
                 }
             break;

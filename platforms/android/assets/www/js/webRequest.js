@@ -317,7 +317,7 @@ function getInfo(){
           
 //       alert(JSON.stringify(data));
         var faqStr=data.FAQ;
-//        faqStr=faqStr.replace("FAQ","");
+        faqStr=faqStr.replace("FAQ","");
 //          faqStr=faqStr.replace("<head>","");
 //          faqStr=faqStr.replace("</head>","");
 //          faqStr=faqStr.replace("<body>","");
@@ -338,10 +338,10 @@ function getInfo(){
 //}
         
         termStr=data.Terms;
-        termStr=termStr.replace("Terms and Conditions","");
+//        termStr=termStr.replace("Terms and Conditions","");
         $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
         privacyStr=data.Privacy;
-        privacyStr=privacyStr.replace("Privacy Policy","");
+  //      privacyStr=privacyStr.replace("Privacy Policy","");
         $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
 //          
         
