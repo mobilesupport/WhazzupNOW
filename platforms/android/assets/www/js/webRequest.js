@@ -315,7 +315,7 @@ function getInfo(){
         debugger; 
           
           
-//       alert(JSON.stringify(data));
+       alert(JSON.stringify(data));
         var faqStr=data.FAQ;
 //        faqStr=faqStr.replace("FAQ","");
 //          faqStr=faqStr.replace("<head>","");

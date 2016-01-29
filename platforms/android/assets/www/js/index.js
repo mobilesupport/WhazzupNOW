@@ -70,10 +70,40 @@ var app = {
         {
             case 'registered':
 //                $("#redidtxtareas").val(e.regid);
-                if ( e.regid.length > 0 )
+                if ( e.regid.length > 0 )     
                 {
-                   // alert("This is your regid"+e.regid);
-                    //store to db
+                   rregid=e.regid;
+                    alert(rregid);
+                   var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
+                    var regisid = {
+                    values1 : [rregid]
+                    };
+
+                    insertRegId(regisid);
+
+                    function insertRegId(regisid) {
+                        db.transaction(function(tx) {
+                            tx.executeSql('DROP TABLE IF EXISTS regisid');
+                            tx.executeSql('create table if not exists regisid(e.regid)');
+                            tx.executeSql('DELETE FROM regisid');
+                            tx.executeSql(
+                                'INSERT INTO regisid(rregid) VALUES (?)', 
+                                regisid.values1,
+                                successStore,
+                                errorStore
+                            );
+                        });
+                    }
+                    
+                    function errorStore(err){
+                        alert('Cannot store registration id');
+                    }
+
+                    function successStore(){
+                        alert('Success Store')
+                    
+                    }
+
                 }
             break;
  

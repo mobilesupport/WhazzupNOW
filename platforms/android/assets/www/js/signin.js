@@ -56,11 +56,11 @@ function BackOnClick(){
 }
 
 function CreateOnClick(){
-    window.location ="signup.html"
+    window.location ="signup.html";
 }
 
 function LoginOnClick(){
-    var pwd, email;
+    var pwd, email,registrationId;
     email=$("#email").val();
     pwd=$("#password").val();
     
@@ -77,8 +77,14 @@ function LoginOnClick(){
         alert("Password must be at least 6.");
     }
     else{
-        postLogin(email, "", "", "email",pwd, "abcd");
-    }
+        dbmanager.initdb();
+        dbmanager.getProfile(function(returnData){
+        registrationId=returnData.rows.item(0).regid;
+        alert(registrationId);
+        alert("i");
+        postLogin(email, "", "", "email",pwd, registrationId);
+    })
+}
 }
 
 function isValidEmailAddress(emailAddress) {
