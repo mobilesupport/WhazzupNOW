@@ -58,7 +58,7 @@ var app = {
     
     // result contains any message sent from the plugin call
     successHandler: function(result) {
-        //alert('Callback Success! Result = '+result);
+        alert('Callback Success! Result = '+result);
     },
     
     errorHandler:function(error) {
@@ -73,7 +73,7 @@ var app = {
                 if ( e.regid.length > 0 )     
                 {
                    rregid=e.regid;
-                    alert(rregid);
+                  alert(rregid);
                    var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
                     var regisid = {
                     values1 : [rregid]
