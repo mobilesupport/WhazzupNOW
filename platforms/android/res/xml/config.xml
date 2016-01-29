@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.pssb.whazzupNOW" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="PushPlugin">
-        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
-    </feature>
     <allow-intent href="market:*" />
     <name>whazzupNOW</name>
     <description>Hello World sample application that responds to the deviceready event.</description>
@@ -43,8 +40,8 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="com.phonegap.plugins.PushPlugin" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
-        <gap:plugin name="com.phonegap.plugins.PushPlugin" />
         <param name="APP_ID" value="1640196836239977 " />
         <param name="APP_NAME" value="WhazzupNOW" />
     </gap:plugin>
@@ -82,4 +79,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <feature name="PushPlugin">
+        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+    </feature>
 </widget>
