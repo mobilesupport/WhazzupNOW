@@ -316,16 +316,16 @@ function getInfo(){
           
           
 //       alert(JSON.stringify(data));
-//        var faqStr=data.FAQ;
-//        faqStr=faqStr.replace("FAQ","");
+        var faqStr=data.FAQ;
+        faqStr=faqStr.replace("FAQ","");
 //          faqStr=faqStr.replace("<head>","");
 //          faqStr=faqStr.replace("</head>","");
 //          faqStr=faqStr.replace("<body>","");
 //          faqStr=faqStr.replace("</body>","");
 //        $(".merchantDiv").append("FAQ<input type='button' id='test_btn' value='-'>  </input>")
 
-        
-        $(".merchantDiv").append("<p> "+JSON.stringify(data)+" </p>");
+        $(".merchantDiv").append("<div id='faq'>"+faqStr+"</div>");
+ //       $(".merchantDiv").append("<p> "+JSON.stringify(data)+" </p>");
 //        $( "#test_btn" ).click(function() {
 ////            if($("#test_btn").val=='+'){
 ////                alert("+ to -")
@@ -334,16 +334,16 @@ function getInfo(){
 ////                alert("- to +")
 ////            $(this).val('+');}
 //            $( "#faq" ).toggle();
-        
-//}
 //        
-//        termStr=data.Terms;
-//        termStr=termStr.replace("Terms and Conditions","");
-//        $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
-//        privacyStr=data.Privacy;
-//        privacyStr=privacyStr.replace("Privacy Policy","");
-//        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
-////          
+//}
+        
+        termStr=data.Terms;
+        termStr=termStr.replace("Terms and Conditions","");
+        $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
+        privacyStr=data.Privacy;
+        privacyStr=privacyStr.replace("Privacy Policy","");
+        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
+//          
         
       },
       error:function (xhr, ajaxOptions, thrownError){
