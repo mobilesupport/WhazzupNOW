@@ -338,14 +338,14 @@ function getInfo(){
 //            $( "#faq" ).toggle();
         
 });
-        
-        termStr=data.Terms;
-        termStr=termStr.replace("Terms and Conditions","");
-        $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
-        privacyStr=data.Privacy;
-        privacyStr=privacyStr.replace("Privacy Policy","");
-        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
-          
+//        
+//        termStr=data.Terms;
+//        termStr=termStr.replace("Terms and Conditions","");
+//        $(".merchantDiv").append("<div id='term'>"+termStr+"</div>");
+//        privacyStr=data.Privacy;
+//        privacyStr=privacyStr.replace("Privacy Policy","");
+//        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
+//          
         
       },
       error:function (xhr, ajaxOptions, thrownError){
