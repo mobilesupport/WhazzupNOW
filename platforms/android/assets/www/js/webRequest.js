@@ -142,7 +142,7 @@ var sha1key="8345627";
 function postLogin(email, fbId, googleId, loginType, password, registrationId){
     var checksumStr=email+ fbId+ googleId+ loginType+ password+ registrationId+sha1key;
     var hashedStr=SHA1(checksumStr);
-    alert(registrationId);
+    //alert(registrationId);
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/login/user",
       type: "POST",  
@@ -315,19 +315,17 @@ function getInfo(){
         debugger; 
           
           
-          
-//      
-//        //alert(JSON.stringify(data));
+//       alert(JSON.stringify(data));
 //        var faqStr=data.FAQ;
 //        faqStr=faqStr.replace("FAQ","");
-////          faqStr=faqStr.replace("<head>","");
-////          faqStr=faqStr.replace("</head>","");
-////          faqStr=faqStr.replace("<body>","");
-////          faqStr=faqStr.replace("</body>","");
+//          faqStr=faqStr.replace("<head>","");
+//          faqStr=faqStr.replace("</head>","");
+//          faqStr=faqStr.replace("<body>","");
+//          faqStr=faqStr.replace("</body>","");
 //        $(".merchantDiv").append("FAQ<input type='button' id='test_btn' value='-'>  </input>")
 
         
-        $(".merchantDiv").append("<div id='faq'>"+JSON.stringify(data)+"</div>");
+        $(".merchantDiv").append("<p> "+JSON.stringify(data)+" </p>");
 //        $( "#test_btn" ).click(function() {
 ////            if($("#test_btn").val=='+'){
 ////                alert("+ to -")
@@ -337,7 +335,7 @@ function getInfo(){
 ////            $(this).val('+');}
 //            $( "#faq" ).toggle();
         
-});
+//}
 //        
 //        termStr=data.Terms;
 //        termStr=termStr.replace("Terms and Conditions","");
@@ -345,7 +343,7 @@ function getInfo(){
 //        privacyStr=data.Privacy;
 //        privacyStr=privacyStr.replace("Privacy Policy","");
 //        $(".merchantDiv").append("<div id='privacy'>"+privacyStr+"</div>");
-//          
+////          
         
       },
       error:function (xhr, ajaxOptions, thrownError){
