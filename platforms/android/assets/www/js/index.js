@@ -46,10 +46,8 @@ var app = {
     },
     initPushNotificationRegister: function(){
         var pushNotification = window.plugins.pushNotification;
-        alert("hi");
         
         if ( device.platform == 'android' || device.platform == 'Android'){
-            alert("android");
             pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"155321093307","ecb":"app.onNotificationGCM"});
         } 
         else {
@@ -60,7 +58,7 @@ var app = {
     
     // result contains any message sent from the plugin call
     successHandler: function(result) {
-        alert('Callback Success! Result = '+result);
+        //alert('Callback Success! Result = '+result);
     },
     
     errorHandler:function(error) {
@@ -74,7 +72,7 @@ var app = {
 //                $("#redidtxtareas").val(e.regid);
                 if ( e.regid.length > 0 )
                 {
-                    alert(e.regid);
+                    alert("This is your regid"+e.regid);
                     //store to db
                 }
             break;
