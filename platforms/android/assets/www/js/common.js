@@ -41,6 +41,15 @@ var dbmanager = {
         });
     },
     
+    getRedId:function(returnData){
+        db.transaction(function(tx){
+            tx.executeSql('SELECT * FROM regisid', [], function(tx,rs){
+            returnData(rs);  
+        }, this.errorExecuteSql);
+                       });
+        
+    },
+    
     checkFirstRun:function(returnData){
         db.transaction(function(tx){
             tx.executeSql('create table if not exists FIRSTRUN(RUN TEXT)');
