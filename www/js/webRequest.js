@@ -485,7 +485,7 @@ function PostDeviceLog(userId,registrationId){
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/device",
       type: "POST",  
-        data:"userId="+userId+ "&registrationId="+registrationId+"&deviceName="+deviceName+"&appVersion="+appVersion+"&osVersion="+osVersion+"&imeiNumber="+imeiNo+"&checksum="+hashedStr,
+        data:"appVersion="+appVersion+ "&deviceName="+deviceName+"&imeiNumber="+imeiNo+"&osVersion="+osVersion+"&registrationId="+registrationId+"&userId="+userId+"&checksum="+hashedStr,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
