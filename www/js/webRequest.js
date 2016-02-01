@@ -1,4 +1,5 @@
 var apiTimeOut = 20000;
+var appV="1.0.0";
 
 // Sha1 encryption //
 function SHA1(msg) {
@@ -474,9 +475,7 @@ function PostDeviceLog(userId,registrationId){
     var deviceName, imeiNo, appVersion, osVersion;
     
     deviceName=device.model;
-    alert("test1");
     appVersion=appV;
-    alert("test2");
     osVersion=device.version;
     imeiNo=device.uuid;
     
