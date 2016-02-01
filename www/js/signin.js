@@ -80,11 +80,11 @@ function LoginOnClick(){
         dbmanager.initdb();
         dbmanager.getRedId(function(returnData){
         registrationId=returnData.rows.item(0).rregid;
-        alert(registrationId);
-        postLogin(email, "", "", "email",pwd, registrationId);
-    })
+        //alert(registrationId);
+        postLogin(email, "", "", "email",pwd, registrationId)});
+    }
 }
-}
+
 
 function isValidEmailAddress(emailAddress) {
     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
@@ -99,8 +99,11 @@ function btnFbOnClick(){
             var name=result.name;
             var email=result.email;
             var fbid=result.id;
-            alert(JSON.stringify(userData));
-            postLogin(email, fbid, "", "fb", fbid, "abcd"); //fblogin, password =fbid
+            //alert(JSON.stringify(userData));
+            dbmanager.initdb();
+            dbmanager.getRedId(function(returnData){
+            registrationId=returnData.rows.item(0).rregid;
+            postLogin(email, fbid, "", "fb", fbid, registrationId)}); //fblogin, password =fbid
         },
         function (error) {
             alert("Facebook login failed: " + JSON.stringify(error));

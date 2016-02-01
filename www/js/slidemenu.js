@@ -160,6 +160,18 @@ function SendBtnOnClick(){
 }
 }
 
+function LogoutOnClick(){
+    navigator.notification.confirm("Do you want to logout?", onConfirm, "Confirmation", "Yes,Cancel"); 
+    
+}
+function onConfirm(button) {
+    if(button==2){//If User selected No, then we just do nothing
+        return; 
+    }else if(button==1){
+        getLogout();
+    }
+}
+
 
 function INFOOnClick(){
     window.location="about.html";

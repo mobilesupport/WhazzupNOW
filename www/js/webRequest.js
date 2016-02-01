@@ -439,3 +439,27 @@ function postFeedbackCreate(rate_id,feedbackStr,iduser){
     })
     
 }
+
+function getLogout(){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/logout",
+      type: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;     
+        //alert(JSON.stringify(data));
+          
+          
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          //alert("error"+JSON.stringify(xhr));
+          alert("Error: Unable to connect to server.");
+
+        }
+    })
+    
+}

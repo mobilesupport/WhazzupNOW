@@ -96,7 +96,10 @@ function CreateOnClick(){
     else{
         try{
             //alert(photo.toString());
-            postRegister(email, pwd, photo, "email", name, "abcd");
+            dbmanager.initdb();
+            dbmanager.getRedId(function(returnData){
+            registrationId=returnData.rows.item(0).rregid;
+            postRegister(email, pwd, photo, "email", name, registrationId )});
         }
         catch(ex){
             alert(ex);
@@ -121,8 +124,11 @@ function btnFacebookonClick(){
             var name=result.name;
             var email=result.email;
             var fbid=result.id;
-            alert(JSON.stringify(userData));
-            postLogin(email, fbid, "", "fb", fbid, "abcd"); //fblogin, password =fbid
+            //alert(JSON.stringify(userData));
+            dbmanager.initdb();
+            dbmanager.getRedId(function(returnData){
+            registrationId=returnData.rows.item(0).rregid;
+            postLogin(email, fbid, "", "fb", fbid, registrationId)}); //fblogin, password =fbid
         },
         function (error) {
             alert("Facebook login failed: " + JSON.stringify(error));
