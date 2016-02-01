@@ -470,11 +470,11 @@ function getLogout(registrationId){
 function PostDeviceLog(userId,registrationId){
     alert("here is webreqeust");
     var deviceName, imeiNo, appVersion, osVersion;
-    alert("ok");
     deviceName=device.model;
     appVersion=appV;
     osVersion=device.version;
     imeiNo=device.uuid;
+    alert(imeiNo);
     
     var checksumStr=appVersion+deviceName+imeiNo+osVersion+registrationId+userId+sha1key;
     var hashedStr=SHA1(checksumStr);
