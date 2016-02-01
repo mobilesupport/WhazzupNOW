@@ -452,6 +452,9 @@ function getLogout(registrationId){
       success: function(data, status, xhr) {
         debugger;     
         //alert(JSON.stringify(data));
+        alert("success logout");
+        location.href="index.html";
+          
           
           
       },
