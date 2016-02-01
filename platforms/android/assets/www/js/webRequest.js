@@ -457,7 +457,7 @@ function getLogout(registrationId){
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          //alert("error"+JSON.stringify(xhr));
+          alert("error"+JSON.stringify(xhr));
           alert("Error: Unable to connect to server.");
 
         }
