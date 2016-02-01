@@ -14,6 +14,7 @@
         <script type="text/javascript" src="js/AddNewThree.js"></script>
         <script type="text/javascript" src="js/webRequest.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdNCmY8P_u72FgpkdVqZ476PljKfbrhHs&sensor=false"></script>
         <link rel="stylesheet" type="text/css" href="css/AddNewThree.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
         <script type="text/javascript">
@@ -38,9 +39,12 @@
                 <button onclick="btnCameraOnClick()" class="btnCamera"><img id="smallImage" class="blueCamera" src="img/blue_camera.png" /></button>
                 <input id="eventinput" class="NameTextBox" type="Name" placeholder=" Event Name" maxlength="30">
                 <input id="descriptioninput" class="DescriptionTextBox" type="Name" placeholder=" DESCRIPTION" maxlength="30">
+                
             
             
             </div>
+            <div class="inputtext1">Now, input the location of this post</div>
+                <div id="geolocation" class="geolocationDiv"></div>
             
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
@@ -52,8 +56,7 @@
     </body>
     
     <script>
-    
-        
-    
+        document.addEventListener("deviceready", onDeviceReady, false);
+        initGoogleMap();
     </script>
 </html>
