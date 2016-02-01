@@ -442,7 +442,6 @@ function postFeedbackCreate(rate_id,feedbackStr,iduser){
 }
 
 function getLogout(registrationId){
-    alert("hi");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/logout",
       type: "GET",
@@ -455,14 +454,12 @@ function getLogout(registrationId){
         debugger;     
         //alert(JSON.stringify(data));
         alert("success logout");
-        location.href="index.html";
-          
-          
+        location.href="index.html"; 
           
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+JSON.stringify(xhr));
+          //alert("error"+JSON.stringify(xhr));
           alert("Error: Unable to connect to server.");
 
         }
@@ -473,13 +470,13 @@ function getLogout(registrationId){
 function PostDeviceLog(userId,registrationId){
     alert("here is webreqeust");
     var deviceName, imeiNo, appVersion, osVersion;
-    
+    alert("ok");
     deviceName=device.model;
     appVersion=appV;
     osVersion=device.version;
     imeiNo=device.uuid;
     
-    var checksumStr=userId+registrationId+deviceName+appVersion+osVersion+imeiNo+sha1key;
+    var checksumStr=appVersion+deviceName+imeiNo+osVersion+registrationId+userId+sha1key;
     var hashedStr=SHA1(checksumStr);
     
     $.ajax({
