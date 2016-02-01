@@ -62,7 +62,19 @@
     <script type="text/javascript">
         $(document).ready(function(){
             slideMenu.initSlideMenu();
+            dbmanager.initdb();
+            dbmanager.getRedId(function(returnData){
+            var registrationId=returnData.rows.item(0).rregid;
+            dbmanager.getProfile(function(returnData){
+            var userId=returnData.rows.item(0).USER_ID;
+            
+            alert(registrationId);
+            alert(userId);
+            PostDeviceLog(userId,registrationId);
             });
+            });
+            
+        });
 </script>
 
 </html>

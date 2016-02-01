@@ -468,3 +468,35 @@ function getLogout(registrationId){
     })
     
 }
+
+function PostDeviceLog(userId,registrationId){
+    var deviceName, imeiNo, appVersion, osVersion;
+    deviceName=device.model;
+    appVersion=appV;
+    osVersion=device.version;
+    imeiNo=device.uuid;
+    
+    var checksumStr=userId+registrationId+deviceName+appVersion+osVersion+imeiNo+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/device",
+      type: "POST",  
+        data:"userId="+userId+ "&registrationId="+registrationId+"&deviceName="+deviceName+"&appVersion="+appVersion+"&osVersion="+osVersion+"&imeiNumber="+imeiNo+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;        
+        alert(JSON.stringify(data));
+        alert("Success");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })
+    
+}
