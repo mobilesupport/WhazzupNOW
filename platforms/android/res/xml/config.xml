@@ -5,7 +5,7 @@
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
     <allow-intent href="market:*" />
-    <name>whazzupNOW</name>
+    <name>whazzup\nNOW</name>
     <description>Hello World sample application that responds to the deviceready event.</description>
     <author email="support@phonegap.com" href="http://phonegap.com">PhoneGap Team</author>
     <content src="index.html" />

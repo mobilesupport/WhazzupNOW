@@ -470,10 +470,13 @@ function getLogout(registrationId){
 }
 
 function PostDeviceLog(userId,registrationId){
-    alert("hi here is webreqeust");
+    alert("here is webreqeust");
     var deviceName, imeiNo, appVersion, osVersion;
+    
     deviceName=device.model;
+    alert("test1");
     appVersion=appV;
+    alert("test2");
     osVersion=device.version;
     imeiNo=device.uuid;
     
