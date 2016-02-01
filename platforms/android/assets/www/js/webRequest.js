@@ -441,6 +441,7 @@ function postFeedbackCreate(rate_id,feedbackStr,iduser){
 }
 
 function getLogout(registrationId){
+    alert("hi");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/logout",
       type: "GET",

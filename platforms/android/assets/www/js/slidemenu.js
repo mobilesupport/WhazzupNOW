@@ -166,8 +166,10 @@ function LogoutOnClick(){
 }
 function onConfirm(button) {
     if(button==2){//If User selected No, then we just do nothing
+        alert("2");
         return; 
     }else if(button==1){
+        alert("1");
         var registrationId;
         dbmanager.getRedId(function(returnData){
         registrationId=returnData.rows.item(0).rregid;
