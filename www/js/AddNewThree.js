@@ -74,7 +74,7 @@ function createMarker() {
     alert("marker");
 var infowindow;
 infowindow = new google.maps.InfoWindow();
-    var contentString = “PSSB Johor Jaya”;
+    var contentString = "PSSB Johor Jaya";
     var latlong = new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
     var marker = new google.maps.Marker({
         position: latlong,
