@@ -170,9 +170,9 @@ function onConfirm(button) {
         return; 
     }else if(button==1){
         alert("1");
-        var registrationId;
+        dbmanager.initdb();
         dbmanager.getRedId(function(returnData){
-        registrationId=returnData.rows.item(0).rregid;
+        var registrationId=returnData.rows.item(0).rregid;
         //alert(registrationId);
         getLogout(registrationId)});
         
