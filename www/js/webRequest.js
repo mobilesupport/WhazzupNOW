@@ -468,7 +468,6 @@ function getLogout(registrationId){
 }
 
 function PostDeviceLog(userId,registrationId){
-    alert("here is webreqeust");
     var deviceName, imeiNo, appVersion, osVersion;
     deviceName=device.model;
     appVersion=appV;
@@ -498,5 +497,34 @@ function PostDeviceLog(userId,registrationId){
           //alert("Error: Unable to connect to server.");
         }
     })
+    
+}
+
+postLocationUpdate(registrationId,latitude,longitude){
+    var countryCode="MY";
+    var checksumStr=countryCode+latitude+longitude+registrationId;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/location",
+      type: "POST",  
+        data:"countryCode="+countryCode+ "&latitude="+latitude+"&longitude="+longitude+"&registrationId="+registrationId+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        alert("Success location");
+        alert(JSON.stringify(data));
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })
+    
     
 }
