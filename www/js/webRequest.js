@@ -502,7 +502,7 @@ function PostDeviceLog(userId,registrationId){
 
 function postLocationUpdate(registrationId,latitude,longitude){
     var countryCode="MY";
-    var checksumStr=countryCode+latitude+longitude+registrationId;
+    var checksumStr=countryCode+latitude+longitude+registrationId+sha1key;
     var hashedStr=SHA1(checksumStr);
     
     $.ajax({
