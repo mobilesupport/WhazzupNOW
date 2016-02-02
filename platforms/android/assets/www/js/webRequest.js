@@ -500,7 +500,7 @@ function PostDeviceLog(userId,registrationId){
     
 }
 
-postLocationUpdate(registrationId,latitude,longitude){
+function postLocationUpdate(registrationId,latitude,longitude){
     var countryCode="MY";
     var checksumStr=countryCode+latitude+longitude+registrationId;
     var hashedStr=SHA1(checksumStr);
