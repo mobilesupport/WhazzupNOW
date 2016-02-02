@@ -18,6 +18,29 @@
         <link rel="stylesheet" type="text/css" href="css/home.css" />
         <link rel="stylesheet" type="text/css" href="css/slidemenu.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+        function onSuccess(position) {
+        alert("success");
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude+
+                            'Longitude: '          + position.coords.longitude;
+        var latitude=position.coords.latitude;
+        var longitude=position.coords.longitude;
+        alert(latitude);
+        alert(longitude);
+    }
+
+  
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+        </script>
         <script type="text/javascript">
             $(document).bind('mobileinit',function(){
                 $.mobile.loadingMessage = false;
@@ -27,6 +50,7 @@
     </head>
     <body>
         <div class="app">
+<!--
             <div class="header">
                 
                 <button class="appTitle">WhazzupNOW</button>
@@ -38,11 +62,15 @@
                     <ul id="slidemenu">
                     </ul>    
             </div>
+-->
+            <p id="geolocation">HI</p>
+<!--
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
                 <button class="FooterBtnAdd" onclick="AddOnClick();"><img class="AddImage" src="img/ic_add-web.png" /></button>
                 <button class="FooterBtnFilter" onclick="FilterOnClick();"><img class="FilterImage" src="img/iv_filter-web.png" /></button>
             </div>
+-->
         </div>
             
     </body>
