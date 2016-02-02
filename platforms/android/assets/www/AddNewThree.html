@@ -17,36 +17,11 @@
         <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdNCmY8P_u72FgpkdVqZ476PljKfbrhHs&sensor=false"></script>
         <link rel="stylesheet" type="text/css" href="css/AddNewThree.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
-        <script type="text/javascript" charset="utf-8">
-        document.addEventListener("deviceready", onDeviceReady, false);
-        
-        function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    }
-        function onSuccess(position) {
-        alert("success");
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />' +
-                            'Altitude: '           + position.coords.altitude              + '<br />' +
-                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + position.coords.heading               + '<br />' +
-                            'Speed: '              + position.coords.speed                 + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
-    }
 
-  
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
-        </script>
     </head>
     <body>
-        <p id="geolocation">Finding geolocation...</p>
+<!--        <p id="geolocation"></p>-->
         
-<!--
         <div class="app">
             <div class="header">
                 
@@ -64,9 +39,13 @@
             
             
             </div>
+             
             <div class="createcontent">
             <div class="inputtext1">Now, input the location of this post</div>
-                <div id="geolocation" class="geolocationDiv"></div>
+<!--                <div id="geolocation" class="geolocationDiv"></div>-->
+                <input id="pac-input" class="controls" type="text"
+        placeholder="Enter a location">
+            <div id="map"></div>
             </div>
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
@@ -74,14 +53,13 @@
                 <button class="FooterBtnNext" onclick="NextOnClick();"><img class="NextImage" src="img/ic_next-web.png" /></button>
             </div>
         </div>
--->
             
     </body>
     
     <script>
          $(document).ready(function(){
              alert("ready");   
-             initGoogleMap();
+             initMap();
          
          });
     </script>
