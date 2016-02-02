@@ -52,7 +52,6 @@ var app = {
 
 var map;
 function initGoogleMap(){
-    alert("init");
 
     var latlong=new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
 
@@ -68,23 +67,6 @@ function initGoogleMap(){
 
     map=new google.maps.Map(document.getElementById("geolocation"), mapOptions);
 
-}
-
-function createMarker() {
-    alert("marker");
-var infowindow;
-infowindow = new google.maps.InfoWindow();
-    var contentString = "PSSB Johor Jaya";
-    var latlong = new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
-    var marker = new google.maps.Marker({
-        position: latlong,
-        map: map,
-    });
-
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(contentString); 
-        infowindow.open(map,marker);
-    });
 }
 
 

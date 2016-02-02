@@ -4,6 +4,9 @@
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
     <allow-intent href="market:*" />
     <name>whazzup\nNOW</name>
     <description>Hello World sample application that responds to the deviceready event.</description>
