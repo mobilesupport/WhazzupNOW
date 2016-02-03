@@ -58,11 +58,13 @@ function initMap() {
   });
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
+  alert("after input");
 
   var types = document.getElementById('type-selector');
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
+  alert("before autocomplete");
   var autocomplete = new google.maps.places.Autocomplete(input);
     alert("autocompletepart1");
   autocomplete.bindTo('bounds', map);
