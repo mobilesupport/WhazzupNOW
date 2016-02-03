@@ -143,8 +143,8 @@ html, body{
 
 .controls{
   position: absolute;
-  margin-top: 10%;
-  left: 2%;
+  margin-top: 5%;
+  left: 0px;
   width: 70%;
   border: 1px solid transparent;
   border-radius: 2px 0 0 2px;
@@ -153,6 +153,7 @@ html, body{
   height: 32px;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: red;
 }
 
 #map{

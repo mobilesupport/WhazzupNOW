@@ -51,6 +51,7 @@ var app = {
 }
 
 function initMap() {
+    alert("initmap");
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
@@ -63,6 +64,7 @@ function initMap() {
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
   var autocomplete = new google.maps.places.Autocomplete(input);
+    alert("autocompletepart1");
   autocomplete.bindTo('bounds', map);
 
   var infowindow = new google.maps.InfoWindow();
@@ -72,6 +74,7 @@ function initMap() {
   });
 
   autocomplete.addListener('place_changed', function() {
+    alert("autocompletepart2");
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
@@ -82,6 +85,7 @@ function initMap() {
 
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
+        alert("hi");
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
