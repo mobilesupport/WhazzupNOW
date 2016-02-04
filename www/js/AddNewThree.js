@@ -100,7 +100,7 @@ function initMap() {
         (place.address_components[1] && place.address_components[1].short_name || ''),
         (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
-    alert(JSON.stringify(address));
+
     }
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
@@ -141,8 +141,16 @@ function onConfirm(buttonIndex) {
 
 function onSuccess(imageData) {
     alert("success");
-    var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
+    var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
 }
 
 function onFail(message) {
@@ -159,20 +167,22 @@ function capturePhoto() {
 function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
-
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
+    var smallImage = document.getElementById('smallImage');
 
       // Unhide image elements
       //
-      smallImage.style.display = 'block';
-
+    
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
+    smallImage.src = "data:image/jpeg;base64," + imageData;
+    //resize_images(10,10,10,10);
+    photo=imageData;
+    alert(photo1);
+    
+}
 
 
 //function onPhotoDataSuccess(imageData) {
