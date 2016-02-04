@@ -134,9 +134,15 @@ function onConfirm(buttonIndex) {
     }
     else if(buttonIndex==2)
         alert("upload");
-        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 30,
-        destinationType: destinationType.FILE_URI,
-        sourceType: PHOTOLIBRARY  });
+        navigator.camera.getPicture(onSuccessUpload, onFailUpload, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI });
+}
+function onSuccessUpload(imageURI) {
+    var image = document.getElementById('smallImage');
+    image.src = imageURI;
+}
+function onFailUpload(message) {
+    alert('Failed because: ' + message);
 }
 
 function onSuccess(imageData) {

@@ -29,6 +29,12 @@
                 <img class="appLogo" src="img/ic_pointion.png" />
                 <button class="btnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
             </div> 
+            <div class="content">
+                <div class="pageone">
+                    <div class="wrapper" id="wrapper">
+                        <div class="scroll-content" id="scroll-content">
+                            <ul class="scrollul" id="scrollul">
+                                <li>
             <div class="middle">
 
             
@@ -39,15 +45,24 @@
             
             
             </div>
-             
-            <div class="createcontent">
+                                   
             <div class="inputtext1">Now, input the location of this post</div>
 <!--                <div id="geolocation" class="geolocationDiv"></div>-->
                 <input id="pac-input" class="controls" type="text"
         placeholder="Enter a location">
                 
             <div id="map"></div>
+            
+                                    </li>
+ 
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
             </div>
+             
+            
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
                 <button class="FooterBtnHome" onclick="HomeOnClick();"><img class="HomeImage" src="img/ic_home-web.png" /></button>
@@ -56,6 +71,15 @@
         </div>
             
     </body>
+    <script type="text/javascript" src="../plugins/iscroll-master/build/iscroll-lite.js"></script>
+ 
+        <script type="text/javascript">
+
+        var theScroll;
+        function scroll() {
+            theScroll = new iScroll('wrapper');
+        }
+        </script>
     <script>
      app.initialize();
     </script>
