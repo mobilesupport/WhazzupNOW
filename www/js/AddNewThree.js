@@ -26,6 +26,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+        
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -34,10 +35,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        
+        alert("hi");
         var pictureSource;   // picture source
         var destinationType; // sets the format of returned value
         pictureSource=navigator.camera.PictureSourceType;
+        
         destinationType=navigator.camera.DestinationType;
         
     },
