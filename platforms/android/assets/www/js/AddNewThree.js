@@ -51,22 +51,21 @@ var app = {
 }
 
 function initMap() {
-    alert("initmap");
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -3.1333, lng: 101.7000},
     zoom: 2
   });
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
-  alert("after input");
+
 
   var types = document.getElementById('type-selector');
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
-  alert("before autocomplete");
+
   var autocomplete = new google.maps.places.Autocomplete(input);
-    alert("autocompletepart1");
+
   autocomplete.bindTo('bounds', map);
 
   var infowindow = new google.maps.InfoWindow();
@@ -74,12 +73,19 @@ function initMap() {
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
   });
-
   autocomplete.addListener('place_changed', function() {
-    alert("autocompletepart2");
+
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
+    var longAddress=place.formatted_address;
+    var shortAddress=place.address_components[3].long_name;
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+    
+      
+      
+      
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");
       return;
@@ -87,7 +93,7 @@ function initMap() {
 
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
-        alert("hi");
+
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
@@ -116,19 +122,9 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
-  // Sets a listener on a radio button to change the filter type on Places
-  // Autocomplete.
-  function setupClickListener(id, types) {
-    var radioButton = document.getElementById(id);
-    radioButton.addEventListener('click', function() {
-      autocomplete.setTypes(types);
-    });
-  }
 
-  setupClickListener('changetype-all', []);
-  setupClickListener('changetype-address', ['address']);
-  setupClickListener('changetype-establishment', ['establishment']);
-  setupClickListener('changetype-geocode', ['geocode']);
+
+
 }
 
 //var map;
@@ -150,7 +146,74 @@ function initMap() {
 //
 //}
 
+function btnCameraOnClick(){
+    navigator.notification.confirm(
+    'Snap a photo now or upload existing photo?',  // message
+    onConfirm,                  // callback to invoke
+    'Photo',                    // title
+    ['Snap','Upload']           // buttonLabels
+    );
+        
+}
+        
+function onConfirm(buttonIndex) {
 
+    if(buttonIndex==1){
+        capturePhoto();
+    }
+    else if(buttonIndex==2)
+        alert("upload");
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 30,
+        destinationType: destinationType.FILE_URI,
+        sourceType: PHOTOLIBRARY  });
+}
+
+function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
+    }
+
+function capturePhoto() {
+    
+      // Take picture using device camera and retrieve image as base64-encoded string
+  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality : 20,
+  destinationType : Camera.DestinationType.DATA_URL,
+  sourceType : Camera.PictureSourceType.CAMERA,
+  encodingType: Camera.EncodingType.JPEG,
+  targetWidth: 50,
+  targetHeight: 50,
+  saveToPhotoAlbum: false });
+    }
+
+
+function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+      // Get image handle
+      //
+    var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+    
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+    smallImage.src = "data:image/jpeg;base64," + imageData;
+    //resize_images(10,10,10,10);
+    photo=imageData;
+    var photo1=photo.replace(/\s/g, '');
+    alert(photo1);
+    
+}
 
 
 function BackOnClick(){

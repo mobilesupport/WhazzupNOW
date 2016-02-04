@@ -253,6 +253,45 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
         }
     })
 }
+//create post step 1 of 3
+function GetActivityCategory(){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/category",
+      type: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;     
+        for(x=0; x<data.length; x++){
+           // alert(JSON.stringify(data));
+            if(data[x].categoryType=="ACTCATEGORY"){
+
+                $(".merchantDiv").append("<button class='imageBtnLeft' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button>");
+                
+                x=x+1;
+                $(".merchantDiv").append("<button class='imageBtnRight' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button><br>");
+                x=x-1;
+                $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button>");
+                x=x+1;
+                $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button><br>");
+                x=x+1;
+                
+            }
+
+        }
+          
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+JSON.stringify(xhr));
+          alert("Error: Unable to connect to server.");
+
+        }
+    })
+    
+}
 
 //create post step 2 of 3
 function getCategoryList(category){
@@ -264,32 +303,37 @@ function getCategoryList(category){
       },
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
-        debugger;     
+        debugger;   
+       // alert(JSON.stringify(data));
+          
         for(x=0; x<data.length; x++){
            // alert(JSON.stringify(data[x]));
-            if(category ==1 && data[x].categoryType=="48EA29FA-DF6D-42EB-9732-1DA26D21364D"){
+            if(category=="48EA29FA-DF6D-42EB-9732-1DA26D21364D" && data[x].categoryType=="48EA29FA-DF6D-42EB-9732-1DA26D21364D"){
 
-                $(".merchantDiv").append("<button class='imageBtnLeft' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button>");
+                $(".merchantDiv").append("<button class='imageBtnLeft' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button>");
                 x=x+1;
-                $(".merchantDiv").append("<button class='imageBtnLeft' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button><br>");
+                $(".merchantDiv").append("<button class='imageBtnLeft' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button><br>");
                 x=x-1;
                 $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button>");
                 x=x+1;
                 $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button><br>");
                 x=x+1;
+               
                 
             }
-            else if(category ==2 && data[x].categoryType=="3E528B45-43F6-4C98-86F8-2FC416C8EEA9"){
+            else if(category=="3E528B45-43F6-4C98-86F8-2FC416C8EEA9" && data[x].categoryType=="3E528B45-43F6-4C98-86F8-2FC416C8EEA9"){
                 
-                $(".merchantDiv").append("<button class='imageBtnLeft' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button>");
+                $(".merchantDiv").append("<button class='imageBtnLeft' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button>");
                 x=x+1;
-                $(".merchantDiv").append("<button class='imageBtnLeft' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button><br>");
+                $(".merchantDiv").append("<button class='imageBtnLeft' value='"+data[x].categoryId+"' id='button"+x+"' onclick='categoryonclick("+x+");'><img class='image1' src='"+data[x].categoryPhoto+"'/></button><br>");
                 x=x-1;
                 $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button>");
                 x=x+1;
                 $(".merchantDiv").append("<button class='NameLeft'>"+data[x].categoryName+"</button><br>");
                 x=x+1;
             }
+            $("#button2").css({"border-radius": "50%", "border" :"5px solid skyblue" });
+            $("#button0").css({"border-radius": "50%", "border" :"5px solid skyblue" });
 
         }
           

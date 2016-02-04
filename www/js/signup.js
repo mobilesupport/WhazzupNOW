@@ -115,7 +115,6 @@ function isValidEmailAddress(emailAddress) {
 };
 
 function btnFacebookonClick(){
-    alert("yo");
     var permission=["public_profile", "email"];
     var fbLoginSuccess = function (userData) {
         alert("hi");

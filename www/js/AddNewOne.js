@@ -49,26 +49,44 @@ var app = {
     }
 }
 
-var categories=1; //1=event, 2=sale
-
-function saleImage() {
-    $("#saleimage").css({"border-radius": "50%", "border" :"5px solid skyblue" });
-
-    $("#eventimage").css({"border" :"transparent" });
-    categories=2;
+//var categories=1; //1=event, 2=sale
+//
+//function saleImage() {
+//    $("#saleimage").css({"border-radius": "50%", "border" :"5px solid skyblue" });
+//
+//    $("#eventimage").css({"border" :"transparent" });
+//    categories=2;
+//}
+//function eventImage(){
+//    $("#eventimage").css({"border-radius": "50%", "border" :"5px solid skyblue" });
+//    
+//    $("#saleimage").css({"border" :"transparent" });
+//    categories=1;
+//}
+var categoryId ="3E528B45-43F6-4C98-86F8-2FC416C8EEA9";
+function categoryonclick(btnnum){
+    resetBtnBorder();
+    setBtnBorder(btnnum);
 }
-function eventImage(){
-    $("#eventimage").css({"border-radius": "50%", "border" :"5px solid skyblue" });
+
+function resetBtnBorder(){
+     $(".merchantDiv .imageBtnLeft").css("border", "none");
+     $(".merchantDiv .imageBtnRight").css("border", "none");
+}
+
+function setBtnBorder(btnnum){
+    $("#button"+btnnum).css({"border-radius": "50%", "border" :"5px solid skyblue" });
+    categoryId = $("#button"+btnnum).val();
+   
     
-    $("#saleimage").css({"border" :"transparent" });
-    categories=1;
 }
+
 
 function NextOnClick(){
-    if(categories==1)
-        location.href="AddNewTwoEvent.html?value="+categories;
-    else if(categories==2)
-        location.href="AddNewTwoEvent.html?value="+categories;
+    if(categoryId=="3E528B45-43F6-4C98-86F8-2FC416C8EEA9")
+        location.href="AddNewTwoEvent.html?value="+categoryId;
+    else 
+        location.href="AddNewTwoEvent.html?value="+categoryId;
 }
 function BackOnClick(){
     window.location="home.html";

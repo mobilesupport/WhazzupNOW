@@ -33,10 +33,13 @@
 
                     
             </div> 
-            <div >
-                <img class="StepOneImage" src="img/step1.png" />
+            <img class="StepOneImage" src="img/step1.png" />
+            <div class="merchantDiv" >
+                
+<!--
                 <button onclick="eventImage();" ><img class="EventImage" id="eventimage" src="http://192.168.1.18/MRWebApi/Images/EventCategory/ic_event.png" /></button>
                 <button onclick="saleImage();"><img class="SaleImage" id="saleimage" src="http://192.168.1.18/MRWebApi/Images/EventCategory/ic_sale.png"/></button>
+-->
                
             </div>
             <div class="footer">
@@ -47,5 +50,12 @@
         </div>
             
     </body>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            GetActivityCategory();
+            
+        });
+</script>
+    
 
 </html>

@@ -91,6 +91,61 @@ html, body{
     outline: none;
     
 }
+.merchantDiv{
+    position: absolute;
+    background-color: white;
+    outline: none;
+    width: 100%;
+    height: 30%;
+    top: 60%;
+}
+
+.imageBtnLeft{
+    position: relative;
+    width: 30%;
+    height: 60%;
+    min-height: 20%;
+    left: 13%;
+    border: none;
+    background-color: transparent;
+    margin-right: 15%;
+    border:5px solid skyblue;
+    border-radius: 50%;
+    outline: none;
+
+}
+
+.imageBtnRight{
+    position: absolute;
+    width: 30%;
+    height: 60%;
+    min-height: 20%;
+    right: 0px;
+    border: none;
+    background-color: transparent;
+    margin-right: 15%;
+    outline: none;
+
+}
+
+.image1{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.NameLeft{
+    position: relative;
+    font-family: "gothic";
+    font-size: 3vw;
+    font-weight: bold;
+    width: 20%;
+    height: auto;
+    background-color: transparent;
+    left: 17%;
+    border: none;
+    margin-right: 24%;
+}
 /*
 input[type="radio"]:checked + label {
     border: 10px solid orange;
