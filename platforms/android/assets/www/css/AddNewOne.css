@@ -105,7 +105,7 @@ html, body{
     width: 40%;
     height: 60%;
     min-height: 20%;
-    left: 13%;
+    left: 8%;
     border: none;
     background-color: transparent;
     margin-right: 15%;
@@ -120,10 +120,10 @@ html, body{
     width: 40%;
     height: 60%;
     min-height: 20%;
-    right: 0px;
+    right: 8%;
     border: none;
     background-color: transparent;
-    margin-right: 15%;
+
     outline: none;
 
 }

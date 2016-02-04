@@ -131,24 +131,7 @@ function initMap() {
 
 }
 
-//var map;
-//function initGoogleMap(){
-//
-//    var latlong=new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
-//
-//    var mapOptions={
-//        center:latlong,
-//        zoom:12,
-//        mapTypeId: google.maps.MapTypeId.ROADMAP,
-//        navigationControlOptions: {
-//            style: google.maps.NavigationControlStyle.SMALL
-//        },
-//        mapTypeControl: false,
-//    };
-//
-//    map=new google.maps.Map(document.getElementById("geolocation"), mapOptions);
-//
-//}
+var photo;
 
 function btnCameraOnClick(){
     navigator.notification.confirm(
