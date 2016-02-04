@@ -70,27 +70,7 @@ html, body{
 */
 
 
-.EventImage {
-    position: absolute;
-    bottom: 15%;
-    left: 10%;
-    height: 20%;
-    width: auto;
-    border:5px solid skyblue;
-    border-radius: 50%;
-    outline: none;
-}
 
-.SaleImage {
-    position: absolute;
-    bottom: 15%;
-    right: 10%;
-    height: 20%;
-    width: auto;
-    outline: 4px;
-    outline: none;
-    
-}
 .merchantDiv{
     position: absolute;
     background-color: white;
@@ -102,7 +82,7 @@ html, body{
 
 .imageBtnLeft{
     position: relative;
-    width: 40%;
+    width: 38%;
     height: 60%;
     min-height: 20%;
     left: 8%;
@@ -117,7 +97,7 @@ html, body{
 
 .imageBtnRight{
     position: absolute;
-    width: 40%;
+    width: 38%;
     height: 60%;
     min-height: 20%;
     right: 8%;

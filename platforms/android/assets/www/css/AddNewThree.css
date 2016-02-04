@@ -147,6 +147,7 @@ html, body{
     left: 40%;
     border-color: transparent;
     background-color: transparent;
+    outline: none;
 }
 
 .blueCamera {

@@ -128,22 +128,17 @@ function onConfirm(buttonIndex) {
 
     if(buttonIndex==1){
         alert("snap");
+    
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.DATA_URL
 });
     }
     else if(buttonIndex==2)
         alert("upload");
-        navigator.camera.getPicture(onSuccessUpload, onFailUpload, { quality: 50,
-    destinationType: Camera.DestinationType.FILE_URI });
+    getPhoto(pictureSource.PHOTOLIBRARY);
+        
 }
-function onSuccessUpload(imageURI) {
-    var image = document.getElementById('smallImage');
-    image.src = imageURI;
-}
-function onFailUpload(message) {
-    alert('Failed because: ' + message);
-}
+
 
 function onSuccess(imageData) {
     alert("success");
@@ -163,6 +158,19 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
+function getPhoto(pictureSource.PHOTOLIBRARY){
+    
+    navigator.camera.getPicture(onSuccessUpload, onFailUpload, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI });
+    
+}
+function onSuccessUpload(imageURI) {
+    var image = document.getElementById('smallImage');
+    image.src = imageURI;
+}
+function onFailUpload(message) {
+    alert('Failed because: ' + message);
+}
 
 function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
