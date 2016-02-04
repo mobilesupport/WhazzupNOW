@@ -34,7 +34,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-       // initGoogleMap();
+        
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
         
     },
     // Update DOM on a Received Event
@@ -183,8 +187,9 @@ function onPhotoURISuccess(imageURI) {
     }
 
 function capturePhoto() {
+    alert("hi");
     
-      // Take picture using device camera and retrieve image as base64-encoded string
+// Take picture using device camera and retrieve image as base64-encoded string
   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality : 20,
   destinationType : Camera.DestinationType.DATA_URL,
   sourceType : Camera.PictureSourceType.CAMERA,
@@ -196,6 +201,7 @@ function capturePhoto() {
 
 
 function onPhotoDataSuccess(imageData) {
+    alert("hihi");
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
       // Get image handle
