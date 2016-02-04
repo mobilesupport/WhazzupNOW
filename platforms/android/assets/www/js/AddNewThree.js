@@ -158,19 +158,19 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
-function getPhoto(pictureSource.PHOTOLIBRARY){
-    
-    navigator.camera.getPicture(onSuccessUpload, onFailUpload, { quality: 50,
-    destinationType: Camera.DestinationType.FILE_URI });
-    
-}
-function onSuccessUpload(imageURI) {
-    var image = document.getElementById('smallImage');
-    image.src = imageURI;
-}
-function onFailUpload(message) {
-    alert('Failed because: ' + message);
-}
+function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
 
 function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
