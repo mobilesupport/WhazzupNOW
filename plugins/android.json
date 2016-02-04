@@ -12,6 +12,9 @@
         },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.pssb.whazzupNOW"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.pssb.whazzupNOW"
         }
     },
     "dependent_plugins": {}

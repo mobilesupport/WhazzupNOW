@@ -164,6 +164,7 @@ function onConfirm(buttonIndex) {
         sourceType: PHOTOLIBRARY  });
 }
 function onPhotoURISuccess(imageURI) {
+    alert("yo");
       // Uncomment to view the image file URI
       // console.log(imageURI);
 
