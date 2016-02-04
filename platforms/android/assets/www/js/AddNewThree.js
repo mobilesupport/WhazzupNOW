@@ -140,54 +140,55 @@ function onConfirm(buttonIndex) {
         sourceType: PHOTOLIBRARY  });
 }
 
-function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
+
+function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
 
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
 
-      // Show the captured photo
-      // The in-line CSS rules are used to resize the image
-      //
-      smallImage.src = imageURI;
-    }
-
-function capturePhoto() {
-    alert("hi");
-    
-// Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality : 20,
-  destinationType : Camera.DestinationType.DATA_URL,
-  sourceType : Camera.PictureSourceType.CAMERA,
-  encodingType: Camera.EncodingType.JPEG,
-  targetWidth: 50,
-  targetHeight: 50,
-  saveToPhotoAlbum: false });
-    }
-
-
-function onPhotoDataSuccess(imageData) {
-    alert("hihi");
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
-      // Get image handle
-      //
-    var smallImage = document.getElementById('smallImage');
-
       // Unhide image elements
-    
+      //
+      smallImage.style.display = 'block';
+
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-    smallImage.src = "data:image/jpeg;base64," + imageData;
-    //resize_images(10,10,10,10);
-    photo=imageData;
-    var photo1=photo.replace(/\s/g, '');
-    alert(photo1);
-    
-}
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+
+//function onPhotoDataSuccess(imageData) {
+//    alert("hihi");
+//      // Uncomment to view the base64-encoded image data
+//      // console.log(imageData);
+//      // Get image handle
+//      //
+//    var smallImage = document.getElementById('smallImage');
+//
+//      // Unhide image elements
+//    
+//      // Show the captured photo
+//      // The in-line CSS rules are used to resize the image
+//      //
+//    smallImage.src = "data:image/jpeg;base64," + imageData;
+//    //resize_images(10,10,10,10);
+//    photo=imageData;
+//    var photo1=photo.replace(/\s/g, '');
+//    alert(photo1);
+//    
+//}
+function onFail(message) {
+      alert('Failed because: ' + message);
+    }
 
 
 function BackOnClick(){
