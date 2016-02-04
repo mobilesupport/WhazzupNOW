@@ -127,17 +127,26 @@ function btnCameraOnClick(){
 function onConfirm(buttonIndex) {
 
     if(buttonIndex==1){
-        
-         var pictureSource=navigator.camera.PictureSourceType;
-        var destinationType=navigator.camera.DestinationType;
-        alert("button");
-        capturePhoto();
+        alert("snap");
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL
+});
     }
     else if(buttonIndex==2)
         alert("upload");
         navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 30,
         destinationType: destinationType.FILE_URI,
         sourceType: PHOTOLIBRARY  });
+}
+
+function onSuccess(imageData) {
+    alert("success");
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
 }
 
 
