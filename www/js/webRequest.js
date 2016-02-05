@@ -247,7 +247,7 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          //alert("error"+JSON.stringify(xhr));
+          alert("error"+JSON.stringify(xhr));
           alert("Unable to connect to server.");
 
         }
