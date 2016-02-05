@@ -559,7 +559,7 @@ function postLocationUpdate(registrationId,latitude,longitude){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert("Success location");
+        //alert("Success location");
         alert(JSON.stringify(data));
        
       },
