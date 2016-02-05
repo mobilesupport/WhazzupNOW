@@ -113,7 +113,7 @@ function initMap() {
 }
 
 var photo;
-
+var pictureSource=navigator.camera.PictureSourceType;
 function btnCameraOnClick(){
     navigator.notification.confirm(
     'Snap a photo now or upload existing photo?',  // message
