@@ -210,9 +210,8 @@ html, body{
 }
 
 .controls{
-  position: absolute;
   top: 52%;
-  right: 0px;
+  left: 0px;
   width: 20%;
   border: 1px solid transparent;
   border-radius: 2px 0 0 2px;
@@ -226,7 +225,6 @@ html, body{
 
 
 #pac-input {
-
   background-color: #fff;
   font-family: Roboto;
   font-size: 15px;

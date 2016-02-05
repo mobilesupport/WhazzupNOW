@@ -135,7 +135,7 @@ function onConfirm(buttonIndex) {
     }
     else if(buttonIndex==2)
         alert("upload");
-    getPhoto(pictureSource.PHOTOLIBRARY);
+    getPhoto(pictureSource.SAVEDPHOTOALBUM);
         
 }
 
@@ -164,11 +164,22 @@ function getPhoto(source) {
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
+function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
 
-    // Called if something bad happens.
-    //
-    function onFail(message) {
-      alert('Failed because: ' + message);
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
     }
 
 
@@ -198,30 +209,6 @@ function onPhotoDataSuccess(imageData) {
     
 }
 
-
-//function onPhotoDataSuccess(imageData) {
-//    alert("hihi");
-//      // Uncomment to view the base64-encoded image data
-//      // console.log(imageData);
-//      // Get image handle
-//      //
-//    var smallImage = document.getElementById('smallImage');
-//
-//      // Unhide image elements
-//    
-//      // Show the captured photo
-//      // The in-line CSS rules are used to resize the image
-//      //
-//    smallImage.src = "data:image/jpeg;base64," + imageData;
-//    //resize_images(10,10,10,10);
-//    photo=imageData;
-//    var photo1=photo.replace(/\s/g, '');
-//    alert(photo1);
-//    
-//}
-function onFail(message) {
-      alert('Failed because: ' + message);
-    }
 
 
 function BackOnClick(){
