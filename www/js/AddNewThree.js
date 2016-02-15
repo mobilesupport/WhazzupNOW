@@ -234,6 +234,7 @@ function StartDateOnClick(){
 };
     alert("yo");
     datePicker.show(options, onSuccess, onError);
+    alert("sii");
 }
 
 function onSuccess(date) {

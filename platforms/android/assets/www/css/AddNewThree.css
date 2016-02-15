@@ -259,8 +259,8 @@ html, body{
 
 .checktext{
     position: absolute;
-    top: 66%;
-    left: 5%;
+    top: 67%;
+    left: 7%;
     color: white;
     font-family: "gothic";
     font-size: 3vw;
@@ -289,8 +289,12 @@ html, body{
     background-color: transparent;
     width: 50%;
     right: 0px;
-    outline-color: transparent;
-    border-color: white;
+    outline-color: white;
+    outline-width: thick;
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-right-color: white;
     color: white;
     display: none;
     height: 12%;
