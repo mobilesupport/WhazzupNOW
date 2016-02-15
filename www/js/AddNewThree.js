@@ -235,27 +235,41 @@ function StartDateOnClick(){
 }
 
 function onSuccess(date) {
-    alert('Selected date: ' + date);
     var daa=date;
-    
+    var curr_date = daa.getDate();
+    var curr_month = daa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daa.getFullYear();
 
-var curr_date = daa.getDate();
-
-var curr_month = daa.getMonth();
-curr_month=curr_month+1;
-var curr_year = daa.getFullYear();
-
-//curr_year = curr_year.toString().substr(2,2);
-
-alert(curr_date);
-    alert(curr_month);
-    alert(curr_year);
-alert(curr_date+"/"+curr_month+"/"+curr_year);
     
     $("#startdate span").text(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function onError(error) { // Android only
     alert('Error: ' + error);
+}
+
+function endDateOnClick(){
+var options = {
+    date: new Date(),
+    mode: 'date', // or 'time'
+    allowOldDates: false,
+    allowFutureDates: true,
+    doneButtonLabel: 'DONE',
+    doneButtonColor: '#F2F3F4',
+    cancelButtonLabel: 'CANCEL',
+    cancelButtonColor: '#000000'
+};
+    datePicker.show(options, onEndSuccess, onError);
+}
+function onEndSuccess(date) {
+    var daa=date;
+    var curr_date = daa.getDate();
+    var curr_month = daa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daa.getFullYear();
+
+    
+    $("#enddate span").text(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
