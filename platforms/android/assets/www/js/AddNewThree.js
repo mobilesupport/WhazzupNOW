@@ -251,6 +251,8 @@ alert(curr_date);
     alert(curr_month);
     alert(curr_year);
 alert(curr_date+"/"+curr_month+"/"+curr_year);
+    
+    $("#startdate span").text(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function onError(error) { // Android only
