@@ -248,7 +248,7 @@ var curr_year = d.getFullYear();
 
 curr_year = curr_year.toString().substr(2,2);
 
-document.write(curr_date+"/"+curr_month+"/"+curr_year);
+alert(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function onError(error) { // Android only
