@@ -183,6 +183,10 @@ function INFOOnClick(){
     
 }
 
+function ProfileOnClick(){
+    window.location="profile.html";
+}
+
 
 
 //----------------------------------------------------------

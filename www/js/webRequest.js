@@ -572,3 +572,26 @@ function postLocationUpdate(registrationId,latitude,longitude){
     
     
 }
+
+function getProfile(userId){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/profile/statistic?userid=",
+      type: "GET",
+      data:"userid="+userId,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger;     
+        alert(JSON.stringify(data));
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+JSON.stringify(xhr));
+          //alert("Error: Unable to connect to server.");
+
+        }
+    })
+    
+}

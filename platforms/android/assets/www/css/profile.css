@@ -1,0 +1,246 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+
+@font-face {
+    font-family: 'gothic'; /*a name to be used later*/
+    src: url('../font/gothic.TTF'); /*URL to font*/
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width:100%;
+    overflow: hidden;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
+    /* prevent copy paste, to allow, change 'none' to 'text' */
+/*    background-color:#53DCDF;*/
+    background-color: white;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+/*    font-size:12px;*/
+/*    text-transform:uppercase;*/}
+
+
+.content{
+    width: 100%;
+    height: 91%;
+    background-color: white;
+	position:absolute;
+	top:9%;
+}
+
+.topgreen{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 30%;
+}
+
+.text1{
+    position: absolute;
+    top: 0px;
+    left: 35%;
+    color: white;
+    font-size: 4vw;
+    font-family: "gothic";
+}
+
+.nameUser{
+    position: absolute;
+    font-size: 3.5vw;
+    top: 7%;
+    left: 34%;
+    border: none;
+    color: white;
+    outline: none;
+    background-color: transparent;
+    font-family: "gothic";
+    
+}
+
+.imgLocation{
+    position: absolute;
+    top: 12%;
+    left: 35%;
+    width: 9%;
+    height: 5%;
+}
+
+.btnEdit{
+    position: absolute;
+    top: 12%;
+    right: 20%;
+    width: 10%;
+    height: 6%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.imgEdit{
+    height: 100%;
+    width: 100%;
+    
+}
+
+.countryUser{
+    position: absolute;
+    top: 13%;
+    left:50%;
+    font-family: "gothic";
+    font-size: 3vw;
+    color: white;
+    
+    
+}
+
+.photoUser{
+    
+    position: absolute;
+    top: 4%;
+    left: 7%;
+    width: 23%;
+    height: 17%;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+}
+
+.middle{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 38%;
+    background-color: white;
+}
+
+.imgCoin{
+    
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 35%;
+    height: 60%;
+}
+
+.imgLogo{
+    
+    position: absolute;
+    top:14%;
+    right: 10%;
+    width: 25%;
+    height: 35%;
+}
+
+.receive{
+    
+    position: absolute;
+    top: 85%;
+    width: 100%;
+    height: 15%;
+    background-color: white;
+}
+
+.LikeReceive{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 25%;
+    background-color: mediumvioletred;
+    color: white;
+    font-family: "gothic";
+    font-size: 3.5vw;
+}
+.NumLike{
+    position: absolute;
+    top: 10%;
+    color: white;
+    right: 3%;
+    
+}
+
+.CommentReceive{
+    
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    height: 25%;
+    background-color: orange;
+    color: white;
+    font-family: "gothic";
+    font-size: 3.5vw;
+}
+
+.NumComment{
+    position: absolute;
+    top: 10%;
+    color: white;
+    right: 3%;
+    
+}
+
+.YouLike{
+    
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 25%;
+    background-color: white;
+    color: black;
+    font-family: "gothic";
+    font-size: 3.5vw;
+}
+.Numyoulike{
+    
+    position: absolute;
+    top: 10%;
+    color: black;
+    right: 3%;
+}
+.imgLike{
+    width: 5%;
+    height: 70%;
+
+}
+
+.YouComment{
+    
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    height: 25%;
+    background-color: white;
+    color: black;
+    font-family: "gothic";
+    font-size: 3.5vw;
+}
+.Numyoucomment{
+    position: absolute;
+    top: 10%;
+    color: black;
+    right: 3%;
+}
+
+.imgComment{
+    width: 5%;
+    height: 70%;
+}
