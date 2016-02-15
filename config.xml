@@ -46,6 +46,8 @@
       <param name="APP_ID" value="1640196836239977 " />
       <param name="APP_NAME" value="WhazzupNOW" />
   </gap:plugin>
+  <gap:plugin name="com.phonegap.plugins.DatePicker"/>
+    
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>

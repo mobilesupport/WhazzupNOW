@@ -161,8 +161,8 @@ function postLogin(email, fbId, googleId, loginType, password, registrationId){
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          //alert("error"+xhr.responseText);
-          alert("Error: Unable to connect to server.");
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
         }
     })
 }
