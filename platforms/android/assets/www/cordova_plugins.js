@@ -53,6 +53,14 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "pluginId": "cordova-plugin-datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -60,7 +68,8 @@ module.exports.metadata =
 {
     "com.phonegap.plugins.PushPlugin": "2.2.1",
     "cordova-plugin-geolocation": "2.1.0",
-    "cordova-plugin-camera": "2.1.0"
+    "cordova-plugin-camera": "2.1.0",
+    "cordova-plugin-datepicker": "0.9.3"
 }
 // BOTTOM OF METADATA
 });

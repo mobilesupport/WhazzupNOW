@@ -15,6 +15,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.pssb.whazzupNOW"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.pssb.whazzupNOW"
         }
     },
     "dependent_plugins": {}

@@ -42,7 +42,11 @@
                 <input id="eventinput" class="NameTextBox" type="Name" placeholder=" Event Name" maxlength="30">
                 <input id="descriptioninput" class="DescriptionTextBox" type="Name" placeholder=" DESCRIPTION" maxlength="30">
                 
-            
+                <input type="checkbox" id="checkbox" class="checkb" value="check">
+                <p class="checktext">Include start date and end date</p>
+                <button class="startdate" onclick="StartDateOnClick()">Start Date</button>
+                <button class="enddate" onclick="endDateOnClick()">End Date</button>
+                
             
             </div>
                                    
@@ -92,5 +96,18 @@
             
          
          });
+    </script>
+    <script>
+    $('#checkbox').click(function(){
+    if (this.checked) {
+        $('.startdate').css('display', 'block');
+        $('.enddate').css('display', 'block');
+    }
+    else 
+        {
+            $('.startdate').css('display', 'none');
+        $('.enddate').css('display', 'none');
+        }
+}) 
     </script>
 </html>

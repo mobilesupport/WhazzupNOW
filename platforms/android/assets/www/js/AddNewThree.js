@@ -220,3 +220,21 @@ function HomeOnClick(){
     window.location="home.html";
 }
 
+function StartDateOnClick(){
+    alert("hi");
+    var options = {
+    date: new Date(),
+    mode: 'date'
+};
+    alert("yo");
+    datePicker.show(options, onSuccess, onError);
+}
+
+function onSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+

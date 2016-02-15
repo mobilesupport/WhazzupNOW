@@ -220,3 +220,27 @@ function HomeOnClick(){
     window.location="home.html";
 }
 
+function StartDateOnClick(){
+    alert("hi");
+    var options = {
+    date: new Date(),
+    mode: 'date', // or 'time'
+    allowOldDates: false,
+    allowFutureDates: true,
+    doneButtonLabel: 'DONE',
+    doneButtonColor: '#F2F3F4',
+    cancelButtonLabel: 'CANCEL',
+    cancelButtonColor: '#000000'
+};
+    alert("yo");
+    datePicker.show(options, onSuccess, onError);
+}
+
+function onSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+

@@ -251,5 +251,50 @@ html, body{
     height: 60%;
 }
 
+.checkb{
+    position: absolute;
+    top: 70%;
+    
+}
+
+.checktext{
+    position: absolute;
+    top: 66%;
+    left: 5%;
+    color: white;
+    font-family: "gothic";
+    font-size: 3vw;
+    
+    
+}
+
+.startdate{
+    position: absolute;
+    bottom: 8%;
+    background-color: transparent;
+    width: 50%;
+    left: 0px;
+    outline-color: transparent;
+    border-color: white;
+    color: white;
+    display: none;
+    height: 12%;
+    
+}
+
+.enddate{
+    
+    position: absolute;
+    bottom: 8%;
+    background-color: transparent;
+    width: 50%;
+    right: 0px;
+    outline-color: transparent;
+    border-color: white;
+    color: white;
+    display: none;
+    height: 12%;
+}
+
 
 
