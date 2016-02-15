@@ -221,7 +221,6 @@ function HomeOnClick(){
 }
 
 function StartDateOnClick(){
-    alert("hi");
     var options = {
     date: new Date(),
     mode: 'date', // or 'time'
@@ -232,13 +231,12 @@ function StartDateOnClick(){
     cancelButtonLabel: 'CANCEL',
     cancelButtonColor: '#000000'
 };
-    alert("yo");
     datePicker.show(options, onSuccess, onError);
-    alert("sii");
 }
 
 function onSuccess(date) {
     alert('Selected date: ' + date);
+    $("#checkbox span").text(date);
 }
 
 function onError(error) { // Android only
