@@ -237,9 +237,18 @@ function StartDateOnClick(){
 function onSuccess(date) {
     alert('Selected date: ' + date);
     var daa=date;
-    alert(daa);
-    $.format.toBrowserTimeZone(daa)
-    alert(daa);
+    
+    var d = new daa();
+
+var curr_date = d.getDate();
+
+var curr_month = d.getMonth();
+
+var curr_year = d.getFullYear();
+
+curr_year = curr_year.toString().substr(2,2);
+
+document.write(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function onError(error) { // Android only
