@@ -238,7 +238,7 @@ function onSuccess(date) {
     alert('Selected date: ' + date);
     var daa=date;
     
-    var d = new daa();
+    var d = new date();
 
 var curr_date = d.getDate();
 
@@ -248,7 +248,9 @@ var curr_year = d.getFullYear();
 
 curr_year = curr_year.toString().substr(2,2);
 
-alert(curr_date+"/"+curr_month+"/"+curr_year);
+alert(curr_date);
+    alert(curr_month);
+    alert(curr_year);
 }
 
 function onError(error) { // Android only
