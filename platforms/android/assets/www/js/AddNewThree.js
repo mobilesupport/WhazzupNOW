@@ -220,6 +220,7 @@ function HomeOnClick(){
     window.location="home.html";
 }
 
+//start date
 function StartDateOnClick(){
     var options = {
     date: new Date(),
@@ -235,6 +236,7 @@ function StartDateOnClick(){
 }
 
 function onSuccess(date) {
+    // change date format to dd/mm/yyyy
     var daa=date;
     var curr_date = daa.getDate();
     var curr_month = daa.getMonth();
@@ -249,6 +251,7 @@ function onError(error) { // Android only
     alert('Error: ' + error);
 }
 
+//end date
 function endDateOnClick(){
 var options = {
     date: new Date(),
@@ -263,11 +266,12 @@ var options = {
     datePicker.show(options, onEndSuccess, onError);
 }
 function onEndSuccess(date) {
-    var daa=date;
-    var curr_date = daa.getDate();
-    var curr_month = daa.getMonth();
+    //change date format to dd/mm/yyyy
+    var daaa=date;
+    var curr_date = daaa.getDate();
+    var curr_month = daaa.getMonth();
     curr_month=curr_month+1;
-    var curr_year = daa.getFullYear();
+    var curr_year = daaa.getFullYear();
 
     
     $("#enddate span").text(curr_date+"/"+curr_month+"/"+curr_year);
