@@ -237,10 +237,9 @@ function StartDateOnClick(){
 function onSuccess(date) {
     alert('Selected date: ' + date);
     var daa=date;
-    var res = date.replace("00:00:00 GMT+0800(MYT)", "");
-    alert("replace");
-    $("#startdate span").text(res);
-    alert("oh");
+    alert(daa);
+    $.format.toBrowserTimeZone(daa)
+    alert(daa);
 }
 
 function onError(error) { // Android only
