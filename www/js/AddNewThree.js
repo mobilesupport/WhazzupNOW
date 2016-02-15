@@ -242,14 +242,15 @@ function onSuccess(date) {
 var curr_date = daa.getDate();
 
 var curr_month = daa.getMonth();
-
+curr_month=curr_month+1;
 var curr_year = daa.getFullYear();
 
-curr_year = curr_year.toString().substr(2,2);
+//curr_year = curr_year.toString().substr(2,2);
 
 alert(curr_date);
     alert(curr_month);
     alert(curr_year);
+alert(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function onError(error) { // Android only
