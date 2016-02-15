@@ -238,13 +238,12 @@ function onSuccess(date) {
     alert('Selected date: ' + date);
     var daa=date;
     
-    var d = new date();
 
-var curr_date = d.getDate();
+var curr_date = daa.getDate();
 
-var curr_month = d.getMonth();
+var curr_month = daa.getMonth();
 
-var curr_year = d.getFullYear();
+var curr_year = daa.getFullYear();
 
 curr_year = curr_year.toString().substr(2,2);
 
