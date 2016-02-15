@@ -12,6 +12,7 @@
         <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="js/profile.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/webRequest.js"></script>
         <link rel="stylesheet" type="text/css" href="css/common.css" />
         <link rel="stylesheet" type="text/css" href="css/profile.css" />
@@ -57,13 +58,16 @@
         
     </body>
     
-    <script>
+    <script type="text/javascript">
+    
         $(document).ready(function(){
+            dbmanager.initdb();
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
-            getProfile(userId);
+            getUserProfile(userId);
             });
+            
+            
         });
-        
-    </script>
+</script>
 </html>
