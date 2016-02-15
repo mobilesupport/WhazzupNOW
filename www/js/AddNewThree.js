@@ -236,7 +236,7 @@ function StartDateOnClick(){
 
 function onSuccess(date) {
     alert('Selected date: ' + date);
-    $("#checkbox span").text(date);
+    $("#startdate span").text(date);
 }
 
 function onError(error) { // Android only
