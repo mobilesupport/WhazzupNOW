@@ -78,20 +78,18 @@ function UpdateOnClick(){
 function onPrompt(results) {
 
     if(results==2){//If User selected Cancel, then we just do nothing
+        alert("cancel");
         return; 
     }else if(results==1){
+        alert("ok");
+        alert(results.input);
         dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
         var pwd=returnData.rows.item(0).USER_PWD;
         alert(pwd);
         alert(results.input);
         
-    })
-
-    
-    
-    
-        
+    });    
     }}
 
 function BackOnClick(){
