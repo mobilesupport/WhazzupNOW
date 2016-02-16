@@ -57,7 +57,8 @@ function UpdateOnClick(){
     var uphone=$("#phoneinput").val();
     var $img = $("#smallImage");
     var src = $img.attr("src");
-    alert(src);
+    src=src.replace('data:image/jpeg;base64,','');
+    alert(src); 
     
     if(uname==""){
         alert("Please enter your name.");
