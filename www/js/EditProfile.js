@@ -77,10 +77,10 @@ function UpdateOnClick(){
 
 function onPrompt(results) {
 
-    if(results==2){//If User selected Cancel, then we just do nothing
+    if(results.buttonIndex==2){//If User selected Cancel, then we just do nothing
         alert("cancel");
         return; 
-    }else if(results==1){
+    }else if(results.buttonIndex==1){
         alert("ok");
         alert(results.input);
         dbmanager.initdb();
