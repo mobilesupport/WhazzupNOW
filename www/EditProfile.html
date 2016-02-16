@@ -54,9 +54,10 @@
         var emailuser=returnData.rows.item(0).USER_EMAIL;
         var username=returnData.rows.item(0).USER_NAME;
         var userphone=returnData.rows.item(0).USER_PHONE;
-        var userphoto=returnData.rows.item(0).user_PHOTO;
+        var userphoto=returnData.rows.item(0).USER_PHOTO;
                 $("#emailinput").val(emailuser);
                 $("#nameinput").val(username);
+                alert(userphoto);
                 if(userphone!=null){
                     $("#phoneinput").val(userphone);
                 }
