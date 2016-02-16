@@ -51,23 +51,16 @@ var app = {
 };
 
 function UpdateOnClick(){
-    
-    var uemail=$("#emailinput").val();
-    var uname=$("#nameinput").val();
-    var uphone=$("#phoneinput").val();
-    var $img = $("#smallImage");
-    var src = $img.attr("src");
-    src=src.replace('data:image/jpeg;base64,','');
-    alert(src); 
-    
-    if(uname==""){
+        
+    var username=$("#nameinput").val();
+
+    if(username==""){
         alert("Please enter your name.");
     }
-    else if(uname.length<5){
+    else if(username.length<5){
         alert("Name must be at least 5 characters.");
     }
     else{
-        alert("hi");
         navigator.notification.prompt(
             'Please enter your password to proceed.',  // message
             onPrompt,                  // callback to invoke
@@ -75,25 +68,31 @@ function UpdateOnClick(){
             ['Ok','Cancel'],             // buttonLabels
             'Password'                 // defaultText
         );   
-    }   
+    } 
 }
 
 function onPrompt(results) {
 
     if(results.buttonIndex==2){//If User selected Cancel, then we just do nothing
-        alert("cancel");
         return; 
     }else if(results.buttonIndex==1){
-        alert("ok");
         dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
         var pwd=returnData.rows.item(0).USER_PWD;
-        alert(results.input1);
         if(pwd!=results.input1){
             alert("Invalid authentication type");
         }
         else {
-            
+            var userid=returnData.rows.item(0).USER_ID;
+            var userpwd=returnData.rows.item(0).USER_PWD;
+    var useremail=$("#emailinput").val();
+    var username=$("#nameinput").val();
+    var userphone=$("#phoneinput").val();
+    var $img = $("#smallImage");
+    var src = $img.attr("src");
+    var userphoto=src.replace('data:image/jpeg;base64,','');
+            alert(useremail);
+            alert(userphoto);
         }
         
     });    
