@@ -55,7 +55,9 @@ function UpdateOnClick(){
     var uemail=$("#emailinput").val();
     var uname=$("#nameinput").val();
     var uphone=$("#phoneinput").val();
-    alert(uname);
+    var $img = $("#smallImage");
+    var src = $img.attr("src");
+    alert(src);
     
     if(uname==""){
         alert("Please enter your name.");
