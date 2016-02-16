@@ -72,7 +72,7 @@
             $(".Numyoulike").text(totalLike);
             $(".Numyoucomment").text(totalComment);
             if(userPhoto!=null){
-                $(".photoUser").attr("src",userPhoto);
+                $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
             }
             });
             
