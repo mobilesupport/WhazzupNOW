@@ -575,7 +575,7 @@ function postLocationUpdate(registrationId,latitude,longitude){
 
 function getUserProfile(userId){
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/profile/statistic?userid=",
+      url: "http://192.168.1.18/MRWebApi/api/activity/myactliked?userid=",
       type: "GET",
       data:"userid="+userId,
       headers: {
