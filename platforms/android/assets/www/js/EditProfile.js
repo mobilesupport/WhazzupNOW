@@ -82,12 +82,12 @@ function onPrompt(results) {
         return; 
     }else if(results.buttonIndex==1){
         alert("ok");
-        alert(results.input);
+        alert(results.input1);
         dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
         var pwd=returnData.rows.item(0).USER_PWD;
         alert(pwd);
-        alert(results.input);
+        alert(results.input1);
         
     });    
     }}
