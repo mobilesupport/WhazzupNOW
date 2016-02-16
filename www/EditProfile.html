@@ -54,10 +54,14 @@
         var emailuser=returnData.rows.item(0).USER_EMAIL;
         var username=returnData.rows.item(0).USER_NAME;
         var userphone=returnData.rows.item(0).USER_PHONE;
+        var userphoto=returnData.rows.item(0).user_PHOTO;
                 $("#emailinput").val(emailuser);
                 $("#nameinput").val(username);
                 if(userphone!=null){
                     $("#phoneinput").val(userphone);
+                }
+                if(userphoto!=null){
+                $(".imgProfile").attr("src","data:image/jpeg;base64,"+userphoto);
                 }
     
            

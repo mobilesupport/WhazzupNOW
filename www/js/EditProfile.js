@@ -82,15 +82,119 @@ function onPrompt(results) {
         return; 
     }else if(results.buttonIndex==1){
         alert("ok");
-        alert(results.input1);
         dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
         var pwd=returnData.rows.item(0).USER_PWD;
-        alert(pwd);
         alert(results.input1);
+        if(pwd!=results.input1){
+            alert("Invalid authentication type");
+        }
+        else {
+            
+        }
         
     });    
     }}
+
+
+    
+var photo;
+var pictureSource=navigator.camera.PictureSourceType;
+function photoOnClick(){
+    navigator.notification.confirm(
+    'Snap a photo now or upload existing photo?',  // message
+    onConfirm,                  // callback to invoke
+    'Photo',                    // title
+    ['Snap','Upload']           // buttonLabels
+    );
+        
+}
+        
+function onConfirm(buttonIndex) {
+
+    if(buttonIndex==1){
+        alert("snap");
+    
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL
+});
+    }
+    else if(buttonIndex==2)
+        alert("upload");
+    getPhoto(pictureSource.SAVEDPHOTOALBUM);
+        
+}
+
+
+function onSuccess(imageData) {
+    alert("success");
+    var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+
+function getPhoto(source) {
+    alert("getphoto");
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
+    }
+
+
+function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+      // Get image handle
+      //
+    var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+    
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+    smallImage.src = "data:image/jpeg;base64," + imageData;
+    //resize_images(10,10,10,10);
+    photo=imageData;
+    alert(photo1);
+    
+}
 
 function BackOnClick(){
     window.location="home.html";
