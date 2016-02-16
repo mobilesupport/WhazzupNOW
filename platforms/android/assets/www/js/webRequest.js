@@ -573,25 +573,32 @@ function postLocationUpdate(registrationId,latitude,longitude){
     
 }
 
-function getUserProfile(userId){
-    $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/myactliked?userid=",
-      type: "GET",
-      data:"userid="+userId,
+function postProfileUpdate(userid, username, userpwd, useremail, userphone, userphoto){
+    var checksumStr=userid+username+userpwd+useremail+userphone+userphoto+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+     $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/profile/update",
+      type: "POST",  
+        data:"userId="+userid+ "&userName="+username+"&userPassword="+userpwd+"&userEmail="+useremail+"&userPhone="+userphone+"&userPhoto="+userphoto+"&checksum="+hashedStr,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
-        debugger;     
+        debugger; 
         alert(JSON.stringify(data));
+       
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+JSON.stringify(xhr));
+          alert("error"+xhr.responseText);
           //alert("Error: Unable to connect to server.");
-
         }
     })
     
+    
+     
 }
+
+

@@ -91,8 +91,8 @@ function onPrompt(results) {
     var $img = $("#smallImage");
     var src = $img.attr("src");
     var userphoto=src.replace('data:image/jpeg;base64,','');
-            alert(useremail);
-            alert(userphoto);
+            postProfileUpdate(userid,username,userpwd,useremail,userphone,userphoto);
+            
         }
         
     });    
