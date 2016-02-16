@@ -50,6 +50,49 @@ var app = {
     
 };
 
+function UpdateOnClick(){
+    
+    var uemail=$("#emailinput").val();
+    var uname=$("#nameinput").val();
+    var uphone=$("#phoneinput").val();
+    alert(uname);
+    
+    if(uname==""){
+        alert("Please enter your name.");
+    }
+    else if(uname.length<5){
+        alert("Name must be at least 5 characters.");
+    }
+    else{
+        alert("hi");
+        navigator.notification.prompt(
+            'Please enter your password to proceed.',  // message
+            onPrompt,                  // callback to invoke
+            'Update Profile',            // title
+            ['Ok','Cancel'],             // buttonLabels
+            'Password'                 // defaultText
+        );   
+    }   
+}
+
+function onPrompt(results) {
+
+    if(results==2){//If User selected Cancel, then we just do nothing
+        return; 
+    }else if(results==1){
+        dbmanager.initdb();
+        dbmanager.getProfile(function(returnData){
+        var pwd=returnData.rows.item(0).USER_PWD;
+        alert(pwd);
+        alert(results.input);
+        
+    })
+
+    
+    
+    
+        
+    }}
 
 function BackOnClick(){
     window.location="home.html";

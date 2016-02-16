@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+<!--        <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.5.css"/>-->
+        <title>Home Page</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/EditProfile.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/webRequest.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/EditProfile.css" />
+        <script type="text/javascript">
+            $(document).bind('mobileinit',function(){
+                $.mobile.loadingMessage = false;
+            })
+        </script> 
+        
+
+    </head>
+    <body>
+        <div class="app">
+            <div class="header">
+                <button class="btnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
+                <img class="appLogo" src="img/ic_pointion.png"/>
+                <button class="appTitle">Profile Edit</button>   
+            </div>
+            <div class="content">
+                <button class="btnPhoto" onclick="photoOnClick()"><img class="imgPhoto" src="img/photodefault.jpg"></button>
+                <img class="imgEmail" src="img/white_email.png">
+                <input id="emailinput" class="EmailTextBox" type="Email" placeholder="Email" maxlength="30">
+                <img class="imgProfile" src="img/white_profile.png">
+                <input id="nameinput" class="NameTextBox" type="Name" placeholder="Name" maxlength="30">
+                <img class="imgPhone" src="img/whitephone.png">
+                <input id="phoneinput" class="PhoneTextBox" type="Number" placeholder="Phone Number" maxlength="30">
+                <button class="btnUpdate" onclick="UpdateOnClick()">Update</button>
+            </div>
+            
+        </div>
+        
+    </body>
+    
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+            dbmanager.initdb();
+            dbmanager.getProfile(function(returnData){
+        var emailuser=returnData.rows.item(0).USER_EMAIL;
+        var username=returnData.rows.item(0).USER_NAME;
+        var userphone=returnData.rows.item(0).USER_PHONE;
+                $("#emailinput").val(emailuser);
+                $("#nameinput").val(username);
+                if(userphone!=null){
+                    $("#phoneinput").val(userphone);
+                    
+                }
+    
+           
+         
+    });
+       
+            
+        });
+</script>
+</html>

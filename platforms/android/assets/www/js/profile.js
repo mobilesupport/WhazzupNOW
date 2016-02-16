@@ -55,3 +55,7 @@ function BackOnClick(){
     window.location="home.html";
 }
 
+function btnEditOnClick(){
+    window.location="EditProfile.html";
+}
+
