@@ -67,12 +67,11 @@
             var totalLike=returnData.rows.item(0).TOTAL_ACT_LIKED;
             var totalComment=returnData.rows.item(0).TOTAL_ACT_COMMENTED;
             var userPhoto=returnData.rows.item(0).USER_PHOTO;
-            alert(userPhoto);
             $("#nameUser span").text(userName);
             $(".Numyoulike").text(totalLike);
             $(".Numyoucomment").text(totalComment);
             if(userPhoto!=null){
-                $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
+         $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
             }
             });
             
