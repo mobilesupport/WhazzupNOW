@@ -178,7 +178,7 @@ function storeProfile(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTA
     function insertProfile(profile) {
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS PROFILE');
-            tx.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT,USER_EMAIL)');
+            tx.executeSql('create table if not exists PROFILE(USER_ID TEXT, USER_NAME TEXT, USER_PWD TEXT, USER_PHONE TEXT, USER_PHOTO TEXT, TOTAL_ACT_CREATED TEXT, TOTAL_ACT_LIKED TEXT, TOTAL_ACT_COMMENTED TEXT,USER_EMAIL TEXT)');
             tx.executeSql('DELETE FROM PROFILE');
             tx.executeSql(
                 'INSERT INTO PROFILE(USER_ID, USER_NAME, USER_PWD, USER_PHONE, USER_PHOTO, TOTAL_ACT_CREATED, TOTAL_ACT_LIKED, TOTAL_ACT_COMMENTED,USER_EMAIL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
