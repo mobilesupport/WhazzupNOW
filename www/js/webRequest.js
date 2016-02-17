@@ -622,10 +622,16 @@ function getCommentedActivity(userId){
 }
 
 function getActivityList(registrationId){
+    var distancekm="";
+    var startrow="";
+    var countryCode="MY";
+    var searchValue="";
+    var startdate="";
+    var order=0;
+    alert("hi");
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid=",
+      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid="+registrationId+"&distancekm="+distancekm+"&startRow="+startrow+"&countryCode="+countryCode+"&searchValue="+searchValue+"&startDate="+"&order="+order,
       type: "GET",  
-      data:"registrationId="+registrationId,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

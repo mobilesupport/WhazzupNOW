@@ -34,6 +34,7 @@
         registrationId=returnData.rows.item(0).rregid;
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;
+        
         postLocationUpdate(registrationId,latitude,longitude);
         });
 
@@ -65,7 +66,6 @@
                     <ul id="slidemenu">
                     </ul>    
             </div>
-<!--            <p id="geolocation">HI</p>-->
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
                 <button class="FooterBtnAdd" onclick="AddOnClick();"><img class="AddImage" src="img/ic_add-web.png" /></button>
@@ -77,14 +77,7 @@
 <script type="text/javascript">
             document.addEventListener("deviceready", onDeviceReady, false);
             var menuStatus;
-//            $(function(){
-//
-//                $("#pageBody").on("swipeleft", function(){
-//                            pageSwipeLeft();
-//                        });
-//                    });
-            
-            
+       
 
         </script>
     <script type="text/javascript">
@@ -93,8 +86,10 @@
             dbmanager.initdb();
             dbmanager.getRedId(function(returnData){
             var registrationId=returnData.rows.item(0).rregid;
+            getActivityList(registrationId);
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
+            
             PostDeviceLog(userId,registrationId);
             });
             });
