@@ -50,6 +50,13 @@ var app = {
     
 };
 
+function checkLocale(){
+    navigator.globalization.getLocaleName(
+        function (locale) {alert('locale: ' + locale.value + '\n');},
+        function () {alert('Error getting locale\n');}
+      );
+}
+
 
 function BackOnClick(){
     window.location="home.html";

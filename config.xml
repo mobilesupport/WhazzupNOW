@@ -42,6 +42,7 @@
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
   <gap:plugin name="com.phonegap.plugins.PushPlugin"/>
+  <gap:plugin name="cordova-plugin-globalization" source="npm"/>
   <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
       <param name="APP_ID" value="1640196836239977 " />
       <param name="APP_NAME" value="WhazzupNOW" />

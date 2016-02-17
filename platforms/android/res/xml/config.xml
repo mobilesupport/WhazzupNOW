@@ -13,6 +13,9 @@
     <feature name="DatePickerPlugin">
         <param name="android-package" value="com.plugin.datepicker.DatePickerPlugin" />
     </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
     <allow-intent href="market:*" />
     <name>whazzup\nNOW</name>
     <description>Hello World sample application that responds to the deviceready event.</description>
@@ -57,6 +60,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" />
+    <gap:plugin name="cordova-plugin-globalization" source="npm" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
         <param name="APP_ID" value="1640196836239977 " />
         <param name="APP_NAME" value="WhazzupNOW" />

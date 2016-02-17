@@ -61,6 +61,22 @@ module.exports = [
         "clobbers": [
             "datePicker"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+        "id": "cordova-plugin-globalization.GlobalizationError",
+        "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+        "id": "cordova-plugin-globalization.globalization",
+        "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -69,7 +85,8 @@ module.exports.metadata =
     "com.phonegap.plugins.PushPlugin": "2.2.1",
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-camera": "2.1.0",
-    "cordova-plugin-datepicker": "0.9.3"
+    "cordova-plugin-datepicker": "0.9.3",
+    "cordova-plugin-globalization": "1.0.2"
 }
 // BOTTOM OF METADATA
 });

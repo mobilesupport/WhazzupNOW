@@ -18,6 +18,9 @@
         },
         "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.pssb.whazzupNOW"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.pssb.whazzupNOW"
         }
     },
     "dependent_plugins": {}
