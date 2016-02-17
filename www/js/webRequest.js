@@ -600,7 +600,8 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
 function getCommentedActivity(userId){
 
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/myactcommented?userid=",
+        url: "http://192.168.1.18/MRWebApi/api/profile/statistic?userid=",
+     // url: "http://192.168.1.18/MRWebApi/api/activity/myactcommented?userid=",
       type: "GET",  
       data:"userId="+userId,
       headers: {
@@ -610,7 +611,7 @@ function getCommentedActivity(userId){
       success: function(data, status, xhr) {
         debugger; 
         alert(JSON.stringify(data));
-        $(".NumComment").text(data);
+       // $(".NumComment").text(data);
        
       },
       error:function (xhr, ajaxOptions, thrownError){
