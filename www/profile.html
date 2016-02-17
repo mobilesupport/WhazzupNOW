@@ -72,10 +72,12 @@
             $("#nameUser span").text(userName);
             $(".Numyoulike").text(totalLike);
             $(".Numyoucomment").text(totalComment);
+           
             if(userPhoto!=null){
          $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
+             
             }
-            getCommentedActivity(userId);
+           // getCommentedActivity(userId);
             });
             
 

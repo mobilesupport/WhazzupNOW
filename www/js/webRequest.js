@@ -621,4 +621,28 @@ function getCommentedActivity(userId){
     })    
 }
 
+getActivityList(registrationId){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid=",
+      type: "GET",  
+      data:"registrationId="+registrationId,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        alert(JSON.stringify(data));
+       
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
+
 
