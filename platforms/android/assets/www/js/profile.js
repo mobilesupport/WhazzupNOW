@@ -19,7 +19,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        alert("init");
         this.bindEvents();
         
     },
@@ -28,7 +27,6 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        alert("bind");
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -36,8 +34,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert("device");
-
         getLocation();
         app.receivedEvent('deviceready');
         
@@ -72,7 +68,6 @@ function getLocation() {
                 for (var i = 0; i < result['results'][0]['address_components'].length; i++) {
                     if (result['results'][0]['address_components'][i]['types'][0] == "country") {
                         var country=result['results'][0]['address_components'][i]['long_name'];
-                        alert(country);
                         $("#countryUser").text(country);
 //                        alert(result['results'][0]['address_components'][i]['long_name']);
                     }

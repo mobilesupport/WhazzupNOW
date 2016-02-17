@@ -82,8 +82,8 @@ html, body{
     position: absolute;
     top: 12%;
     left: 35%;
-    width: 9%;
-    height: 5%;
+    width: 10%;
+    height: 6%;
 }
 
 .btnEdit{
@@ -243,4 +243,10 @@ html, body{
 .imgComment{
     width: 5%;
     height: 70%;
+}
+
+.countryUser{
+    
+    font-size: 3.5vw;
+    font-family: "gothic";
 }

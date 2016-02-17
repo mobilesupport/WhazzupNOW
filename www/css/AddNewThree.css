@@ -233,6 +233,7 @@ html, body{
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 60%;
+  color: black;
 }
 
 #pac-input:focus {
