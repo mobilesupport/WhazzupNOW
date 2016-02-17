@@ -9,18 +9,6 @@
     "installed_plugins": {
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.pssb.whazzupNOW"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.pssb.whazzupNOW"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.pssb.whazzupNOW"
-        },
-        "cordova-plugin-datepicker": {
-            "PACKAGE_NAME": "com.pssb.whazzupNOW"
-        },
-        "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "com.pssb.whazzupNOW"
         }
     },
     "dependent_plugins": {}
