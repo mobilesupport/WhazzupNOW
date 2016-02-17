@@ -59,13 +59,13 @@ var app = {
     
 };
 
-function checkLocale(){
-    alert("checking123");
-    navigator.globalization.getLocaleName(
-        function (locale) {alert('locale: ' + locale.value + '\n');},
-        function () {alert('Error getting locale\n');}
-      );
-}
+//function checkLocale(){
+//    alert("checking123");
+//    navigator.globalization.getLocaleName(
+//        function (locale) {alert('locale: ' + locale.value + '\n');},
+//        function () {alert('Error getting locale\n');}
+//      );
+//}
 
 
 function BackOnClick(){
