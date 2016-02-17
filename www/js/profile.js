@@ -38,7 +38,7 @@ var app = {
     onDeviceReady: function() {
         alert("device");
 
-getLocation();
+        getLocation();
         app.receivedEvent('deviceready');
         
     },
@@ -71,7 +71,10 @@ function getLocation() {
             $.post("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false", function (result) {
                 for (var i = 0; i < result['results'][0]['address_components'].length; i++) {
                     if (result['results'][0]['address_components'][i]['types'][0] == "country") {
-                        alert(result['results'][0]['address_components'][i]['long_name']);
+                        var country=result['results'][0]['address_components'][i]['long_name'];
+                        alert(country);
+                        $("#countryUser").text(country);
+//                        alert(result['results'][0]['address_components'][i]['long_name']);
                     }
                 }
             });
