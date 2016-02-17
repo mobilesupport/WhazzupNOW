@@ -579,7 +579,7 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
      $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/profile/update",
       type: "POST",  
-        data:"userEmail="+useremail+ "&userId="+userid+"&userName="+username+"&userPwd="+userpwd+"&userPhone="+userphone+"&userPhoto="+userphoto+"&checksum="+hashedStr,
+        data:"userEmail="+useremail+ "&userId="+userid+"&userName="+username+"&userPassword="+userpwd+"&userPhone="+userphone+"&userPhoto="+userphoto+"&checksum="+hashedStr,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
