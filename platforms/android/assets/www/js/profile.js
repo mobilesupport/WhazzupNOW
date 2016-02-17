@@ -37,11 +37,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert("device");
-        console.log(navigator.globalization);
-        navigator.globalization.getLocaleName(
-    function (locale) {alert('locale: ' + locale.value + '\n');},
-    function () {alert('Error getting locale\n');}
-);
+
+getLocation();
         app.receivedEvent('deviceready');
         
     },
@@ -68,6 +65,19 @@ var app = {
 //      );
 //}
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            $.post("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false", function (result) {
+                for (var i = 0; i < result['results'][0]['address_components'].length; i++) {
+                    if (result['results'][0]['address_components'][i]['types'][0] == "country") {
+                        alert(result['results'][0]['address_components'][i]['long_name']);
+                    }
+                }
+            });
+        });
+    }
+}
 
 function BackOnClick(){
     window.location="home.html";
