@@ -48,11 +48,11 @@
             </div>
             
             <div class="receive">
-            <div class="LikeReceive"><spam >Likes Received</spam>
-            <spam class="NumLike">0</spam></div>
-            <div class="CommentReceive"><spam >Comments Received</spam><spam class="NumComment">0</spam></div>
-            <div class="YouLike"><spam>You <img class="imgLike" src="img/unlike.png"></spam><spam class="Numyoulike">0</spam></div>
-            <div class="YouComment"><spam>You <img class="imgComment" src="img/reviewalready.png"></spam><spam class="Numyoucomment">0</spam></div>
+            <div class="LikeReceive"><span>Likes Received</span>
+            <span class="NumLike">1</span></div>
+            <div class="CommentReceive"><span>Comments Received</span><span class="NumComment">0</span></div>
+            <div class="YouLike"><span>You <img class="imgLike" src="img/unlike.png"></span><span class="Numyoulike">0</span></div>
+            <div class="YouComment"><span>You <img class="imgComment" src="img/reviewalready.png"></span><span class="Numyoucomment">0</span></div>
                 
             </div>
         </div>
@@ -64,6 +64,7 @@
         $(document).ready(function(){
             dbmanager.initdb();
             dbmanager.getProfile(function(returnData){
+            var userId=returnData.rows.item(0).USER_ID;
             var userName=returnData.rows.item(0).USER_NAME;
             var totalLike=returnData.rows.item(0).TOTAL_ACT_LIKED;
             var totalComment=returnData.rows.item(0).TOTAL_ACT_COMMENTED;
@@ -74,11 +75,10 @@
             if(userPhoto!=null){
          $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
             }
+            getCommentedActivity(userId);
             });
             
-//            alert("hi");
-//            checkLocale();
-//            alert("poo");
+
         });
 </script>
     <script>
