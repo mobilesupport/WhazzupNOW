@@ -48,7 +48,8 @@
       <param name="APP_NAME" value="WhazzupNOW" />
   </gap:plugin>
     <gap:plugin name="com.sharinglabs.cordova.plugin.datepicker" />
-    
+   <gap:config-file platform="android" parent="/manifest">
+    <application android:theme="@android:style/Theme.NoTitleBar"></application></gap:config-file>  
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
@@ -76,9 +77,7 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.png" gap:platform="winphone"/>
   <gap:splash src="splash.png" />
-     <gap:config-file platform="android" parent="/manifest">
-        <application android:theme="@android:style/Theme.NoTitleBar"></application>
-    </gap:config-file>
+      
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
