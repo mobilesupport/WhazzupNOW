@@ -574,13 +574,12 @@ function postLocationUpdate(registrationId,latitude,longitude){
 }
 
 function postProfileUpdate(userid, username, userpwd, useremail, userphone, userphoto){
-    var checksumStr=userid+username+userpwd+useremail+userphone+userphoto+sha1key;
+    var checksumStr=useremail+userid+username+userpwd+userphone+userphoto+sha1key;
     var hashedStr=SHA1(checksumStr);
-    
      $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/profile/update",
       type: "POST",  
-        data:"userId="+userid+ "&userName="+username+"&userPassword="+userpwd+"&userEmail="+useremail+"&userPhone="+userphone+"&userPhoto="+userphoto+"&checksum="+hashedStr,
+        data:"userEmail="+useremail+ "&userId="+userid+"&userName="+username+"&userPwd="+userpwd+"&userPhone="+userphone+"&userPhoto="+userphoto+"&checksum="+hashedStr,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
