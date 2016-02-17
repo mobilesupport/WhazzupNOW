@@ -37,12 +37,13 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert("device");
-        app.receivedEvent('deviceready');
         console.log(navigator.globalization);
         navigator.globalization.getLocaleName(
     function (locale) {alert('locale: ' + locale.value + '\n');},
     function () {alert('Error getting locale\n');}
 );
+        app.receivedEvent('deviceready');
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
