@@ -95,7 +95,7 @@ function PasswordOnClick(){
     dbmanager.initdb();
         dbmanager.getProfile(function(returnData){
         var emailuser=returnData.rows.item(0).USER_EMAIL;
-    $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Change Password</button><button class='PwdCloseBtn' onclick='closePwd();'><img src='img/close.png'/></button></div><div class='PwdDetails'> <button class='text1'>Email Address</button> <input id=Idemail value='"+emailuser+"'class='EmailTextBox'></input><br><button class='text2'>Old Password</button> <input id=oldpassword class='EmailTextBox2'></input><br><button class='text3'>New Password</button> <input id=newpassword class='EmailTextBox3'></input></div><button class='UpdateBtn' onclick='UpdateBtnOnClick();'>Update</button></div></div>");
+    $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Change Password</button><button class='PwdCloseBtn' onclick='closePwd();'><img src='img/close.png'/></button></div><div class='PwdDetails'> <button class='text1'>Email Address</button> <input id=Idemail value='"+emailuser+"'class='EmailTextBox' readonly='readonly'></input><br><button class='text2'>Old Password</button> <input id=oldpassword class='EmailTextBox2'></input><br><button class='text3'>New Password</button> <input id=newpassword class='EmailTextBox3'></input></div><button class='UpdateBtn' onclick='UpdateBtnOnClick();'>Update</button></div></div>");
            
          
     });
