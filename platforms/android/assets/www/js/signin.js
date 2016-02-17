@@ -99,6 +99,7 @@ function btnFbOnClick(){
             var name=result.name;
             var email=result.email;
             var fbid=result.id;
+            alert(email);
             //alert(JSON.stringify(userData));
             dbmanager.initdb();
             dbmanager.getRedId(function(returnData){
