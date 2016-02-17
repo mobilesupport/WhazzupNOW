@@ -250,3 +250,14 @@ html, body{
     font-size: 3.5vw;
     font-family: "gothic";
 }
+
+.imgLogo {
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
+.imgLogo:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
