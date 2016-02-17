@@ -621,7 +621,7 @@ function getCommentedActivity(userId){
     })    
 }
 
-getActivityList(registrationId){
+function getActivityList(registrationId){
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid=",
       type: "GET",  
