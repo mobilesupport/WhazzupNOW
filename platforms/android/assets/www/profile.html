@@ -44,6 +44,8 @@
             </div>
             <div class="middle">
             <img class="imgCoin" src="img/giftbox.png">
+            <span class="coinNum">0/1000</span>
+            <span class="whazzup">Whazzup Coins</span>
             <img class="imgLogo" src="img/ic_pointion.png">
             </div>
             
@@ -65,20 +67,11 @@
             dbmanager.initdb();
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
-            var userName=returnData.rows.item(0).USER_NAME;
-            var totalLike=returnData.rows.item(0).TOTAL_ACT_LIKED;
-            var totalComment=returnData.rows.item(0).TOTAL_ACT_COMMENTED;
-            var userPhoto=returnData.rows.item(0).USER_PHOTO;
-            $("#nameUser span").text(userName);
-            $(".Numyoulike").text(totalLike);
-            $(".Numyoucomment").text(totalComment);
-           
-            if(userPhoto!=null){
-         $(".photoUser").attr("src","data:image/jpeg;base64,"+userPhoto);
-             
-            }
-           // getCommentedActivity(userId);
+            
+            getUserProfile(userId)
             });
+ 
+
             
 
         });

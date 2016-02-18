@@ -61,6 +61,7 @@ var app = {
 //      );
 //}
 
+//get user country 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {

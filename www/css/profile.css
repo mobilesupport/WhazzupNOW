@@ -138,17 +138,18 @@ html, body{
     position: absolute;
     top: 5%;
     left: 10%;
-    width: 35%;
-    height: 65%;
+    width: 45%;
+    height: 85%;
 }
 
 .imgLogo{
     
     position: absolute;
-    top:14%;
-    right: 10%;
+    top:20%;
+    right: 7%;
     width: 25%;
-    height: 40%;
+    height: 50%;
+    
      -webkit-animation:spin 1s linear infinite;
     -moz-animation:spin 1s linear infinite;
     animation:spin 1s linear infinite;
@@ -255,6 +256,22 @@ html, body{
     
     font-size: 3.5vw;
     font-family: "gothic";
+}
+
+.coinNum{
+    
+    position: absolute;
+    left: 26%;
+    top: 50%;
+    font-size: 3.5vw;
+}
+
+.whazzup{
+    
+    position: absolute;
+    left: 23%;
+    top: 58%;
+    font-size: 3vw;
 }
 
 

@@ -91,7 +91,7 @@ function onPrompt(results) {
     var $img = $("#smallImage");
     var src = $img.attr("src");
     var userphoto=src.replace('data:image/jpeg;base64,','');
-            postProfileUpdate(userid,username,userpwd,useremail,userphone,userphoto);
+    postProfileUpdate(userid,username,userpwd,useremail,userphone,userphoto);
             
         }
         

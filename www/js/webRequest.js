@@ -597,12 +597,11 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
     })    
 }
 
-function getCommentedActivity(userId){
+function getUserProfile(userId){
 
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/myactcommented?userid=",
+      url: "http://192.168.1.18/MRWebApi/api/profile/statistic?userid="+userId,
       type: "GET",  
-      data:"userId="+userId,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -610,7 +609,42 @@ function getCommentedActivity(userId){
       success: function(data, status, xhr) {
         debugger; 
         alert(JSON.stringify(data));
-        $(".NumComment").text(data);
+        $(".Numyoulike").text(data.fla);
+        $(".NumLike").text(data.fal);
+        $(".Numyoucomment").text(data.fca);
+        $(".NumComment").text(data.fac);
+        var overPoint="";
+        var currentPoint=data.tt;
+        if(currentPoint<1000){
+            overPoint="/1000";
+        } 
+        else if(currentPoint<2000){
+            overPoint="/2000";
+        }
+        else if(currentPoint<3000){
+            overPoint="/3000";
+        }
+        else if(currentPoint<5000){
+            overPoint="/5000";
+        }
+        else if(currentPoint<10000){
+            overPoint="/10k";
+        }
+        else if(currentPoint<50000){
+            overPoint="/50k";
+        }
+        else if(currentPoint<1000000){
+            overPoint="/1m";
+        }
+        else if(currentPoint<10000000){
+            overPoint="/10m";
+        }
+        
+        $(".coinNum").text(currentPoint+overPoint);
+        
+        
+          
+        
        
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -622,7 +656,7 @@ function getCommentedActivity(userId){
 }
 
 function getActivityList(registrationId){
-    var distancekm="";
+    var distancekm="500";
     var startrow="";
     var countryCode="MY";
     var searchValue="";
