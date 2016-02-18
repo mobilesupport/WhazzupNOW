@@ -22,7 +22,7 @@
         document.addEventListener("deviceready", onDeviceReady, false);
         
         function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        //navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
         function onSuccess(position) {
         //alert("success get position");
@@ -37,14 +37,13 @@
 //        dbmanager.getRedId(function(returnData){
 //        registrationId=returnData.rows.item(0).rregid;
             
-        var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
-        var latitude=position.coords.latitude;
-        var longitude=position.coords.longitude;
-        alert(longitude);
-        alert(latitude);
         
-        getActivityList(registrationId,latitude,longitude);
-        postLocationUpdate(registrationId,latitude,longitude);
+//        var latitude=position.coords.latitude;
+//        var longitude=position.coords.longitude;
+       
+        
+       
+//postLocationUpdate(registrationId,latitude,longitude);
 //        });
 
     }
@@ -109,19 +108,20 @@
             slideMenu.initSlideMenu();
             
             //update device log
-//            dbmanager.initdb();
-//            dbmanager.getRedId(function(returnData){
-//            var registrationId=returnData.rows.item(0).rregid;
-//            alert(registrationId);
+            dbmanager.initdb();
+            dbmanager.getRedId(function(returnData){
+            var registrationId=returnData.rows.item(0).rregid;
+
             
+            //var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
+             getActivityList(registrationId); //later add longitude and latitude in parameter
+            dbmanager.getProfile(function(returnData){
+            var userId=returnData.rows.item(0).USER_ID;
+            alert(userId);
             
-            
-//            dbmanager.getProfile(function(returnData){
-//            var userId=returnData.rows.item(0).USER_ID;
-//            
-//            PostDeviceLog(userId,registrationId);
-//            });
-//            });
+            PostDeviceLog(userId,registrationId);
+            });
+            });
             
         });
 </script>

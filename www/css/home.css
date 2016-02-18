@@ -199,3 +199,47 @@ html, body{
     top: 10%;
     left: 4%;
 }
+
+.distance{
+    position: absolute;
+    top: 28%;
+    left: 15%;
+    font-size: 3vw;
+    font-family: "gothic";
+}
+
+.imgComment{
+    position: absolute;
+    height: 6vw;
+    width: 10%;
+    top: 10%;
+    left: 50%;
+    
+}
+
+.numComment{
+    position: absolute;
+    top: 28%;
+    left: 62%;
+    font-size: 3vw;
+    font-family: "gothic";
+    
+}
+
+.imgLike{
+    position: absolute;
+    height: 6vw;
+    width: 10%;
+    top: 10%;
+    right: 20%;
+    
+}
+
+.numLike{
+    
+    position: absolute;
+    top: 28%;
+    right: 15%;
+    font-size: 3vw;
+    font-family: "gothic";
+}

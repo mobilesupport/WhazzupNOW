@@ -709,7 +709,26 @@ function getActivityList(registrationId){
               else if(data[x].date_created[4]+data[x].date_created[5]=="10"){
                   var month="Oct";
               }
-              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' src='"+data[x].activityPhoto+"' onlick=''/><br><div class='whitebar'><img class='imgLocation' src='img/location.png'/></div></li>");
+              
+
+
+              // calculate distance(km) from user lacation to acticity location
+              var R=6371;
+              var lat1=1.5421816;
+              var lon1=103.8013007;
+              var lat2=data[x].latitude;
+              var lon2=data[x].longitude;
+              var dLat = deg2rad(lat2-lat1);  // deg2rad below
+              var dLon = deg2rad(lon2-lon1); 
+              var a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2)
+                ; 
+              var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+              var d = R * c; // Distance in km
+              var distance=d.toFixed(2);
+              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' src='"+data[x].activityPhoto+"' onlick=''/><br><div class='whitebar'><img class='imgLocation' src='img/location.png'/><span class='distance'>"+distance+"km</span><img class='imgComment' src='img/review.png'/><span class='numComment'>"+data[x].totalCommented+"</span><img class='imgLike' src='img/like.png'/><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
               
               
               
@@ -727,6 +746,9 @@ function getActivityList(registrationId){
         }
     }) 
     
+}
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
 
 
