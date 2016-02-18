@@ -34,6 +34,8 @@
         registrationId=returnData.rows.item(0).rregid;
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;
+        alert(latitude);
+        alert(longitude);
         
         postLocationUpdate(registrationId,latitude,longitude);
         });
@@ -66,6 +68,21 @@
                     <ul id="slidemenu">
                     </ul>    
             </div>
+            <div class="content">
+                <div class="pageone">
+                    <div class="wrapper" id="wrapper">
+                        <div class="scroll-content" id="scroll-content">
+                            <ul class="scrollul" id="scrollul">
+                               
+                                
+                                
+ 
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="footer">
                 <button class="FooterBtnBack" onclick="BackOnClick();"><img class="backImage" src="img/iv_back-web.png" /></button>
                 <button class="FooterBtnAdd" onclick="AddOnClick();"><img class="AddImage" src="img/ic_add-web.png" /></button>
@@ -83,17 +100,19 @@
     <script type="text/javascript">
         $(document).ready(function(){
             slideMenu.initSlideMenu();
-            dbmanager.initdb();
-            dbmanager.getRedId(function(returnData){
-            var registrationId=returnData.rows.item(0).rregid;
-            alert(registrationId);
-            getActivityList(registrationId);
-            dbmanager.getProfile(function(returnData){
-            var userId=returnData.rows.item(0).USER_ID;
+//            dbmanager.initdb();
+//            dbmanager.getRedId(function(returnData){
+            //var registrationId=returnData.rows.item(0).rregid;
+//            alert(registrationId);
+            var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
             
-            PostDeviceLog(userId,registrationId);
-            });
-            });
+            getActivityList(registrationId);
+//            dbmanager.getProfile(function(returnData){
+//            var userId=returnData.rows.item(0).USER_ID;
+//            
+//            PostDeviceLog(userId,registrationId);
+//            });
+//            });
             
         });
 </script>

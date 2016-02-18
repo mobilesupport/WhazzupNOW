@@ -652,15 +652,16 @@ function getUserProfile(userId){
 }
 
 function getActivityList(registrationId){
-    var distancekm="500";
-    var startrow="0";
-    var countryCode="MY";
-    var searchValue="";
-    var startdate="";
-    var order=0;
+//    var distancekm="100";
+//    var startrow="1";
+//    var countryCode="MY";
+//    var searchValue="h";
+//    var startdate="";
+//    var order=0;
     alert("hi");
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid="+registrationId+"&distancekm="+distancekm+"&startRow="+startrow+"&countryCode="+countryCode+"&searchValue="+searchValue+"&startDate="+"&order="+order,
+      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid="+registrationId,
+//        +"&distancekm="+distancekm+"&startRow="+startrow+"&countryCode="+countryCode+"&searchValue="+searchValue+"&startDate="+"&order="+order,
       type: "GET",  
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -669,6 +670,54 @@ function getActivityList(registrationId){
       success: function(data, status, xhr) {
         debugger; 
         alert(JSON.stringify(data));
+          
+          
+          for(x=0; x<data.length; x++){
+              if(data[x].date_created[4]+data[x].date_created[5]=="11"){
+                  var month="Nov";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="12"){
+                  var month="Dec";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="01"){
+                  var month="Jan";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="02"){
+                  var month="Feb";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="03"){
+                  var month="Mar";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="04"){
+                  var month="Apr";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="05"){
+                  var month="May";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="06"){
+                  var month="Jun";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="07"){
+                  var month="Jul";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="08"){
+                  var month="Aug";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="09"){
+                  var month="Sep";
+              }
+              else if(data[x].date_created[4]+data[x].date_created[5]=="10"){
+                  var month="Oct";
+              }
+              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' src='"+data[x].activityPhoto+"' onlick=''/><br><div class='whitebar'><img class='imgLocation' src='img/location.png'/></div></li>");
+              
+              
+              
+              
+//              $(".scrollul").append("<li id='merchantRow"+x+"'><div class='merchantDiv'><img class='merchantImageSeperator' src='img/eventSeperator.png' /><img class='merchantImage' src='"+results.rows.item(x).PHOTO+"' onclick='goPromoPage("+mID+","+photo+","+fbid+","+name+","+aboutus+","+startBH+","+endBH+","+contactNo+");'/><span class='merchantName'>"+results.rows.item(x).NAME+"</span><button class='merchantFollower'>100 Followers</button><button class='merchantFollow' id='unFollowBtn' onclick='postUnSubscribedMerchant("+x+", "+mID+");'><img src='img/unfollow.png'/>Followed</button></div></li>");
+            
+              
+          }
        
       },
       error:function (xhr, ajaxOptions, thrownError){
