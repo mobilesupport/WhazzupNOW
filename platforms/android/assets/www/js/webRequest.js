@@ -608,11 +608,11 @@ function getUserProfile(userId){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
-        $(".Numyoulike").text(data.fla);
-        $(".NumLike").text(data.fal);
-        $(".Numyoucomment").text(data.fca);
-        $(".NumComment").text(data.fac);
+        //alert(JSON.stringify(data));
+        $(".Numyoulike").text(data.fla); //number you like
+        $(".NumLike").text(data.fal);    //like you receive
+        $(".Numyoucomment").text(data.fca);//number you comment
+        $(".NumComment").text(data.fac);//comment you receive
         var overPoint="";
         var currentPoint=data.tt;
         if(currentPoint<1000){
@@ -641,10 +641,6 @@ function getUserProfile(userId){
         }
         
         $(".coinNum").text(currentPoint+overPoint);
-        
-        
-          
-        
        
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -657,7 +653,7 @@ function getUserProfile(userId){
 
 function getActivityList(registrationId){
     var distancekm="500";
-    var startrow="";
+    var startrow="0";
     var countryCode="MY";
     var searchValue="";
     var startdate="";
@@ -673,7 +669,6 @@ function getActivityList(registrationId){
       success: function(data, status, xhr) {
         debugger; 
         alert(JSON.stringify(data));
-       
        
       },
       error:function (xhr, ajaxOptions, thrownError){
