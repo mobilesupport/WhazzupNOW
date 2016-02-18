@@ -86,6 +86,7 @@
             dbmanager.initdb();
             dbmanager.getRedId(function(returnData){
             var registrationId=returnData.rows.item(0).rregid;
+            alert(registrationId);
             getActivityList(registrationId);
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
