@@ -29,16 +29,23 @@
 //        var element = document.getElementById('geolocation');
 //        element.innerHTML = 'Latitude: '           + position.coords.latitude+
 //                            'Longitude: '          + position.coords.longitude;
-        dbmanager.initdb();
-        dbmanager.getRedId(function(returnData){
-        registrationId=returnData.rows.item(0).rregid;
+            
+            
+            
+            //location update and get activity list
+//        dbmanager.initdb();
+//        dbmanager.getRedId(function(returnData){
+//        registrationId=returnData.rows.item(0).rregid;
+            
+        var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;
-        alert(latitude);
         alert(longitude);
+        alert(latitude);
         
+        getActivityList(registrationId,latitude,longitude);
         postLocationUpdate(registrationId,latitude,longitude);
-        });
+//        });
 
     }
 
@@ -100,13 +107,15 @@
     <script type="text/javascript">
         $(document).ready(function(){
             slideMenu.initSlideMenu();
+            
+            //update device log
 //            dbmanager.initdb();
 //            dbmanager.getRedId(function(returnData){
-            //var registrationId=returnData.rows.item(0).rregid;
+//            var registrationId=returnData.rows.item(0).rregid;
 //            alert(registrationId);
-            var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
             
-            getActivityList(registrationId);
+            
+            
 //            dbmanager.getProfile(function(returnData){
 //            var userId=returnData.rows.item(0).USER_ID;
 //            
