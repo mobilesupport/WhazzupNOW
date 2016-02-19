@@ -651,6 +651,17 @@ function errorStore(err){
 
 function successStore(){
     alert("success store yeah");
+    alert("got le");
+            dbmanager.initdb();
+            dbmanager.getLikedActId(function(returnData){
+                alert("open db");
+            LikedActId=returnData.rows.item(0).activityId;
+            alert(JSON.stringify(LikedActId));
+            
+       getActivityList(registrationId,LikedActId);
+        
+        });
+            
 }
 
 
@@ -709,7 +720,7 @@ function getUserProfile(userId){
     })    
 }
 
-function getActivityList(registrationId){
+function getActivityList(registrationId,LikedActId){
 //    var distancekm="100";
 //    var startrow="1";
 //    var countryCode="MY";
