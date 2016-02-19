@@ -599,7 +599,7 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
 
 //get activity that user liked
 function getLikedActivity(userId){
-    
+    alert("hi");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/myactliked?userid="+userId,
       type: "GET",  

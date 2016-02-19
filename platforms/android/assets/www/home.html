@@ -121,7 +121,7 @@
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
             alert(userId+"userid"); 
-            getLikedActivity(userid);
+            getLikedActivity(userId);
             dbmanager.initdb();
             dbmanager.getLikedActId(function(returnData){
             LikedActId=returnData.rows.item(0).activityId;
