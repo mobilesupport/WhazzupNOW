@@ -122,17 +122,19 @@
             var userId=returnData.rows.item(0).USER_ID;
             alert(userId+"userid"); 
             getLikedActivity(userId);
-                alert("after get liked activity");
+            alert("after get liked activity");
+                
+            function activity(){
             dbmanager.initdb();
             dbmanager.getLikedActId(function(returnData){
                 alert("open db");
             LikedActId=returnData.rows.item(0).activityId;
-            alert(LikedActId);
-        
+            alert(JSON.stringify(LikedActId));
+            
        getActivityList(registrationId,LikedActId);
         
         });
-            
+            }
             PostDeviceLog(userId,registrationId);
             });
             });
