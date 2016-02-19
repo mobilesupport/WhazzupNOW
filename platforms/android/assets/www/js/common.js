@@ -50,7 +50,7 @@ var dbmanager = {
         
     },
     
-    getActId:function(returnData){
+    getLikedActId:function(returnData){
         db.transaction(function(tx){
             tx.executeSql('SELECT * FROM ACTIVITY', [], function(tx,rs){
                 returnData(rs);
