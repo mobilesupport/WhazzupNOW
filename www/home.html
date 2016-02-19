@@ -122,9 +122,9 @@
             var userId=returnData.rows.item(0).USER_ID;
             alert(userId+"userid"); 
             getLikedActivity(userId);
-            alert("after get liked activity");
                 
             function activity(){
+                alert("got le");
             dbmanager.initdb();
             dbmanager.getLikedActId(function(returnData){
                 alert("open db");
