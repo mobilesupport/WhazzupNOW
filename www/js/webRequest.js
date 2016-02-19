@@ -597,6 +597,64 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
     })    
 }
 
+//get activity that user liked
+function getLikedActivity(userId){
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/myactliked?userid="+userId,
+      type: "GET",  
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        alert(JSON.stringify(data));
+        
+        storeAct(data.activityId);  
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })  
+}
+
+function storeAct(activityId) {
+    var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
+    var activity = {
+    values1 : [activityId]
+    };
+
+    insertActivity(activity);
+    
+    function insertActivity(activity) {
+        db.transaction(function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS ACTIVITY');
+            tx.executeSql('create table if not exists ACTIVITY(activityId TEXT)');
+            tx.executeSql('DELETE FROM ACTIVITY');
+            tx.executeSql(
+                'INSERT INTO ACTIVITY(activityId) VALUES (?)', 
+                activity.values1,
+                successStore,
+                errorStore
+            );
+        });
+    }
+}
+
+function errorStore(err){
+    alert("fail store act id");
+}
+
+function successStore(){
+    alert("success store yeah");
+}
+
+
+
 function getUserProfile(userId){
 
     $.ajax({
@@ -658,7 +716,6 @@ function getActivityList(registrationId){
 //    var searchValue="h";
 //    var startdate="";
 //    var order=0;
-    alert("hi");
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid="+registrationId,
 //        +"&distancekm="+distancekm+"&startRow="+startrow+"&countryCode="+countryCode+"&searchValue="+searchValue+"&startDate="+"&order="+order,
@@ -670,6 +727,7 @@ function getActivityList(registrationId){
       success: function(data, status, xhr) {
         debugger; 
         alert(JSON.stringify(data));
+
           
           
           for(x=0; x<data.length; x++){
@@ -730,11 +788,6 @@ function getActivityList(registrationId){
               var distance=d.toFixed(2);
               $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' src='"+data[x].activityPhoto+"' onlick=''/><br><div class='whitebar'><img class='imgLocation' src='img/location.png'/><span class='distance'>"+distance+"km</span><img class='imgComment' src='img/review.png'/><span class='numComment'>"+data[x].totalCommented+"</span><img class='imgLike' src='img/like.png'/><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
               
-              
-              
-              
-//              $(".scrollul").append("<li id='merchantRow"+x+"'><div class='merchantDiv'><img class='merchantImageSeperator' src='img/eventSeperator.png' /><img class='merchantImage' src='"+results.rows.item(x).PHOTO+"' onclick='goPromoPage("+mID+","+photo+","+fbid+","+name+","+aboutus+","+startBH+","+endBH+","+contactNo+");'/><span class='merchantName'>"+results.rows.item(x).NAME+"</span><button class='merchantFollower'>100 Followers</button><button class='merchantFollow' id='unFollowBtn' onclick='postUnSubscribedMerchant("+x+", "+mID+");'><img src='img/unfollow.png'/>Followed</button></div></li>");
-            
               
           }
        

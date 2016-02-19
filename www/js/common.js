@@ -50,6 +50,14 @@ var dbmanager = {
         
     },
     
+    getActId:function(returnData){
+        db.transaction(function(tx){
+            tx.executeSql('SELECT * FROM ACTIVITY', [], function(tx,rs){
+                returnData(rs);
+            },this.errorExecuteSQL);
+        });
+    },
+    
     checkFirstRun:function(returnData){
         db.transaction(function(tx){
             tx.executeSql('create table if not exists FIRSTRUN(RUN TEXT)');
