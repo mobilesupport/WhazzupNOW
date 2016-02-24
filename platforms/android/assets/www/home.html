@@ -23,10 +23,11 @@
         document.addEventListener("deviceready", onDeviceReady, false);
         
         function onDeviceReady() {
+            alert("deviceready")
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
         function onSuccess(position) {
-        //alert("success get position");
+        alert("success get position");
         var element = document.getElementById('geolocation');
         element.innerHTML = 'Latitude: '           + position.coords.latitude+
                             'Longitude: '          + position.coords.longitude;
@@ -40,7 +41,9 @@
                
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;
+            alert("before");
         getActivityList(registrationId,latitude,longitude);
+            alert("getact");
         postLocationUpdate(registrationId,latitude,longitude);
         });
 
