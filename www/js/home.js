@@ -99,7 +99,6 @@ function closeCmt(){
     $(".PwdBg").remove();
     $('.scrollul li').remove();
     onDeviceReady();
-    alert("can");
 
     }
 
