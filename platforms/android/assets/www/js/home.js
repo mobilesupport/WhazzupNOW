@@ -64,3 +64,85 @@ function pageSwipeLeft(){
     }
 }
 
+function commentOnClick(activityId){
+    
+  var actID='"'+activityId+'"';
+  $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Comments</button><button class='PwdCloseBtn' onclick='closeCmt();'><img src='img/close.png'/></button></div><div class='MiddleComment'><input class='inputComment' placeholder='Write your comment here...' maxlength='200'></input><button class='btnSend' onclick='sendOnClick("+actID+")'>Send</button></div><div class='CMTcontent'><div class='CMTpageone'><div class='CMTwrapper'><div class='CMTscroll-content'><ul class='CMTscrollul'></ul><br></div></div></div></div></div></div>");
+  getActCommentList(activityId);
+    
+    
+    
+
+}
+
+function sendOnClick(activityId){
+    var comment =$(".inputComment").val();
+    if(comment.length>200){
+        alert("Please enter a comment with maximum 200 words.")
+    }
+    else {
+        dbmanager.initdb();
+        dbmanager.getProfile(function(returnData){
+        var userId=returnData.rows.item(0).USER_ID;
+        postComment(userId,comment,activityId);
+        
+        });
+    }
+    
+     
+}
+
+
+    
+function closeCmt(){
+    registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
+    $(".PwdBg").remove();
+    $('.scrollul li').remove();
+    getActivityList(registrationId); 
+    
+    
+}
+    
+function locationOnClick(actname, address, lat,lon){
+ 
+    $(".app").append("<div class='PwdBg'><div class='PwdContent'><div class='PwdHeader'><button class='PwdTitle'>Location</button><button class='PwdCloseBtn' onclick='closePwd();'><img src='img/close.png'/></button></div><span class='activityName'>"+actname+"</span><span class='activityAddress'>"+address+"</span><div id='map'></div></div></div>");
+    
+    initMap(lat,lon);
+}
+
+  function initMap(lat,lon) {
+     
+    var la1 = lat;
+    var lo1 = lon;
+    var coords = new google.maps.LatLng(la1,lo1);
+    var mapOptions = {
+        zoom: 18,
+        center: coords,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(
+        document.getElementById("map"), mapOptions
+        );
+      
+    var marker = new google.maps.Marker({
+    position: coords,
+    map: map,
+    
+  });
+}
+
+function likeOnClick(activityId,rowNum){
+    dbmanager.initdb();
+    dbmanager.getProfile(function(returnData){
+    var userId=returnData.rows.item(0).USER_ID;
+        postLike(activityId,userId,rowNum)
+         
+            });   
+}
+
+function goDetailPage(actPhoto, actName, actAddress, actLat, actLon,desc,startdate,enddate,username,id){
+    window.location="detail.html?actPhoto="+actPhoto+"&actName="+actName+"&actAddress="+actAddress+"&actLat="+actLat+"&actLon="+actLon+"&actDesc="+desc+"&startdate="+startdate+"&enddate="+enddate+"&username="+username+"&id="+id;
+   
+}
+
+

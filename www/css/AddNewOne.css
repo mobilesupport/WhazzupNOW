@@ -117,14 +117,14 @@ html, body{
 .NameLeft{
     position: relative;
     font-family: "gothic";
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-weight: bold;
     width: 20%;
     height: auto;
     background-color: transparent;
     left: 17%;
     border: none;
-    margin-right: 24%;
+    margin-right: 27%;
 }
 /*
 input[type="radio"]:checked + label {

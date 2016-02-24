@@ -15,6 +15,7 @@
         <script type="text/javascript" src="js/slidemenu.js"></script>
         <script type="text/javascript" src="js/webRequest.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
+         <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdNCmY8P_u72FgpkdVqZ476PljKfbrhHs&libraries=places"></script>
         <link rel="stylesheet" type="text/css" href="css/home.css" />
         <link rel="stylesheet" type="text/css" href="css/slidemenu.css" />
         <link rel="stylesheet" type="text/css" href="css/common.css" />
@@ -22,29 +23,26 @@
         document.addEventListener("deviceready", onDeviceReady, false);
         
         function onDeviceReady() {
-        //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
         function onSuccess(position) {
         //alert("success get position");
-//        var element = document.getElementById('geolocation');
-//        element.innerHTML = 'Latitude: '           + position.coords.latitude+
-//                            'Longitude: '          + position.coords.longitude;
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude+
+                            'Longitude: '          + position.coords.longitude;
             
             
             
-//            location update and get activity list
-//        dbmanager.initdb();
-//        dbmanager.getRedId(function(returnData){
-//        registrationId=returnData.rows.item(0).rregid;
-//            
-//        
-//        var latitude=position.coords.latitude;
-//        var longitude=position.coords.longitude;
-//       
-//        
-//       
-//postLocationUpdate(registrationId,latitude,longitude);
-//        });
+    //  location update and get activity list
+        dbmanager.initdb();
+        dbmanager.getRedId(function(returnData){
+        registrationId=returnData.rows.item(0).rregid;
+               
+        var latitude=position.coords.latitude;
+        var longitude=position.coords.longitude;
+        getActivityList(registrationId,latitude,longitude);
+        postLocationUpdate(registrationId,latitude,longitude);
+        });
 
     }
 
@@ -54,11 +52,7 @@
               'message: ' + error.message + '\n');
     }
         </script>
-        <script type="text/javascript">
-            $(document).bind('mobileinit',function(){
-                $.mobile.loadingMessage = false;
-            })
-        </script> 
+    
 
     </head>
     <body>
@@ -108,33 +102,12 @@
             dbmanager.initdb();
             dbmanager.getRedId(function(returnData){
             var registrationId=returnData.rows.item(0).rregid;
-
-            
-//           var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
+//            var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
 //            var userid=232071110116;
-            // pass userid and registration id to get liked activity list, set new variable to store data, pass data, userid and regid to get commented activity, set new variable to store data and pass to getactivity list 
-        
-                
-           //  getActivityList(registrationId); //later add longitude and latitude in parameter
-            
-            
+                            
             dbmanager.getProfile(function(returnData){
             var userId=returnData.rows.item(0).USER_ID;
-            alert(userId+"userid"); 
-            getLikedActivity(userId);
-                
-            function activity(){
-                alert("got le");
-            dbmanager.initdb();
-            dbmanager.getLikedActId(function(returnData){
-                alert("open db");
-            LikedActId=returnData.rows.item(0).activityId;
-            alert(JSON.stringify(LikedActId));
-            
-       getActivityList(registrationId,LikedActId);
-        
-        });
-            }
+
             PostDeviceLog(userId,registrationId);
             });
             });

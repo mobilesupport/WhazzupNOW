@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+<!--        <link rel="stylesheet" href="js/jquery-mobile/jquery.mobile-1.4.5.css"/>-->
+        <title>Home Page</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/detail.js"></script>
+        <script type="text/javascript" src="js/webRequest.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdNCmY8P_u72FgpkdVqZ476PljKfbrhHs&libraries=places"></script>
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="css/detail.css" />
+        
+        
+
+    </head>
+    <body>
+        <div class="app">
+            <div class="header">
+                <button class="btnBack" onclick="Backtohomeonclick();"><img class="backImage" src="img/iv_back-web.png" /></button>
+                <img class="appLogo" src="img/ic_pointion.png"/>
+                <button class="appTitle">WhazzupNOW</button>   
+            </div>
+            <div class="content">
+                <div class="pageone">
+                    <div class="wrapper" id="wrapper">
+                        <div class="scroll-content" id="scroll-content">
+                            <ul class="scrollul" id="scrollul">
+                                <li>
+                               
+                                    <div class="ImageDiv">
+                                        <img class="imageAct" src="" />
+                                         <script type="text/javascript">
+                    
+                                            var Photo=getUrlParameter("actPhoto");
+                                            
+                                            $(".imageAct").attr("src", Photo); 
+                        
+                                        </script>
+                                    </div><br>
+                                  
+                                    <div class="subheader">
+                                        <div>
+                                            <div class="subBtn1">
+                                                <button class="subheaderbutton" onclick="changepage(1);" id="btnPromo"> Details </button>
+                                            </div>
+                                            <div class="subSeperator1">
+                                                 <button class="subheaderbutton"></button>
+                                            </div>
+                                            <div class="subBtn2">
+                                                <button class="subheaderbutton" onclick="changepage(2);" id="btnAboutUs"> Gallery </button>
+                                            </div>
+                                             <div class="subSeperator2">
+                                                <button class="subheaderbutton"></button>
+                                            </div>
+                                            <div class="subBtn3">
+                                                <button class="subheaderbutton" onclick="changepage(3);" id="btnGallery"> Reviews </button>
+                                            </div>
+                                                <div class="selectedItem">
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="abune">
+                                    <div class='pagenumone'>
+                                    <span class='spanname'>Event Name</span>
+                                    <span class="actname"></span>
+                                    <span class="spandecs">Description</span>
+                                    <span class="actdesc"></span>
+                                    <span class="spanlocation">Location:</span>
+                                    <span class="actlocation"></span>
+                                    <span class="whazzupnow">WhazzupNOW Ambassador</span>
+                                    <span class="username"></span>
+                                    <button class='btnview' onclick="viewonclick(actname,address,lat,lon);">View Location</button>
+                                    <span class='startdate'></span><span class="until">until</span><span class="enddate"> </span>
+                                     <script type="text/javascript">
+                    
+                                            var actname=getUrlParameter("actName");
+                                            var desc=getUrlParameter("actDesc");
+                                            var address=getUrlParameter("actAddress");
+                                            var lat=getUrlParameter("actLat");
+                                            var lon=getUrlParameter("actLon");
+                                            var startdate=getUrlParameter("startdate");
+                                            var enddate=getUrlParameter("enddate");
+                                            var ownername=getUrlParameter("username");
+                                         
+                                            $(".actname").text(actname); 
+                                            $(".actdesc").text(desc);
+                                            $(".actlocation").text(address+" ("+lat+" , "+lon+")");
+                                            $(".username").text(ownername);
+                                           
+                                            if(startdate != ""){
+                                                $(".startdate").text(startdate +" ");
+                                                $(".enddate").text(" "+enddate);
+                                                
+                                            }
+                                         else {
+                                             $(".startdate").css("display","none");
+                                             $(".until").css("display","none");
+                                             $(".enddate").css("display","none");
+                                         }
+                                        </script>   
+                                    </div>
+                                    <div class='pagenumtwo'>
+                                    <div class="wrapper" id="wrapper">
+                                    <div class="scroll-content" id="scroll-gallery">
+                                        <br>
+                                        <ul class="scrollul" id="scrollul-gallery">
+                                            <li>
+                                                <img class="leftimg" src=""/>
+                                                <img class="midimg" src=""/>
+                                                <img class="rightimg" src=""/>
+                                        <script type="text/javascript">
+                                            $(".leftimg").attr("src", Photo); 
+                                            
+                                        </script> 
+                                            </li>
+                                        </ul>
+                                        <br>
+                                    </div>
+                                </div>
+                                    
+                        </div>
+                                        <div class='pagenumthree'>
+                                            <input class='inputComment' placeholder='Write your comment here...' maxlength='200'/><button class='btnSend' onclick='sendOnClick(sid)'>Send</button>
+                                    <div class="wrapperreview" id="wrapper">
+                                    <div class="scroll-content" id="scroll-review">
+                                        <br>
+                                        <ul class="scrollul" id="scrollul-review">
+                                            
+                                            
+                                        
+                                            
+                                        <script type="text/javascript">
+                    
+                                            var id=getUrlParameter("id");
+                                            var sid=id;
+                                            getActCommentListReview(id);
+                                                    
+                                           
+                                        </script>   
+                                            
+                                            
+                                        </ul>
+                                        <br>
+                                    </div>
+                                </div>
+                                    
+                        </div>
+                    </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+
+        var theScroll;
+        function scroll() {
+            theScroll = new iScroll('wrapper');
+        }
+        </script>
+    
+</html>

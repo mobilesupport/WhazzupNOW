@@ -1,0 +1,492 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+
+@font-face {
+    font-family: 'gothic'; /*a name to be used later*/
+    src: url('../font/gothic.TTF'); /*URL to font*/
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width:100%;
+    overflow: hidden;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
+    /* prevent copy paste, to allow, change 'none' to 'text' */
+/*    background-color:#53DCDF;*/
+    background-color: white;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+/*    font-size:12px;*/
+/*    text-transform:uppercase;*/}
+
+
+.content{
+    width: 100%;
+    height: 91%;
+    background-color: white;
+	position:absolute;
+	top:9%;
+}
+
+.pageone{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0%;
+    display: inline-block;
+    position: absolute;
+    z-index: 3;
+/*    position: absolute;*/
+    
+    -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        -webkit-transition: transform 400ms ease;
+        -moz-transition: transform 400ms ease;
+        transition: transform 400ms ease;
+}
+
+.pagenumtwo{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0%;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    display: none;
+/*    position: absolute;*/
+    
+    -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        -webkit-transition: transform 400ms ease;
+        -moz-transition: transform 400ms ease;
+        transition: transform 400ms ease;
+}
+
+.pagenumthree{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0%;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    display: none;
+/*    position: absolute;*/
+    
+    -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        -webkit-transition: transform 400ms ease;
+        -moz-transition: transform 400ms ease;
+        transition: transform 400ms ease;
+}
+
+
+.wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    bottom: 0%;
+    overflow:auto;
+}
+
+.wrapperreview{
+    top: 10vw;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    bottom: 0%;
+    overflow:auto;
+}
+
+.scrollul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    width:100%;
+    text-align:left;
+
+}
+ 
+.scrollli {
+        padding:0 10px;
+        height:auto;
+        border-bottom:1px solid #ccc;
+        border-top:1px solid #fff;
+    /*    background-color:#fafafa;*/
+    /*    font-size:2.4vw;*/
+        border-bottom: 1px dotted #333;  
+        outline: none;
+        
+    }
+
+.scrollli:hover {
+    background-color: white;
+}
+
+.scroll-content {
+    position:absolute; 
+    z-index:1;
+    width:100%;
+    padding:0;
+    background-color: transparent;
+    outline: none;
+}
+
+.imageDiv{
+    position: absolute;
+    width: 100%;
+    height: 70vw;
+    max-height: 70vw;
+
+}
+.imageAct{
+    width: 100%;
+    height:100%;
+    max-height: 70vw;
+}
+
+.subheader{
+	position: absolute;
+	top: 70vw;
+    background-color:white;
+    text-align:justify;
+    color: green;
+    height: 15vw;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+
+}
+
+.subBtn1{
+	width:31%;
+	position:absolute;
+	height:100%;
+}
+
+.subBtn2{
+	width:31%;
+	position:absolute;
+	height:100%;
+	left:34.5%;
+}
+
+.subBtn3{
+	width:31%;
+	position:absolute;
+	height:100%;
+	left:69%;
+}
+
+.subSeperator1{
+	width:3.5%;
+	position:absolute;
+	height:100%;
+	left:31%;
+	vertical-align:middle;
+}
+
+.subSeperator1 button{
+	position:absolute;
+	height:100%;
+	line-height:100%;
+	vertical-align:middle;
+}
+
+.subSeperator2 button{
+	width:3.5%;
+	position:absolute;
+	height:100%;
+	left:65.5%;
+}
+
+
+.subheaderbutton{
+    background-color: transparent;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+	line-height:100%;
+    outline: none;
+    font-family: "times new roman";
+    font-size: 4vw;
+    font-weight: bolder;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+.selectedItem{
+    position: absolute;
+    background-color: green;
+    width: 32.75%;
+    height: 3px;
+    z-index: 10;
+    /* top:12%; */
+/*    margin: 0px 0.5% 0px 0px;*/
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+	bottom:0px;
+}
+.spanname{
+    text-decoration: underline;
+    font-family: "gothic";
+    font-size: 3.5vw;
+    left: 3%;
+    position: absolute;
+    top: 90vw;
+}
+.actname{
+    font-family: "gothic";
+    font-size: 3.5vw;
+    left: 3%;
+    position: absolute;
+    top: 95vw;
+}
+.spandecs{
+    position: absolute;
+    left: 3%;
+    top: 105vw;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    text-decoration: underline;
+}
+.actdesc{
+    position: absolute;
+    top: 110vw;
+    left: 3%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+}
+
+.spanlocation{
+    position: absolute;
+    left: 3%;
+    top: 120vw;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    text-decoration: underline;
+}
+.actlocation{
+    position:absolute;
+    top: 125vw;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    left: 3%;
+}
+
+
+.btnview{
+    color: dodgerblue;
+    position: absolute;
+    top: 140vw;
+    outline: none;
+    background-color: white;
+    border: none;
+    left: 2%;
+    font-family: "gothic";
+    
+}
+
+.startdate{
+    position: absolute;
+    top: 145vw;
+    left: 3%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    font-weight: bolder;
+}
+
+.until{
+    position: absolute;
+    top: 145vw;
+    left: 25%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+}
+
+.enddate{
+    position: absolute;
+    top: 145vw;
+    left: 35%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+}
+.activityName{
+    position: absolute;
+    top: 12%;
+    left: 3%;
+    font-size: 4vw;
+    font-family: "gothic";
+    font-weight: bolder;
+}
+
+.activityAddress{
+    position: absolute;
+    top: 17%;
+    left: 3%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    
+}
+
+#map{
+    position: absolute;
+    left: 4%;
+    width: 92%;
+    height: 72%;
+    top: 25%;
+}
+
+.whazzupnow{
+    position: absolute;
+    top: 155vw;
+    font-size: 4vw;
+    font-family: "gothic";
+    right: 3%;
+}
+
+.username{
+    position: absolute;
+    top: 160vw;
+    font-size: 4vw;
+    font-family: "gothic";
+    right: 3%;
+}
+
+.leftimg{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    height: 25vw;
+    width: 25vw;
+}
+.inputComment{
+    position: absolute;
+    top: 3vw;
+    left: 2%;
+    width: 70%;
+    height: 5vw;
+    border-color: skyblue;
+    border-top-color: skyblue;
+    border-bottom-color: skyblue;
+    outline: none;
+    background-color: white;
+}
+
+.btnSend{
+    position: absolute;
+    top: 3vw;
+    width: 15%;
+    height: 5vw;
+    right: 5%;
+    color: white;
+    background-color: darkorange;
+    border: none;
+    outline: none;
+}
+
+.imgPhoto{
+    border-radius: 50%;
+    height: 10vw;
+    width: 14vw;
+    margin-bottom: 5%;
+    position: relative;
+    left: 3%;
+    top: 0px;
+
+
+}
+
+.commentDiv{
+    position: relative;
+}
+
+.userName{
+    left: 25%;
+    font-size: 3.5vw;
+    font-family: "gothic";
+    top: 0vw;
+    position: absolute;
+    font-weight: bolder;
+    background-color: white;
+
+}
+
+.comment{
+    left: 25%;
+    font-size: 3vw;
+    font-family: "gothic";
+    top: 5vw;
+    position: absolute;
+    color: grey;
+    height: auto;
+    max-width: 48vw;
+    max-height: 12.8vw;
+    line-height: 3.2vw;
+    background: white;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.date{
+    right: 3%;
+    top: 1vw;
+    position: absolute;
+    color: grey;
+    font-family: "gothic";
+    font-size: 3vw;
+}
+
+.time{
+    right: 5%;
+    top: 5vw;
+    position: absolute;
+    color: grey;
+    font-family: "gothic";
+    font-size: 3vw;
+    
+}

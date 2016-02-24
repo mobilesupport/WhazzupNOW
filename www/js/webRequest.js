@@ -254,7 +254,7 @@ data:"emailAddress="+email+"&password="+pwd+"&photo="+photo+"&registerType="+reg
     })
 }
 //create post step 1 of 3
-function GetActivityCategory(){
+function GetActivity(){
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/category",
       type: "GET",
@@ -597,75 +597,6 @@ function postProfileUpdate(userid, username, userpwd, useremail, userphone, user
     })    
 }
 
-//get activity that user liked
-function getLikedActivity(userId){
-    alert("hi");
-    $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/myactliked?userid="+userId,
-      type: "GET",  
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      timeout: apiTimeOut,  
-      success: function(data, status, xhr) {
-        debugger; 
-        alert(JSON.stringify(data));
-        
-        storeAct(data.activityId);  
-       
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        debugger;
-          alert("error"+xhr.responseText);
-          //alert("Error: Unable to connect to server.");
-        }
-    })  
-}
-
-function storeAct(activityId) {
-    var db = window.openDatabase("Database", "1.0", "WHAZZUPNOW", 200000);
-    var activity = {
-    values1 : [activityId]
-    };
-
-    insertActivity(activity);
-    
-    function insertActivity(activity) {
-        db.transaction(function(tx) {
-            tx.executeSql('DROP TABLE IF EXISTS ACTIVITY');
-            tx.executeSql('create table if not exists ACTIVITY(activityId TEXT)');
-            tx.executeSql('DELETE FROM ACTIVITY');
-            tx.executeSql(
-                'INSERT INTO ACTIVITY(activityId) VALUES (?)', 
-                activity.values1,
-                successStore,
-                errorStore
-            );
-        });
-    }
-}
-
-function errorStore(err){
-    alert("fail store act id");
-}
-
-function successStore(){
-    alert("success store yeah");
-    alert("got le");
-            dbmanager.initdb();
-            dbmanager.getLikedActId(function(returnData){
-                alert("open db");
-            LikedActId=returnData.rows.item(0).activityId;
-            alert(JSON.stringify(LikedActId));
-            
-       getActivityList(registrationId,LikedActId);
-        
-        });
-            
-}
-
-
-
 function getUserProfile(userId){
 
     $.ajax({
@@ -720,16 +651,16 @@ function getUserProfile(userId){
     })    
 }
 
-function getActivityList(registrationId,LikedActId){
-//    var distancekm="100";
-//    var startrow="1";
-//    var countryCode="MY";
-//    var searchValue="h";
-//    var startdate="";
-//    var order=0;
+function getActivityList(registrationId,latitude,longitude){
+    var distancekm="500000000";
+    var startrow="0";
+    var countryCode="MY";
+    var searchValue="";
+    var startdate="20151101";
+    var order="0";
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationid="+registrationId,
-//        +"&distancekm="+distancekm+"&startRow="+startrow+"&countryCode="+countryCode+"&searchValue="+searchValue+"&startDate="+"&order="+order,
+      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationId="+registrationId,
+
       type: "GET",  
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -737,10 +668,9 @@ function getActivityList(registrationId,LikedActId){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
 
-          
-          
+                
           for(x=0; x<data.length; x++){
               if(data[x].date_created[4]+data[x].date_created[5]=="11"){
                   var month="Nov";
@@ -783,8 +713,8 @@ function getActivityList(registrationId,LikedActId){
 
               // calculate distance(km) from user lacation to acticity location
               var R=6371;
-              var lat1=1.5421816;
-              var lon1=103.8013007;
+              var lat1=latitude;
+              var lon1=longitude;
               var lat2=data[x].latitude;
               var lon2=data[x].longitude;
               var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -797,7 +727,24 @@ function getActivityList(registrationId,LikedActId){
               var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
               var d = R * c; // Distance in km
               var distance=d.toFixed(2);
-              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' src='"+data[x].activityPhoto+"' onlick=''/><br><div class='whitebar'><img class='imgLocation' src='img/location.png'/><span class='distance'>"+distance+"km</span><img class='imgComment' src='img/review.png'/><span class='numComment'>"+data[x].totalCommented+"</span><img class='imgLike' src='img/like.png'/><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+              
+              var actID='"'+data[x].activityId+'"';
+              var actName='"'+data[x].activityName+'"';
+              var actAddress='"'+data[x].fullAddress+'"';
+              var actlat='"'+data[x].latitude+'"';
+              var actlon='"'+data[x].longitude+'"';
+              var actPhoto='"'+data[x].activityPhoto+'"';
+              var desc='"'+data[x].activityDetail+'"';
+              var startdate='"'+data[x].dateStart+'"';
+              var enddate='"'+data[x].dateEnd+'"';
+              var username='"'+data[x].ownerName+'"';
+              getSubCategory(data[x].category,data[x].subCategory);
+              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img class='category' src=''/><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+              
+//              if(data[x].commented ==0){
+//                  
+//                  $("#activityRow"+x+" .imgComment").attr("src","img/reviewalready.png");
+//              }
               
               
           }
@@ -813,6 +760,208 @@ function getActivityList(registrationId,LikedActId){
 }
 function deg2rad(deg) {
   return deg * (Math.PI/180)
+}
+//get comment list in comment page
+function getActCommentList(activityId){
+
+     $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/listcomment?activityid="+activityId,
+      type: "GET",  
+       
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          data.reverse();
+          for(x=0; x<data.length; x++){
+            
+            var userPhoto="data:image/jpeg;base64," +data[x].userPhoto;
+            $(".CMTscrollul").append("<li id='commentRow"+x+"'><div class='commentDiv'><img class='imgPhoto' src='"+userPhoto+"'/><span class='userName'>"+data[x].userName+"</span><span class='comment'>"+data[x].Comment+"</span><span class='date'>"+data[x].dateComment[0]+data[x].dateComment[1]+data[x].dateComment[2]+data[x].dateComment[3]+'-'+data[x].dateComment[4]+data[x].dateComment[5]+'-'+data[x].dateComment[6]+data[x].dateComment[7]+"</span><span class='time'>"+data[x].dateComment[8]+data[x].dateComment[9]+':'+data[x].dateComment[10]+data[x].dateComment[11]+':'+data[x].dateComment[12]+data[x].dateComment[13]+"</span></div></li>")
+
+            
+            if(data[x].userPhoto ==null){
+                $(".imgPhoto").attr("src","img/photodefault.jpg");
+            }
+            
+            
+          }
+            
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })  
+    
+}
+
+//comment post
+function postComment(userId,comment,activityId){
+    var checksumStr=comment+activityId+userId+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/comment",
+      type: "POST",  
+      data:"activityComment="+comment+ "&activityid="+activityId+"&userid="+userId+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          $('.CMTscrollul li').remove(); //remove old comment 
+          getActCommentList(activityId); //reload all the comments in comment page
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
+
+function postLike(activityId, userid,rowNum){
+    var checksumStr=activityId+userid+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/like",
+      type: "POST",  
+      data:"activityid="+activityId+ "&userid="+userid+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          
+          //if user click dislike, number of like will be decrease
+          var nowlike=parseInt($('#activityRow'+rowNum+' .numLike').text());
+          if(data.Message=="You have disliked this activity"){
+              
+               $("#activityRow"+rowNum+" .imgLike").attr("src","img/like.png");
+              var like=parseInt(nowlike)-1;
+              $("#activityRow"+rowNum+" .numLike").text(like);
+          }// if user click like, number of like will be increase
+          else if(data.Message=="You have liked this activity"){
+              $("#activityRow"+rowNum+" .imgLike").attr("src","img/unlike.png");
+             var like=parseInt(nowlike)+1;
+               $("#activityRow"+rowNum+" .numLike").text(like);
+              
+          }
+          
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+}
+
+//get comment list in detail/reviw page
+function  getActCommentListReview(id){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/listcomment?activityid="+id,
+      type: "GET",  
+       
+      headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          data.reverse();
+          for(x=0; x<data.length; x++){
+            
+            var userPhoto="data:image/jpeg;base64," +data[x].userPhoto;
+            $("#scrollul-review").append("<li id='commentRow"+x+"'><div class='commentDiv'><img class='imgPhoto' src='"+userPhoto+"'/><span class='userName'>"+data[x].userName+"</span><span class='comment'>"+data[x].Comment+"</span><span class='date'>"+data[x].dateComment[0]+data[x].dateComment[1]+data[x].dateComment[2]+data[x].dateComment[3]+'-'+data[x].dateComment[4]+data[x].dateComment[5]+'-'+data[x].dateComment[6]+data[x].dateComment[7]+"</span><span class='time'>"+data[x].dateComment[8]+data[x].dateComment[9]+':'+data[x].dateComment[10]+data[x].dateComment[11]+':'+data[x].dateComment[12]+data[x].dateComment[13]+"</span></div></li>")
+
+            
+            if(data[x].userPhoto ==null){
+                $(".imgPhoto").attr("src","img/photodefault.jpg");
+            }
+            
+            
+          }
+            
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    })  
+    
+}
+
+function postCommentReview(userId,comment,activityId){
+    var checksumStr=comment+activityId+userId+sha1key;
+    var hashedStr=SHA1(checksumStr);
+    
+         $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/comment",
+      type: "POST",  
+        data:"activityComment="+comment+ "&activityid="+activityId+"&userid="+userId+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          $('#scrollul-review li').remove(); //remove old comment 
+          getActCommentListReview(activityId); //reload all the comments in review page
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
+
+//show category photo in activity list
+function getSubCategory(category,subCategory){
+
+     $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/category",
+      type: "GET",  
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+          for(x=0; x<data.length; x++){
+        if(data[x].categoryType ==category && data[x].categoryId ==subCategory ){
+            $(".category").attr("src",data[x].categoryPhoto)
+            
+        }
+            }
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
 }
 
 
