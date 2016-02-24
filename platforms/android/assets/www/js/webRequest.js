@@ -560,12 +560,12 @@ function postLocationUpdate(registrationId,latitude,longitude){
       success: function(data, status, xhr) {
         debugger; 
         //alert("Success location");
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
        
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+xhr.responseText);
+          //alert("error"+xhr.responseText);
           //alert("Error: Unable to connect to server.");
         }
     })
