@@ -95,13 +95,28 @@ function sendOnClick(activityId){
 
     
 function closeCmt(){
-    registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQn-sWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
-    $(".PwdBg").remove();
-    $('.scrollul li').remove();
-    getActivityList(registrationId); 
     
-    
-}
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+        }
+function onSuccess(position) {
+        var latitude=position.coords.latitude;
+        var longitude=position.coords.longitude;   
+        //get activity list
+        dbmanager.initdb();
+        dbmanager.getRedId(function(returnData){
+        registrationId=returnData.rows.item(0).rregid;
+        $(".PwdBg").remove();
+        $('.scrollul li').remove();
+        getActivityList(registrationId,latitude,longitude);  
+        });
+
+    }
+function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
     
 function locationOnClick(actname, address, lat,lon){
  
