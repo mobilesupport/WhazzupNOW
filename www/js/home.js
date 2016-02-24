@@ -96,26 +96,13 @@ function sendOnClick(activityId){
     
 function closeCmt(){
     
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
-        }
-function onSuccess(position) {
-        var latitude=position.coords.latitude;
-        var longitude=position.coords.longitude;   
-        //get activity list
-        dbmanager.initdb();
-        dbmanager.getRedId(function(returnData){
-        registrationId=returnData.rows.item(0).rregid;
-        $(".PwdBg").remove();
-        $('.scrollul li').remove();
-        getActivityList(registrationId,latitude,longitude);  
-        });
+    $(".PwdBg").remove();
+    $('.scrollul li').remove();
+    onDeviceReady();
+    alert("can");
 
     }
-function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
+
 
     
 function locationOnClick(actname, address, lat,lon){
