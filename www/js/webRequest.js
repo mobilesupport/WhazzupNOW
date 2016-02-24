@@ -517,7 +517,7 @@ function PostDeviceLog(userId,registrationId){
     appVersion=appV;
     osVersion=device.version;
     imeiNo=device.uuid;
-    alert(imeiNo);
+
     
     var checksumStr=appVersion+deviceName+imeiNo+osVersion+registrationId+userId+sha1key;
     var hashedStr=SHA1(checksumStr);
@@ -532,12 +532,12 @@ function PostDeviceLog(userId,registrationId){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger;        
-        alert(JSON.stringify(data));
-        alert("Success");
+        //alert(JSON.stringify(data));
+
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
-          alert("error"+xhr.responseText);
+          //alert("error"+xhr.responseText);
           //alert("Error: Unable to connect to server.");
         }
     })
