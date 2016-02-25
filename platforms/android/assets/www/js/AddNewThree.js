@@ -213,7 +213,8 @@ function onPhotoDataSuccess(imageData) {
 
 
 function BackOnClick(){
-    window.location="AddNewTwoEvent.html";
+    var abc=getUrlParameter("value");
+    window.location="AddNewTwoEvent.html?value="+abc;
 }
 
 function HomeOnClick(){
