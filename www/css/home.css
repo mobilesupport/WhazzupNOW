@@ -479,6 +479,7 @@ height: 100%;
     border: none;
     outline: none;
     background-color: transparent;
+    display: none;
 }
 
 .delete{
@@ -495,6 +496,7 @@ height: 100%;
     border:none;
     outline: none;
     background-color: transparent;
+    display: none;
 }
 
 .edit{

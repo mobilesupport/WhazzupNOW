@@ -164,5 +164,10 @@ function deleteOnClick(activityId){
     }
 }
 
+function editOnClick(actPhoto, actName, actAddress, actLat, actLon,desc,startdate,enddate,username,id){
+    window.location="edit.html?actPhoto="+actPhoto+"&actName="+actName+"&actAddress="+actAddress+"&actLat="+actLat+"&actLon="+actLon+"&actDesc="+desc+"&startdate="+startdate+"&enddate="+enddate+"&username="+username+"&id="+id;
+    
+}
+
 
 

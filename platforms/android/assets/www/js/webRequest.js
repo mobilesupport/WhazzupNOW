@@ -739,9 +739,11 @@ function getActivityList(registrationId,latitude,longitude, userid){
               var username='"'+data[x].ownerName+'"';
               
               
-              $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick();'><img class='edit' src=''/></button><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
-              getSubCategory(data[x].category,data[x].subCategory);
+              $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img id='"+data[x].activityId+"' class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");'><img class='edit' src=''/></button><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+              getSubCategory(data[x].category,data[x].subCategory, data[x].activityId);
               if(data[x].ownerId==userid){
+                  $(".btndelete").css("display","block");
+                  $(".btnedit").css("display","block");
                   $(".delete").attr("src","img/deleteact.png");
                   $(".edit").attr("src","img/editact.png");
                   
@@ -940,7 +942,7 @@ function postCommentReview(userId,comment,activityId){
 }
 
 //show category photo in activity list
-function getSubCategory(category,subCategory){
+function getSubCategory(category,subCategory,activityId){
 
      $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/category",
@@ -951,10 +953,10 @@ function getSubCategory(category,subCategory){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        //alert(JSON.stringify(data));
+     
           for(x=0; x<data.length; x++){
         if(data[x].categoryType ==category && data[x].categoryId ==subCategory ){
-            $(".category").attr("src",data[x].categoryPhoto)
+            $('#'+activityId+'.category').attr("src",data[x].categoryPhoto)
             
         }
             }
@@ -981,11 +983,7 @@ function getDeleteActivity(activityId){
         debugger; 
         //alert(JSON.stringify(data));
        $('#'+activityId).remove();
-          alert("success");
-            
-        
-            
-    
+
            
       },
       error:function (xhr, ajaxOptions, thrownError){

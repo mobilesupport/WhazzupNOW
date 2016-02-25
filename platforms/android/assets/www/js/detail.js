@@ -167,7 +167,7 @@ function changepage(pagenumber){
 }
 
 function pageSwipeLeft(){
-    if(!menuStatus){
+
         if(currentpage==1){
             $(".pagenumone").hide();
             $(".pagenumtwo").show();
@@ -203,16 +203,7 @@ function pageSwipeLeft(){
             $(".selectedItem").animate({
                     marginLeft: "67.25%",}, 300, function() {$(".selectedItem").css("width", "32.75%");});
         }    
-    }
-    else{
-    	$("body").on("swipeleft", function(){
-            if (menuStatus){	
-            $(".menubg").animate({
-                marginLeft: "-70%",
-              }, 300, function(){menuStatus = false});
-              }
-        });
-    }
+    
 }
 
 function pageSwipeRight(){

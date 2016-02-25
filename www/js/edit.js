@@ -266,3 +266,60 @@ function sendOnClick(activityId){
     
 }
 
+//start date
+function StartDateOnClick(){
+    var options = {
+    date: new Date(),
+    mode: 'date', // or 'time'
+    allowOldDates: false,
+    allowFutureDates: true,
+    doneButtonLabel: 'DONE',
+    doneButtonColor: '#F2F3F4',
+    cancelButtonLabel: 'CANCEL',
+    cancelButtonColor: '#000000'
+};
+    datePicker.show(options, onSuccess, onError);
+}
+
+function onSuccess(date) {
+    // change date format to dd/mm/yyyy
+    var daa=date;
+    var curr_date = daa.getDate();
+    var curr_month = daa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daa.getFullYear();
+
+    
+    $(".btnstartdate span").text(curr_date+"/"+curr_month+"/"+curr_year);
+}
+
+function onError(error) { // Android only
+    alert('Error: ' + error);
+}
+
+//end date
+function endDateOnClick(){
+var options = {
+    date: new Date(),
+    mode: 'date', // or 'time'
+    allowOldDates: false,
+    allowFutureDates: true,
+    doneButtonLabel: 'DONE',
+    doneButtonColor: '#F2F3F4',
+    cancelButtonLabel: 'CANCEL',
+    cancelButtonColor: '#000000'
+};
+    datePicker.show(options, onEndSuccess, onError);
+}
+function onEndSuccess(date) {
+    //change date format to dd/mm/yyyy
+    var daaa=date;
+    var curr_date = daaa.getDate();
+    var curr_month = daaa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daaa.getFullYear();
+
+    
+    $(".btnenddate span").text(curr_date+"/"+curr_month+"/"+curr_year);
+}
+
