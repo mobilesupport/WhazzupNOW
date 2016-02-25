@@ -319,11 +319,11 @@ var options = {
 }
 function onEndSuccess(date) {
     //change date format to dd/mm/yyyy
-  var start=daa.toDateString();
+  var end=daa.toDateString();
 
 
     
-    $(".btnenddate span").text(start);
+    $(".btnenddate span").text(end);
 }
 
 function updateOnClick(activityId){
