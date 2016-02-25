@@ -651,16 +651,15 @@ function getUserProfile(userId){
     })    
 }
 
-function getActivityList(registrationId,latitude,longitude){
-    var distancekm="500000000";
-    var startrow="0";
-    var countryCode="MY";
-    var searchValue="";
-    var startdate="20151101";
-    var order="0";
+function getActivityList(registrationId,latitude,longitude, userid){
+//    var distancekm="500000000";
+//    var startrow="0";
+//    var countryCode="MY";
+//    var searchValue="";
+//    var startdate="20151101";
+//    var order="0";
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationId="+registrationId,
-
       type: "GET",  
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -727,7 +726,7 @@ function getActivityList(registrationId,latitude,longitude){
               var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
               var d = R * c; // Distance in km
               var distance=d.toFixed(2);
-              
+            
               var actID='"'+data[x].activityId+'"';
               var actName='"'+data[x].activityName+'"';
               var actAddress='"'+data[x].fullAddress+'"';
@@ -738,9 +737,15 @@ function getActivityList(registrationId,latitude,longitude){
               var startdate='"'+data[x].dateStart+'"';
               var enddate='"'+data[x].dateEnd+'"';
               var username='"'+data[x].ownerName+'"';
-              getSubCategory(data[x].category,data[x].subCategory);
-              $(".scrollul").append("<li id='activityRow"+x+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img class='category' src=''/><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
               
+              
+              $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick();'><img class='edit' src=''/></button><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+              getSubCategory(data[x].category,data[x].subCategory);
+              if(data[x].ownerId==userid){
+                  $(".delete").attr("src","img/deleteact.png");
+                  $(".edit").attr("src","img/editact.png");
+                  
+              }
 //              if(data[x].commented ==0){
 //                  
 //                  $("#activityRow"+x+" .imgComment").attr("src","img/reviewalready.png");
@@ -845,17 +850,17 @@ function postLike(activityId, userid,rowNum){
         //alert(JSON.stringify(data));
           
           //if user click dislike, number of like will be decrease
-          var nowlike=parseInt($('#activityRow'+rowNum+' .numLike').text());
+          var nowlike=parseInt($('#activityId .numLike').text());
           if(data.Message=="You have disliked this activity"){
               
-               $("#activityRow"+rowNum+" .imgLike").attr("src","img/like.png");
+               $("#activityId .imgLike").attr("src","img/like.png");
               var like=parseInt(nowlike)-1;
-              $("#activityRow"+rowNum+" .numLike").text(like);
+              $("#activityId .numLike").text(like);
           }// if user click like, number of like will be increase
           else if(data.Message=="You have liked this activity"){
-              $("#activityRow"+rowNum+" .imgLike").attr("src","img/unlike.png");
+              $("activityId .imgLike").attr("src","img/unlike.png");
              var like=parseInt(nowlike)+1;
-               $("#activityRow"+rowNum+" .numLike").text(like);
+               $("activityId .numLike").text(like);
               
           }
           
@@ -954,6 +959,34 @@ function getSubCategory(category,subCategory){
         }
             }
       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
+
+function getDeleteActivity(activityId){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/delete?activityid="+activityId,
+      type: "GET",  
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+       $('#'+activityId).remove();
+          alert("success");
+            
+        
+            
+    
+           
       },
       error:function (xhr, ajaxOptions, thrownError){
         debugger;

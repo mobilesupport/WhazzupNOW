@@ -146,4 +146,23 @@ function goDetailPage(actPhoto, actName, actAddress, actLat, actLon,desc,startda
    
 }
 
+function deleteOnClick(activityId){
+    var id=activityId;
+     navigator.notification.confirm("Do you want to delete this post?", onConfirm, "Delete Post", "Yes,Cancel"); 
+    
+    function onConfirm(button) {
+        
+    if(button==2){//If User selected Cancel, then we just do nothing
+        return; 
+        
+    }else if(button==1){
+
+        getDeleteActivity(id);
+       
+        
+    }
+    }
+}
+
+
 
