@@ -285,18 +285,16 @@ function onSuccess(date) {
     // change date format to dd/mm/yyyy
     var daa=date;
    
-    var start=daa.toDateString();
-
-    
+//    var start=daa.toDateString();
     // thu feb 18 2016
-//    var curr_date = daa.getDate();
-//    var curr_month = daa.getMonth();
-//    curr_month=curr_month+1;
-//    var curr_year = daa.getFullYear();
+    var curr_date = daa.getDate();
+    var curr_month = daa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daa.getFullYear();
 
     
-  //  $(".btnstartdate span").text(curr_date+"/"+curr_month+"/"+curr_year);
-    $(".btnstartdate span").text(start);
+    $(".btnstartdate span").text(curr_date+"/"+curr_month+"/"+curr_year);
+//    $(".btnstartdate span").text(start);
 }
 
 function onError(error) { // Android only
@@ -332,12 +330,21 @@ function updateOnClick(activityId){
     var desc = $(".actdesc").val();
     var nostartdate= $(".btnstartdate span").text();
     var noenddate=$(".btnenddate span").text();
-    if(startdate =="Start Date"){
+    
+    if(nostartdate =="Start Date"){
         var startdate="";
     }
-    if(enddate=="End Date"){
+    else{
+
+        var startdate=nostartdate.split("/").reverse();
+    }
+    if(noenddate=="End Date"){
         var enddate="";
     }
+    else{
+        var enddate=noenddate.split("/").reverse();
+    }
+
     postActivityUpdate(activityId,name,desc,startdate,enddate);
 
     

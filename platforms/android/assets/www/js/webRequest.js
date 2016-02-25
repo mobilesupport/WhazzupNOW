@@ -667,7 +667,7 @@ function getActivityList(registrationId,latitude,longitude, userid){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        //alert(JSON.stringify(data));
+        alert(JSON.stringify(data));
 
                 
           for(x=0; x<data.length; x++){
@@ -997,13 +997,13 @@ function getDeleteActivity(activityId){
 }
 
 function postActivityUpdate(activityId,name,desc,startdate,enddate){
-    var checksum=desc+activityId+name+startdate+enddate+sha1key;
+    var checksum=desc+activityId+name+enddate+startdate+sha1key;
     var hashedStr=SHA1(checksum);
     
     $.ajax({
       url: "http://192.168.1.18/MRWebApi/api/activity/update",
       type: "POST",  
-        data:"activityDetail="+desc+ "&activityid="+activityId+"&activityName="+name+"&dateStart="+startdate+"&dateEnd="+enddate+"&checksum="+hashedStr,
+        data:"activityDetail="+desc+ "&activityid="+activityId+"&activityName="+name+"&dateEnd="+enddate+"&dateStart="+startdate+"&checksum="+hashedStr,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

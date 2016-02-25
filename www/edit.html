@@ -97,18 +97,19 @@
                                             var ownername=getUrlParameter("username");
                                             var activityId=getUrlParameter("id");
                                         
+                                        alert(startdate);
                                          
                                             $(".actname").attr("value",actname); 
                                             $(".actdesc").attr("value",desc); 
                                             $(".actlocation").text(address+" ("+lat+" , "+lon+")");
                                             $(".username").text(ownername);
                                            
-                                            if(startdate != ""){
+                                            if(startdate.trim() != ""){
                                                 $(".startdate").text(startdate);
                                                 
                                                 
                                             }
-                                            if(enddate !=""){
+                                            if(enddate.trim() !=""){
                                                 $(".enddate").text(enddate);
                                             }
                                     
