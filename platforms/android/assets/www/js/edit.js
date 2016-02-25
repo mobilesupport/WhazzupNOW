@@ -284,10 +284,11 @@ function StartDateOnClick(){
 function onSuccess(date) {
     // change date format to dd/mm/yyyy
     var daa=date;
-    alert(daa[4]);// thu feb 18 2016
-    alert(daa[4]);
+    // thu feb 18 2016
     var curr_date = daa.getDate();
     var curr_month = daa.getMonth();
+    alert(curr_month);
+    alert(daa);
     curr_month=curr_month+1;
     var curr_year = daa.getFullYear();
 
