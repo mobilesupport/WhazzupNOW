@@ -317,11 +317,17 @@ var options = {
 }
 function onEndSuccess(date) {
     //change date format to dd/mm/yyyy
-  var end=daa.toDateString();
-
+    var daaa=date;
+   
+//    var start=daa.toDateString();
+    // thu feb 18 2016
+    var curr_date = daaa.getDate();
+    var curr_month = daaa.getMonth();
+    curr_month=curr_month+1;
+    var curr_year = daaa.getFullYear();
 
     
-    $(".btnenddate span").text(end);
+    $(".btnenddate span").text(curr_date+"/"+curr_month+"/"+curr_year);
 }
 
 function updateOnClick(activityId){

@@ -667,7 +667,7 @@ function getActivityList(registrationId,latitude,longitude, userid){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
 
                 
           for(x=0; x<data.length; x++){
@@ -1010,7 +1010,7 @@ function postActivityUpdate(activityId,name,desc,startdate,enddate){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
           alert("success");
           
       
