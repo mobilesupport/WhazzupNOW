@@ -284,6 +284,10 @@ function StartDateOnClick(){
 function onSuccess(date) {
     // change date format to dd/mm/yyyy
     var daa=date;
+    var abb=daa.getUTCMonth();
+    alert(abb);
+    var acc=daa.toDateString();
+    alert(acc);
     // thu feb 18 2016
     var curr_date = daa.getDate();
     var curr_month = daa.getMonth();
