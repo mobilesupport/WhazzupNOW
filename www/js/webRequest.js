@@ -852,17 +852,18 @@ function postLike(activityId, userid,rowNum){
         //alert(JSON.stringify(data));
           
           //if user click dislike, number of like will be decrease
-          var nowlike=parseInt($('#activityId .numLike').text());
+          var nowlike=parseInt($('#'+activityId+'.numLike').text());
           if(data.Message=="You have disliked this activity"){
               
-               $("#activityId .imgLike").attr("src","img/like.png");
+               $('#'+activityId+'.imgLike').attr("src","img/like.png");
               var like=parseInt(nowlike)-1;
-              $("#activityId .numLike").text(like);
+              $('#'+activityId+'.imgLike').text(like);
           }// if user click like, number of like will be increase
           else if(data.Message=="You have liked this activity"){
-              $("activityId .imgLike").attr("src","img/unlike.png");
+              $('#'+activityId+'.imgLike').attr("src","img/unlike.png");
              var like=parseInt(nowlike)+1;
-               $("activityId .numLike").text(like);
+               $('#'+activityId+'.imgLike').text(like);
+              
               
           }
           
