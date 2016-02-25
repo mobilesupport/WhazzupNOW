@@ -995,4 +995,30 @@ function getDeleteActivity(activityId){
     
 }
 
+function postActivityUpdate(activityId,name,desc,startdate,enddate){
+    var checksum=desc+activityId+name+startdate+enddate;
+    var hashedStr=SHA1(checksum);
+    
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/update",
+      type: "POST",  
+        data:"activityDetail="+desc+ "&activityid="+activityId+"&activityName="+name+"&dateStart="+startdate+"&dateEnd="+enddate+"&checksum="+hashedStr,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        alert(JSON.stringify(data));
+          alert("success");
+          
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+}
 

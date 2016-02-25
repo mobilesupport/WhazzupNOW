@@ -284,6 +284,7 @@ function StartDateOnClick(){
 function onSuccess(date) {
     // change date format to dd/mm/yyyy
     var daa=date;
+    alert(daa);
     var curr_date = daa.getDate();
     var curr_month = daa.getMonth();
     curr_month=curr_month+1;
@@ -321,5 +322,23 @@ function onEndSuccess(date) {
 
     
     $(".btnenddate span").text(curr_date+"/"+curr_month+"/"+curr_year);
+}
+
+function updateOnClick(activityId){
+
+    var name = $(".actname").val();
+    var desc = $(".actdesc").val();
+    var nostartdate= $(".btnstartdate span").text();
+    var noenddate=$(".btnenddate span").text();
+    if(startdate =="Start Date"){
+        var startdate="";
+    }
+    if(enddate=="End Date"){
+        var enddate="";
+    }
+    postActivityUpdate(activityId,name,desc,startdate,enddate);
+
+    
+    
 }
 

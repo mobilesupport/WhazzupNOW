@@ -84,7 +84,8 @@
                                     <button class="btnstartdate" onclick="StartDateOnClick()"><span class='startdate'>Start Date</span></button>
                                     <span class="until">until</span>
                                     <button class="btnenddate" onclick="endDateOnClick()"><span class="enddate">End Date</span></button>
-                                     <script type="text/javascript">
+                                    <button class="btnupdate" onclick="updateOnClick(activityId);">Update</button>
+                                     <script type="text/javascript">                                  
                     
                                             var actname=getUrlParameter("actName");
                                             var desc=getUrlParameter("actDesc");
@@ -94,6 +95,8 @@
                                             var startdate=getUrlParameter("startdate");
                                             var enddate=getUrlParameter("enddate");
                                             var ownername=getUrlParameter("username");
+                                            var activityId=getUrlParameter("id");
+                                        
                                          
                                             $(".actname").attr("value",actname); 
                                             $(".actdesc").attr("value",desc); 
