@@ -288,6 +288,12 @@ function onSuccess(date) {
     alert(abb);
     var acc=daa.toDateString();
     alert(acc);
+    var aasd=daa.getUTCDate();
+    alert(aasd);
+    var dsa=daa.toISOString();
+    alert(dsa);
+    var cxz=daa.toLocaleDateString();
+    alert(cxz);
     // thu feb 18 2016
     var curr_date = daa.getDate();
     var curr_month = daa.getMonth();
