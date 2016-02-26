@@ -652,6 +652,7 @@ function getUserProfile(userId){
 }
 
 function getActivityList(registrationId,latitude,longitude, userid){
+    alert("hoho");
     var distancekm=500000000;
     var startrow=1;
     var endrow=20;
@@ -670,7 +671,7 @@ function getActivityList(registrationId,latitude,longitude, userid){
         debugger; 
         alert(JSON.stringify(data));
 
-                
+            alert("success");
           for(x=0; x<data.length; x++){
               if(data[x].date_created[4]+data[x].date_created[5]=="11"){
                   var month="Nov";
@@ -741,12 +742,7 @@ function getActivityList(registrationId,latitude,longitude, userid){
               
               
               $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><div class='imgdiv'><img id='"+data[x].activityId+"' class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img id='"+data[x].activityId+"' class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");'><img class='edit' src=''/></button><br></div><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
-//            $(".actImage").one("load", function() {
-// 
-//            alert("ueah");
-//            }).each(function() {
-//                if(this.complete) $(this).load();
-//            });
+
               
               
               var fileNameIndex = data[x].activityPhoto.lastIndexOf("/") + 1;

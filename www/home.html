@@ -38,7 +38,8 @@
         registrationId=returnData.rows.item(0).rregid;
         dbmanager.getProfile(function(returnData){
         var userId=returnData.rows.item(0).USER_ID;
-            
+            alert(longitude);
+            alert(latitude);
         alert("hi");
         getActivityList(registrationId,latitude,longitude,userid);
         postLocationUpdate(registrationId,latitude,longitude);
