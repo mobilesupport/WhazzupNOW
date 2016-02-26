@@ -23,7 +23,7 @@
         document.addEventListener("deviceready", onDeviceReady, false);
         
         function onDeviceReady() {
-       // alert("deviceready")
+        alert("deviceready")
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
         function onSuccess(position) {
@@ -31,7 +31,7 @@
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;  
    
-   
+        alert("hdd");
      // location update and get activity list
         dbmanager.initdb();
         dbmanager.getRedId(function(returnData){
@@ -39,7 +39,7 @@
         dbmanager.getProfile(function(returnData){
         var userId=returnData.rows.item(0).USER_ID;
             
-
+        alert("hi");
         getActivityList(registrationId,latitude,longitude,userid);
         postLocationUpdate(registrationId,latitude,longitude);
         PostDeviceLog(userId,registrationId);
@@ -109,6 +109,7 @@
 //            var userid=086908291015; //cheehau
 //            var latitude=1.5421954;
 //            var longitude=103.8012882;
+//            getActivityList(registrationId,latitude,longitude,userid);
                             
 //            dbmanager.getProfile(function(returnData){
 //            var userId=returnData.rows.item(0).USER_ID;
