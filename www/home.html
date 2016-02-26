@@ -23,25 +23,20 @@
         document.addEventListener("deviceready", onDeviceReady, false);
         
         function onDeviceReady() {
-        alert("deviceready")
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
         function onSuccess(position) {
 
         var latitude=position.coords.latitude;
         var longitude=position.coords.longitude;  
-   
-        alert("hdd");
      // location update and get activity list
         dbmanager.initdb();
         dbmanager.getRedId(function(returnData){
         registrationId=returnData.rows.item(0).rregid;
         dbmanager.getProfile(function(returnData){
         var userId=returnData.rows.item(0).USER_ID;
-            alert(longitude);
-            alert(latitude);
-        alert("hi");
-        getActivityList(registrationId,latitude,longitude,userid);
+   
+        getActivityList(registrationId,latitude,longitude,userId);
         postLocationUpdate(registrationId,latitude,longitude);
         PostDeviceLog(userId,registrationId);
         });
