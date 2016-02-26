@@ -652,7 +652,7 @@ function getUserProfile(userId){
 }
 
 function getActivityList(registrationId,latitude,longitude, userid){
-    alert("hoho");
+
     var distancekm=500000000;
     var startrow=1;
     var endrow=20;
@@ -669,9 +669,8 @@ function getActivityList(registrationId,latitude,longitude, userid){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
 
-            alert("success");
           for(x=0; x<data.length; x++){
               if(data[x].date_created[4]+data[x].date_created[5]=="11"){
                   var month="Nov";
