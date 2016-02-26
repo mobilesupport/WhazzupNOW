@@ -68,7 +68,8 @@ function initMap() {
     var longitude = place.geometry.location.lng();
     
       
-      
+    alert(shortAddress);
+    alert(longAddress);
       
     if (!place.geometry) {
       window.alert("Autocomplete's returned place contains no geometry");

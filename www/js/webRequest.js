@@ -652,14 +652,15 @@ function getUserProfile(userId){
 }
 
 function getActivityList(registrationId,latitude,longitude, userid){
-//    var distancekm="500000000";
-//    var startrow="0";
-//    var countryCode="MY";
+    var distancekm=500000000;
+    var startrow=1;
+    var endrow=20;
+    var countryCode="MY";
 //    var searchValue="";
 //    var startdate="20151101";
 //    var order="0";
     $.ajax({
-      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationId="+registrationId,
+      url: "http://192.168.1.18/MRWebApi/api/activity/listall?registrationId="+registrationId+"&startRow="+startrow+"&endRow="+endrow+"&countryCode="+countryCode,
       type: "GET",  
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -1023,30 +1024,70 @@ function postActivityUpdate(activityId,name,desc,startdate,enddate){
     }) 
 }
 
-//function postActivityUpdate(activityId,name,desc){
-//    var checksum=desc+activityId+name+sha1key;
-//    var hashedStr=SHA1(checksum);
-//    
-//    $.ajax({
-//      url: "http://192.168.1.18/MRWebApi/api/activity/update",
-//      type: "POST",  
-//        data:"activityDetail="+desc+ "&activityid="+activityId+"&activityName="+name+"&checksum="+hashedStr,
-//      headers: {
-//        "Content-Type": "application/x-www-form-urlencoded"
-//      },
-//      timeout: apiTimeOut,  
-//      success: function(data, status, xhr) {
-//        debugger; 
-//        alert(JSON.stringify(data));
-//        alert("success");
-//          
-//      
-//      },
-//      error:function (xhr, ajaxOptions, thrownError){
-//        debugger;
-//          alert("error"+xhr.responseText);
-//          //alert("Error: Unable to connect to server.");
-//        }
-//    }) 
-//}
+function getPhotoList(activityId){
+    $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/listphoto?activityid="+activityId,
+      type: "GET",  
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        //alert(JSON.stringify(data));
+        for(x=0;x<data.length;x++){
+            
+            var PhotoUrl1='"'+data[x].activityPhoto+'"';
+            
+            $("#scrollul-gallery li").append("<button class='imgbtn' id='"+data[x].activityPhoto+"' onclick='imageonclick("+PhotoUrl1+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
+            x=x+1;
+            var PhotoUrl2='"'+data[x].activityPhoto+'"';
+            $("#scrollul-gallery li").append("<button class='imgbtn' id='button"+x+"' onclick='imageonclick("+PhotoUrl2+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
+            x=x+1;
+             var PhotoUrl3='"'+data[x].activityPhoto+'"';
+            $("#scrollul-gallery li").append("<button class='imgbtn' id='button"+x+"' onclick='imageonclick("+PhotoUrl3+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
+            
+
+            
+        }
+          
+          
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
+
+function  getDeletePhoto(photo){
+      $.ajax({
+      url: "http://192.168.1.18/MRWebApi/api/activity/deletephoto?photourl="+photo,
+      type: "GET",  
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      timeout: apiTimeOut,  
+      success: function(data, status, xhr) {
+        debugger; 
+        alert(JSON.stringify(data));
+        alert("success delete");
+          $("#"+photo).fadeOut();
+            
+        
+          
+          
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+          alert("error"+xhr.responseText);
+          //alert("Error: Unable to connect to server.");
+        }
+    }) 
+    
+}
 

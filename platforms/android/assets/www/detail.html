@@ -22,7 +22,10 @@
 
     </head>
     <body>
+        <div class="fullscreenimage"><button class="btncloseimg" onclick="closeonclick(); "><img class="imgclose" src="img/close.png"/></button>
+            <img class="imgfull" src=""/></div>
         <div class="app">
+            
             <div class="header">
                 <button class="btnBack" onclick="Backtohomeonclick();"><img class="backImage" src="img/iv_back-web.png" /></button>
                 <img class="appLogo" src="img/ic_pointion.png"/>
@@ -90,6 +93,7 @@
                                             var startdate=getUrlParameter("startdate");
                                             var enddate=getUrlParameter("enddate");
                                             var ownername=getUrlParameter("username");
+                                            var actid=getUrlParameter("id");
                                          
                                             $(".actname").text(actname); 
                                             $(".actdesc").text(desc);
@@ -113,13 +117,10 @@
                                     <div class="scroll-content" id="scroll-gallery">
                                         <br>
                                         <ul class="scrollul" id="scrollul-gallery">
-                                            <li>
-                                                <img class="leftimg" src=""/>
-                                                <img class="midimg" src=""/>
-                                                <img class="rightimg" src=""/>
+                                        <li>    
+                                                
                                         <script type="text/javascript">
-                                            $(".leftimg").attr("src", Photo); 
-                                            
+                                            getPhotoList(actid);
                                         </script> 
                                             </li>
                                         </ul>

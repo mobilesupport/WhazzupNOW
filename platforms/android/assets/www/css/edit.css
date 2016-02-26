@@ -531,3 +531,21 @@ border-width: thin;
     font-family: "gothic";
 }
 
+.imgbtn{
+    position: inherit;
+    width: 28vw;
+    max-width: 28vw;
+    height: 28vw;
+    max-height: 28vw;
+    border: none;
+    background-color: transparent;
+    margin-left: 5vw;
+    outline: none;
+
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}

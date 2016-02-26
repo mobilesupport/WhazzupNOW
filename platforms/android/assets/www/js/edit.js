@@ -357,3 +357,22 @@ function updateOnClick(activityId){
     
 }
 
+function imageonclick(photourl){
+    var photo=photourl;
+    navigator.notification.confirm("Do you want to delete this photo?", onConfirm, "Delete Post", "Yes,Cancel"); 
+    
+    function onConfirm(button) {
+        
+    if(button==2){//If User selected Cancel, then we just do nothing
+        return; 
+        
+    }else if(button==1){
+
+        getDeletePhoto(photo);
+       
+    }
+    }
+    
+    
+}
+

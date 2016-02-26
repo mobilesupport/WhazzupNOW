@@ -490,3 +490,57 @@ html, body{
     font-size: 3vw;
     
 }
+
+.imgbtn{
+    position: inherit;
+    width: 28vw;
+    max-width: 28vw;
+    height: 28vw;
+    max-height: 28vw;
+    border: none;
+    background-color: transparent;
+    margin-left: 5vw;
+    outline: none;
+
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.fullscreenimage{
+    z-index: 99;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: none;
+    
+}
+
+.imgfull{
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    height: 60%;
+    width: 100%;
+}
+
+.btncloseimg{
+    position: absolute;
+    top: 20%;
+    right: 0px;
+    height: 5%;
+    width: 15%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    z-index: 99;
+}
+
+.imgclose{
+    height: 100%;
+    width: 100%;
+}

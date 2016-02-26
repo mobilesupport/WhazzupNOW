@@ -261,8 +261,16 @@ function sendOnClick(activityId){
         postCommentReview(userId,comment,activityId);
             });   
         
-    }
-    
+    }   
+}
+
+function imageonclick(PhotoUrl){
+    $(".fullscreenimage").css("display","block");
+    $(".imgfull").attr("src",PhotoUrl);
     
 }
 
+function closeonclick(){
+
+    $(".fullscreenimage").fadeOut();
+}
