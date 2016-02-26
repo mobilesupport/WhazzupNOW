@@ -42,12 +42,25 @@
                                         <img class="imageAct" src="" />
                                          <script type="text/javascript">
                     
-                                            var Photo=getUrlParameter("actPhoto");
+                                             Photo=getUrlParameter("actPhoto");
+                                             var fileNameIndex = Photo.lastIndexOf("/") + 1;
+                                             var filename = Photo.substr(fileNameIndex);
+              
+
+                                          if(filename ==".Jpeg"){
+                                              $(".imageAct").attr("src","img/defaultpic.png");
+//                                              $(".imageAct").css("position","absolute"); 
+//                                             $(".imageAct").css("top","20vw");  
+                                      
+                                              $(".imageAct").css("height","60vw"); 
+                                      } 
+                                             else{
+                                                 $(".imageAct").attr("src", Photo); 
+                                             }
                                             
-                                            $(".imageAct").attr("src", Photo); 
                         
                                         </script>
-                                    </div><br>
+                                    </div>
                                   
                                     <div class="subheader">
                                         <div>
@@ -94,6 +107,8 @@
                                             var enddate=getUrlParameter("enddate");
                                             var ownername=getUrlParameter("username");
                                             var actid=getUrlParameter("id");
+                                         
+                                         
                                          
                                             $(".actname").text(actname); 
                                             $(".actdesc").text(desc);

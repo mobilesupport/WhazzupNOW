@@ -24,25 +24,29 @@
         
         function onDeviceReady() {
        // alert("deviceready")
-       // navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
-//        function onSuccess(position) {
-//
-//        var latitude=position.coords.latitude;
-//        var longitude=position.coords.longitude;  
-//   
+        function onSuccess(position) {
+
+        var latitude=position.coords.latitude;
+        var longitude=position.coords.longitude;  
    
-    //  location update and get activity list
-//        dbmanager.initdb();
-//        dbmanager.getRedId(function(returnData){
-//        registrationId=returnData.rows.item(0).rregid;
+   
+     // location update and get activity list
+        dbmanager.initdb();
+        dbmanager.getRedId(function(returnData){
+        registrationId=returnData.rows.item(0).rregid;
+        dbmanager.getProfile(function(returnData){
+        var userId=returnData.rows.item(0).USER_ID;
             
 
-        
-//        postLocationUpdate(registrationId,latitude,longitude);
-//        });
+        getActivityList(registrationId,latitude,longitude,userid);
+        postLocationUpdate(registrationId,latitude,longitude);
+        PostDeviceLog(userId,registrationId);
+        });
+        });
 
-//    }
+    }
 
   
     function onError(error) {
@@ -100,15 +104,15 @@
 //            dbmanager.initdb();
 //            dbmanager.getRedId(function(returnData){
 //            var registrationId=returnData.rows.item(0).rregid;
-            var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQnsWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
-           // var userid=232071110116; //xq
-            var userid=086908291015; //cheehau
-            var latitude=1.5421954;
-            var longitude=103.8012882;
+//            var registrationId="APA91bEs8m0muEpTt1Q03EQnqmrmPU9rl4_CggQnsWsjNuGT3WzXSXZsq8wfGDExEC6OGGewXh4sTccgP3BG6kAsJVurKGXzTDSdlp2twSefg1yakrZz-JBYpzhiEcP-TRDSqW4e1yC";
+//           // var userid=232071110116; //xq
+//            var userid=086908291015; //cheehau
+//            var latitude=1.5421954;
+//            var longitude=103.8012882;
                             
 //            dbmanager.getProfile(function(returnData){
 //            var userId=returnData.rows.item(0).USER_ID;
-              getActivityList(registrationId,latitude,longitude,userid);
+//              getActivityList(registrationId,latitude,longitude,userid);
 //            PostDeviceLog(userId,registrationId);
 //            });
 //            });

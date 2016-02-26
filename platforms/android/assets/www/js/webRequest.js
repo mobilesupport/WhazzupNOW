@@ -668,7 +668,7 @@ function getActivityList(registrationId,latitude,longitude, userid){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        //alert(JSON.stringify(data));
+        alert(JSON.stringify(data));
 
                 
           for(x=0; x<data.length; x++){
@@ -740,7 +740,32 @@ function getActivityList(registrationId,latitude,longitude, userid){
               var username='"'+data[x].ownerName+'"';
               
               
-              $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><img class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img id='"+data[x].activityId+"' class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");'><img class='edit' src=''/></button><br><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+              $(".scrollul").append("<li id='"+data[x].activityId+"'><div class='activityDiv'><div class='greenbar'><span class='actName'>"+data[x].activityName+"</span><span class='actDate'>"+data[x].date_created[6]+data[x].date_created[7]+" "+month+"</span></div><div class='imgdiv'><img id='"+data[x].activityId+"' class='actImage' onclick='goDetailPage("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");' src='"+data[x].activityPhoto+"'/><img id='"+data[x].activityId+"' class='category' src=''/><button class='btndelete' onclick='deleteOnClick("+actID+");'><img class='delete' src=''/></button><button class='btnedit' onclick='editOnClick("+actPhoto+","+actName+","+actAddress+","+actlat+","+actlon+","+desc+","+startdate+","+enddate+","+username+","+actID+");'><img class='edit' src=''/></button><br></div><div class='whitebar'><button class='btnLocation' onclick='locationOnClick("+actName+","+actAddress+","+actlat+","+actlon+");'><img class='imgLocation' src='img/location.png'/></button><span class='distance'>"+distance+"km</span><button class='btnComment' onclick='commentOnClick("+actID+");'><img class='imgComment' src='img/review.png'/></button><span class='numComment'>"+data[x].totalCommented+"</span><button class='btnLike' onclick='likeOnClick("+actID+","+x+");'><img class='imgLike' src='img/like.png'/></button><span class='numLike'>"+data[x].totalLiked+"</span></div></li>");
+//            $(".actImage").one("load", function() {
+// 
+//            alert("ueah");
+//            }).each(function() {
+//                if(this.complete) $(this).load();
+//            });
+              
+              
+              var fileNameIndex = data[x].activityPhoto.lastIndexOf("/") + 1;
+              var filename = data[x].activityPhoto.substr(fileNameIndex);
+              
+
+              if(filename ==".Jpeg"){
+                  $('#'+data[x].activityId+'.actImage').attr("src","img/defaultpic.png");
+                  $('#'+data[x].activityId+'.actImage').css("position","absolute"); 
+                 $('#'+data[x].activityId+'.actImage').css("top","10vw");  
+                  $('#'+data[x].activityId+'.actImage').css("bottom","10vw");
+                  $('#'+data[x].activityId+'.actImage').css("height","50vw"); 
+          } 
+    
+              
+            
+              
+              
+             // $(".actImage").attr("src",data[x].activityPhoto);
               getSubCategory(data[x].category,data[x].subCategory, data[x].activityId);
               if(data[x].ownerId==userid){
                   $(".btndelete").css("display","block");
@@ -1041,11 +1066,11 @@ function getPhotoList(activityId){
             
             $("#scrollul-gallery li").append("<button class='imgbtn' id='"+data[x].activityPhoto+"' onclick='imageonclick("+PhotoUrl1+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
             x=x+1;
-            var PhotoUrl2='"'+data[x].activityPhoto+'"';
-            $("#scrollul-gallery li").append("<button class='imgbtn' id='button"+x+"' onclick='imageonclick("+PhotoUrl2+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
+            PhotoUrl1='"'+data[x].activityPhoto+'"';
+            $("#scrollul-gallery li").append("<button class='imgbtn' id='"+data[x].activityPhoto+"' onclick='imageonclick("+PhotoUrl1+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
             x=x+1;
-             var PhotoUrl3='"'+data[x].activityPhoto+'"';
-            $("#scrollul-gallery li").append("<button class='imgbtn' id='button"+x+"' onclick='imageonclick("+PhotoUrl3+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
+            PhotoUrl1='"'+data[x].activityPhoto+'"';
+            $("#scrollul-gallery li").append("<button class='imgbtn' id='"+data[x].activityPhoto+"' onclick='imageonclick("+PhotoUrl1+");'><img class='image' src='"+data[x].activityPhoto+"'/></button>");
             
 
             
@@ -1073,9 +1098,9 @@ function  getDeletePhoto(photo){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         debugger; 
-        alert(JSON.stringify(data));
-        alert("success delete");
-          $("#"+photo).fadeOut();
+//        alert(JSON.stringify(data));
+//        alert("success delete");
+          $("#"+photo).remove();
             
         
           

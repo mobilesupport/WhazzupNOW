@@ -149,8 +149,13 @@ html, body{
     position: relative;
 }
 
-.actImage{
+.imgdiv{
     height: 80vw;
+    widows: 100%;
+}
+.actImage{
+
+    height: 100%;
     width: 100%;
     
 }
